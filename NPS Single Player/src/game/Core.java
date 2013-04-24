@@ -50,6 +50,11 @@ public class Core implements Serializable {
 	public Core() {
 	}
 
+	public Core(int w, int h) {
+		FRAME_WIDTH = w;
+		FRAME_HEIGHT = h;
+	}
+
 	private void setUp() {
 
 	}

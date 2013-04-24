@@ -1,5 +1,6 @@
 package sprites;
 
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.Serializable;
 
@@ -52,6 +53,10 @@ public class Sprite implements Serializable {
 		/**
 		 * set animation for death!
 		 */
+	}
+
+	public Rectangle getBounds() {
+		return new Rectangle(x, y, getWidth(), getHeight());
 	}
 
 	public int getCurrentHealth() {
