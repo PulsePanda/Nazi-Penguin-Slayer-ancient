@@ -48,7 +48,7 @@ public class PauseFrame extends JFrame {
 
 		add(resume);
 		add(saveAndExit);
-		setLocationRelativeTo(null);
+		setLocationRelativeTo(Core.frame);
 		setVisible(true);
 	}
 }
