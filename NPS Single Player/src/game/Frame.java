@@ -17,7 +17,7 @@ public class Frame extends Core {
 
 	public Frame() {
 		frame.setSize(getWidth(), getHeight());
-		frame.setResizable(false);
+		frame.setResizable(true);
 		frame.setAlwaysOnTop(true);
 		frame.setAlwaysOnTop(false);
 		frame.setUndecorated(false);
@@ -42,6 +42,8 @@ public class Frame extends Core {
 
 	public void refresh() {
 		frame.setTitle("NPS " + FILES.VERSION + "    Day: " + getDay());
+		setWidth(frame.getWidth());
+		setHeight(frame.getHeight());
 		frame.repaint();
 	}
 }

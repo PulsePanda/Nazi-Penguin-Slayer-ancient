@@ -17,7 +17,7 @@ public class Refresh extends Core implements Runnable {
 			}
 			try {
 				getFrame().refresh();
-				getFrame().setSelected();
+				// getFrame().setSelected();
 
 				Thread.sleep(20);
 			} catch (Exception e) {
