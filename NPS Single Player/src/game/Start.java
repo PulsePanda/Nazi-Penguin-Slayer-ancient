@@ -18,6 +18,7 @@ public class Start {
 		File f = new File("../worlds/world.dat");
 		if (f.exists())
 			core.load();
+		core.save();
 		core.start();
 	}
 }
