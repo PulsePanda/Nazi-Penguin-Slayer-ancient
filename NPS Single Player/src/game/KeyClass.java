@@ -26,7 +26,7 @@ public class KeyClass extends Core implements KeyListener {
 		} else if (key == Integer.parseInt(settings.getProperty("attack"))) {
 
 		} else if (key == KeyEvent.VK_ESCAPE) {
-			stop();
+			System.exit(0);
 		} else if (key == KeyEvent.VK_P) {
 			if (!isPaused())
 				pause();
