@@ -25,14 +25,17 @@ public class PauseFrame extends JFrame {
 	// JLabel resume, saveAndExit;
 
 	JFrame f = this;
+	IO io = new IO();
 
 	public PauseFrame() {
-		IO io = new IO();
+	}
+
+	public void start() {
 
 		int fw = Core.getWidth() / 2, fh = Core.getHeight() / 2;
 
 		setLayout(null);
-		setAlwaysOnTop(true);
+		setAlwaysOnTop(false);
 		setSize(fw, fh);
 		setUndecorated(true);
 

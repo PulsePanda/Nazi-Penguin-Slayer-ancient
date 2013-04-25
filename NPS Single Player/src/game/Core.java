@@ -33,6 +33,7 @@ public class Core implements Serializable {
 	private static IO io = new IO();
 	private static Frame gameFrame;
 	private static Player player;
+	private static PauseFrame pf = new PauseFrame();
 
 	// images
 
@@ -170,7 +171,7 @@ public class Core implements Serializable {
 			gamePaused = false;
 		} else if (!gamePaused) {
 			gamePaused = true;
-			PauseFrame pf = new PauseFrame();
+			pf.start();
 		}
 
 		return gamePaused;
@@ -186,6 +187,10 @@ public class Core implements Serializable {
 
 	public static int getDay() {
 		return day;
+	}
+
+	public static PauseFrame getPauseFrame() {
+		return pf;
 	}
 
 	public static Frame getFrame() {
