@@ -27,6 +27,12 @@ public class PauseFrame extends JFrame {
 	public PauseFrame() {
 		IO io = new IO();
 
+		/**
+		 * http://stackoverflow.com/questions/2856480/resizing-a-imageicon-in-a-jbutton
+		 * look at that website to see how to resize the jbutton images :D
+		 */
+		
+		
 		resume = new JButton("resume");
 		// resume.setIcon(new
 		// ImageIcon(io.getImage(FILES.resumeButtonImage)));
