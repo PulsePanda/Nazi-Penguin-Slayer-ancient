@@ -61,8 +61,9 @@ public class Core implements Serializable {
 
 	public static boolean save() {
 		try {
-			// String dir = "../worlds/world.dat";
-			String dir = "A:\\Google Drive\\AVTECH\\NPS\\Files\\worlds\\world.dat";
+			String dir = "../worlds/world.dat";
+			// String dir =
+			// "A:\\Google Drive\\AVTECH\\NPS\\Files\\worlds\\world.dat";
 			// FileOutputStream fos = new
 			// FileOutputStream("../worlds/world.dat");
 			FileOutputStream fos = new FileOutputStream(dir);
