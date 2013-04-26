@@ -35,7 +35,7 @@ public class PauseFrame extends JFrame {
 		int fw = Core.getWidth() / 2, fh = Core.getHeight() / 2;
 
 		setLayout(null);
-		setAlwaysOnTop(true);
+		setAlwaysOnTop(false);
 		setSize(fw, fh);
 		setUndecorated(true);
 
