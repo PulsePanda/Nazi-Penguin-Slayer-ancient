@@ -19,6 +19,12 @@ public class FILES {
 	public static final String saveAndExitButtonImage = "../graphic/Save and Exit.png";
 	public static final String saveAndExitButtonOverlay = "../graphic/Save and Exit Overlay.png";
 
+	// blockImages
+	public static final String grassBlockImage = "../graphic/Grass Block.png";
+	public static final String dirtBlockImage = "../graphic/Dirt Block.png";
+	public static final String stoneBlockImage = "../graphic/Stone Block.png";
+	public static final String woodPlankBlockImage = "../graphic/Wood Plank.png";
+
 	/**
 	 * version
 	 */

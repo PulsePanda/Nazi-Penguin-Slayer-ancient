@@ -150,4 +150,8 @@ public class Sprite implements Serializable {
 	public void setMaxHealth(int set) {
 		maxHealth = set;
 	}
+
+	public BufferedImage getImage() {
+		return img;
+	}
 }

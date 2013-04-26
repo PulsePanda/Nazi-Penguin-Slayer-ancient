@@ -12,6 +12,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import sprites.Block;
+
 public class GamePanel extends JPanel {
 
 	JButton resume, options, exit;
@@ -87,14 +89,16 @@ public class GamePanel extends JPanel {
 		g.drawImage(io.getImage(FILES.gameBackground), 0, 0, core.getWidth(),
 				core.getHeight(), null);
 
-		// if paused, show overlay
-		// if (core.isPaused()) {
-		// g.drawImage(io.getImage(FILES.pauseOverlay), 0, 0, core.getWidth(),
-		// core.getHeight(), null);
-		//
-		// resume.setVisible(true);
-		// options.setVisible(true);
-		// exit.setVisible(true);
-		// }
+		// draw the world
+		Block[][] blocks = Core.getWorldBlocks();
+		for (int i = 0; i < Core.arrayY; i++) {
+			for (int a = 0; i < Core.arrayX; i++) {
+				Block block = blocks[a][i];
+				// g.drawImage(block.getImage(block.getID()),
+				// a * block.getWidth(), i * block.getHeight(),
+				// block.getWidth(), block.getHeight(), null);
+				System.out.println(block.getID());
+			}
+		}
 	}
 }
