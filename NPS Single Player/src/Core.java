@@ -3,6 +3,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
+import javax.swing.JFrame;
+
 public class Core {
 
 	private static Properties properties = new Properties();
@@ -23,6 +25,8 @@ public class Core {
 		setRunning(true);
 		frame = new Frame("Nazi Penguin Slayer", FILES.taskbarImg, 1000, 600);
 		frame.setLocationRelativeTo(null);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		frame.addKeyListener(new KeyClass());
 
 		mainPanel = new PanelMain();
 		frame.add(mainPanel);
@@ -32,7 +36,12 @@ public class Core {
 	}
 
 	public void stop() {
+		setRunning(false);
+		setPaused(false);
+	}
 
+	private void setPaused(boolean b) {
+		paused = b;
 	}
 
 	public static Frame getFrame() {
