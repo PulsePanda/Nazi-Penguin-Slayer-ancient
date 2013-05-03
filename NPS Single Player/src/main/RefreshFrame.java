@@ -16,7 +16,6 @@ public class RefreshFrame implements Runnable {
 					e.printStackTrace();
 				}
 			}
-
 			frame.refresh();
 			try {
 				Thread.sleep(10);

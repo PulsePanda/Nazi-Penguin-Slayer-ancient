@@ -17,7 +17,7 @@ public class Core {
 	public void initTiles() {
 		int barValue = 0;
 		Frame loadingFrame = new Frame("Loading World...", null, 300, 200);
-		// loadingFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		loadingFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		loadingFrame.setLayout(null);
 
 		JProgressBar bar = new JProgressBar();
@@ -29,16 +29,27 @@ public class Core {
 		loadingFrame.add(bar);
 		loadingFrame.setLocationRelativeTo(null);
 
-		for (int i = 0; i < tilew; i++) {
-			for (int a = 0; a < tileh; a++) {
+		for (int w = 0; w < tilew; w++) {
+			for (int h = 0; h < tileh; h++) {
 				barValue++;
 				bar.setValue(barValue);
-
-				tiles[i][a] = new Tile(1);
+				if (h == tileh / 2)
+					tiles[w][h] = new Tile(1);
+				else if (h > tileh / 2)
+					tiles[w][h] = new Tile(2);
+				else
+					tiles[w][h] = new Tile(0);
 			}
 		}
 
-		loadingFrame.delete();
+		// loadingFrame.delete();
+	}
+
+	public int getOneLessThan(int i) {
+		if (i - 1 <= 0)
+			return 0;
+		else
+			return i - 1;
 	}
 
 	public void setCore(Core core) {
@@ -47,6 +58,10 @@ public class Core {
 
 	public void setFrame(Frame f) {
 		frame = f;
+	}
+
+	public static Frame getFrame() {
+		return frame;
 	}
 
 	public static Tile[][] getTiles() {

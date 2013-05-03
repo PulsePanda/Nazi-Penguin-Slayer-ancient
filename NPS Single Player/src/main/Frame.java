@@ -34,6 +34,14 @@ public class Frame extends JFrame {
 		this.dispose();
 	}
 
+	public int getWidth() {
+		return w;
+	}
+
+	public int getHeight() {
+		return h;
+	}
+
 	public void refresh() {
 		repaint();
 	}

@@ -8,9 +8,9 @@ public class Start {
 	public static void main(String[] args) {
 		Core core = new Core();
 		core.setCore(core);
-		core.setFrame(f);
 
 		f = new Frame("NPS", null, 1000, 600);
+		core.setFrame(f);
 		f.add(new Panel());
 		f.setLocationRelativeTo(null);
 		Thread refreshThread = new Thread(new RefreshFrame(f));
