@@ -1,3 +1,11 @@
+/**
+ * tile codes:
+ * 0: nothing
+ * 1: grass
+ * 2: dirt
+ * 3: stone
+ */
+
 package main;
 
 import java.awt.image.BufferedImage;

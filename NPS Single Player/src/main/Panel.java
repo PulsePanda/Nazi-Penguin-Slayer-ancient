@@ -12,9 +12,11 @@ public class Panel extends JPanel {
 	public void paint(Graphics g) {
 		Tile[][] tiles = Core.getTiles();
 		for (int i = 0; i < Core.getTileArrayWidth(); i++) {
-			Tile tile = tiles[i][0];
-			g.drawImage(tile.getImage(), 0 + (i * tile.w), 0, tile.w, tile.h,
-					null);
+			for (int a = 0; a < Core.getTileArrayHeight(); a++) {
+				Tile tile = tiles[i][a];
+				g.drawImage(tile.getImage(), 0 + (i * tile.w),
+						0 + (a * tile.h), tile.w, tile.h, null);
+			}
 		}
 	}
 }
