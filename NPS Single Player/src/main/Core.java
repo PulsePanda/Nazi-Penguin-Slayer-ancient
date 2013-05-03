@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JProgressBar;
 
 public class Core {
-	private static int tilew = 50, tileh = 30;
+	private static int tilew = 50, tileh = 30, day = 0;
 	public static Tile[][] tiles = new Tile[tilew][tileh];
 	private static Core core;
 	private static Frame frame;
@@ -62,6 +62,10 @@ public class Core {
 
 	public static Frame getFrame() {
 		return frame;
+	}
+
+	public static int getDay() {
+		return day;
 	}
 
 	public static Tile[][] getTiles() {

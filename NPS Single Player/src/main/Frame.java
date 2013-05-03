@@ -44,5 +44,6 @@ public class Frame extends JFrame {
 
 	public void refresh() {
 		repaint();
+		setTitle("Nazi Penguin Slayer   Day: " + Core.getDay());
 	}
 }
