@@ -26,7 +26,12 @@ public class Frame extends JFrame {
 		setResizable(false);
 		setSize(w, h);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 		setVisible(true);
+	}
+
+	public void delete() {
+		this.dispose();
 	}
 
 	public void refresh() {

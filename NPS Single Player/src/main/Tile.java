@@ -14,7 +14,7 @@ public class Tile {
 	String img;
 	int ID;
 	BufferedImage image;
-	int x, y, w = 50, h = 50;
+	int x, y, w = 20, h = w;
 	IO io = new IO();
 
 	public Tile(int ID) {
