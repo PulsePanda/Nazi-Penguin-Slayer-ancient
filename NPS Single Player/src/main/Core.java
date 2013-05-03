@@ -13,7 +13,7 @@ public class Core {
 	public void initTiles() {
 		for (int i = 0; i < tilew; i++) {
 			for (int a = 0; a < tileh; a++) {
-				tiles[i][a] = new Tile("C:\\img.png");
+				tiles[i][a] = new Tile(1);
 			}
 		}
 	}
