@@ -1,11 +1,14 @@
 package main;
 
+import java.util.ArrayList;
+
 import javax.swing.JFrame;
 import javax.swing.JProgressBar;
 
 public class Core {
 	private static int tilew = 50, tileh = 30, day = 0;
 	public static Tile[][] tiles = new Tile[tilew][tileh];
+	public static ArrayList list = new ArrayList();
 	private static Core core;
 	private static Frame frame;
 	private static boolean running = true, paused = false;
@@ -39,6 +42,7 @@ public class Core {
 					tiles[w][h] = new Tile(2);
 				else
 					tiles[w][h] = new Tile(0);
+				list.add(tiles[w][h]);
 			}
 		}
 
@@ -58,6 +62,10 @@ public class Core {
 
 	public void setFrame(Frame f) {
 		frame = f;
+	}
+
+	public ArrayList getList() {
+		return list;
 	}
 
 	public static Frame getFrame() {
