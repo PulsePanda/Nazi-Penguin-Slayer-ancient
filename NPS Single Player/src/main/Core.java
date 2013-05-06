@@ -18,6 +18,7 @@ public class Core {
 	}
 
 	public void initTiles() {
+		// test!!!
 		int barValue = 0;
 		Frame loadingFrame = new Frame("Loading World...", null, 300, 200);
 		loadingFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
