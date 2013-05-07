@@ -12,7 +12,7 @@ public class Panel extends JPanel {
 	}
 
 	public void paint(Graphics g) {
-		// draw background image first//
+		// draw background image first
 		g.drawImage(io.getImage(FILES.backgroundImage), 0, 0, Core.getFrame()
 				.getWidth(), Core.getFrame().getHeight(), null);
 
