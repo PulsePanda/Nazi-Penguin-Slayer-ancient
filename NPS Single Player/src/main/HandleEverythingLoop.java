@@ -1,9 +1,9 @@
 package main;
 
-public class RefreshFrame implements Runnable {
+public class HandleEverythingLoop implements Runnable {
 	Frame frame;
 
-	public RefreshFrame(Frame f) {
+	public HandleEverythingLoop(Frame f) {
 		frame = f;
 	}
 

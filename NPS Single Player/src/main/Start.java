@@ -13,7 +13,7 @@ public class Start {
 		core.setFrame(f);
 		f.add(new Panel());
 		f.setLocationRelativeTo(null);
-		Thread refreshThread = new Thread(new RefreshFrame(f));
+		Thread refreshThread = new Thread(new HandleEverythingLoop(f));
 		refreshThread.start();
 	}
 }
