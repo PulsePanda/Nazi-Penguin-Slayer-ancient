@@ -16,7 +16,7 @@ public class Core {
 
 	public Core() {
 		bar.setBounds(20, 50, 255, 25);
-		bar.setMaximum(tilew * tileh * 2);
+		bar.setMaximum(tilew * tileh);
 		bar.setMinimum(0);
 		bar.setValue(barValue);
 
@@ -27,8 +27,8 @@ public class Core {
 	public void createTiles() {
 		for (int w = 0; w < tilew; w++) {
 			for (int h = 0; h < tileh; h++) {
-				barValue++;
-				bar.setValue(barValue);
+				// barValue++;
+				// bar.setValue(barValue);
 				tiles[w][h] = new Tile(0);
 				list.add(tiles[w][h]);
 			}
