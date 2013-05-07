@@ -8,6 +8,7 @@
 
 package main;
 
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 public class Tile {
@@ -26,6 +27,22 @@ public class Tile {
 			image = null;
 			img = null;
 		}
+	}
+
+	public void setX(int i) {
+		x = i;
+	}
+
+	public int getX() {
+		return x;
+	}
+
+	public void setY(int i) {
+		y = i;
+	}
+
+	public int getY() {
+		return y;
 	}
 
 	public BufferedImage getImage() {
@@ -53,5 +70,12 @@ public class Tile {
 
 	public int getID() {
 		return ID;
+	}
+
+	public Rectangle getBounds() {
+		if (getID() == 0)
+			return null;
+		else
+			return new Rectangle(x, y, w, h);
 	}
 }
