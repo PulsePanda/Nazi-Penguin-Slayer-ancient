@@ -13,8 +13,8 @@ public class Panel extends JPanel {
 
 	public void paint(Graphics g) {
 		// draw background image first
-		g.drawImage(io.getImage(FILES.backgroundImage), 0, 0, Core.getFrame()
-				.getWidth(), Core.getFrame().getHeight(), null);
+		// g.drawImage(io.getImage(FILES.backgroundImage), 0, 0, Core.getFrame()
+		// .getWidth(), Core.getFrame().getHeight(), null);
 
 		Tile[][] tiles = Core.getTiles();
 		for (int i = 0; i < Core.getTileArrayWidth(); i++) {
