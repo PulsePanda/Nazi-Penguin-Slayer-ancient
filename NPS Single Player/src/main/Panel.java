@@ -23,8 +23,8 @@ public class Panel extends JPanel {
 				int x = i * tile.w, y = a * tile.h;
 				tile.setX(x);
 				tile.setY(y);
-				g.drawImage(tile.getImage(), 0 + (i * tile.w),
-						0 + (a * tile.h), tile.w, tile.h, null);
+				g.drawImage(tile.getImage(), 0 + (i * tile.w) + Core.getXOff(),
+						0 + (a * tile.h) + Core.getYOff(), tile.w, tile.h, null);
 			}
 		}
 	}

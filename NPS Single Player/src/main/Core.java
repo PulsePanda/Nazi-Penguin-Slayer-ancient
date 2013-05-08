@@ -6,7 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JProgressBar;
 
 public class Core {
-	private static int tilew = 50, tileh = 30, day = 0, barValue = 0;
+	private static int tilew = 50, tileh = 30, day = 0, barValue = 0, xOff = 0,
+			yOff = 0;
 	public static Tile[][] tiles = new Tile[tilew][tileh];
 	public static ArrayList list = new ArrayList();
 	private static Core core;
@@ -64,21 +65,21 @@ public class Core {
 				bar.setValue(barValue);
 				if (h == tileh / 2) { // set the grass lvl at half way
 					if (time % 2 == 0)
-						tiles[w][getOneLessThan(h)] = new Tile(1);
+						tiles[w][subtract(h, 1)] = new Tile(1);
 					tiles[w][h] = new Tile(1);
 				}
-				if (tiles[w][getOneLessThan(h)].getID() == 1) {// if tile above
-																// is grass
+				if (tiles[w][subtract(h, 1)].getID() == 1) {// if tile above
+															// is grass
 					tiles[w][h] = new Tile(2);
 				}
-				if (tiles[w][getOneLessThan(h)].getID() == 2) { // if tile above
+				if (tiles[w][subtract(h, 1)].getID() == 2) { // if tile above
 																// is dirt
 					tiles[w][h] = new Tile(2);
 				}
 				if (h == 25) {
 					tiles[w][h] = new Tile(3);
 				}
-				if (tiles[w][getOneLessThan(h)].getID() == 3) { // if tile above
+				if (tiles[w][subtract(h, 1)].getID() == 3) { // if tile above
 																// is stone
 					tiles[w][h] = new Tile(3);
 				}
@@ -88,11 +89,19 @@ public class Core {
 		loadingFrame.delete();
 	}
 
-	public int getOneLessThan(int i) {
-		if (i - 1 <= 0)
+	public static int getXOff() {
+		return xOff;
+	}
+
+	public static int getYOff() {
+		return yOff;
+	}
+
+	public int subtract(int initial, int amount) {
+		if (initial - amount <= 0)
 			return 0;
 		else
-			return i - 1;
+			return initial - amount;
 	}
 
 	public void setCore(Core core) {
