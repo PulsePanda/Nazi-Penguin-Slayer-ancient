@@ -59,21 +59,29 @@ public class Core {
 		// }
 		for (int w = 0; w < tilew; w++) {
 			for (int h = 0; h < tileh; h++) {
+				long time = System.nanoTime();
 				barValue++;
 				bar.setValue(barValue);
-				if (h == tileh / 2) // set the grass lvl at half way
+				if (h == tileh / 2) { // set the grass lvl at half way
+					if (time % 2 == 0)
+						tiles[w][getOneLessThan(h)] = new Tile(1);
 					tiles[w][h] = new Tile(1);
-				if (tiles[w][getOneLessThan(h)].getID() == 1) // if tile above
+				}
+				if (tiles[w][getOneLessThan(h)].getID() == 1) {// if tile above
 																// is grass
 					tiles[w][h] = new Tile(2);
-				if (tiles[w][getOneLessThan(h)].getID() == 2) // if tile above
+				}
+				if (tiles[w][getOneLessThan(h)].getID() == 2) { // if tile above
 																// is dirt
 					tiles[w][h] = new Tile(2);
-				if (h == 25)
+				}
+				if (h == 25) {
 					tiles[w][h] = new Tile(3);
-				if (tiles[w][getOneLessThan(h)].getID() == 3) // if tile above
+				}
+				if (tiles[w][getOneLessThan(h)].getID() == 3) { // if tile above
 																// is stone
 					tiles[w][h] = new Tile(3);
+				}
 			}
 		}
 
