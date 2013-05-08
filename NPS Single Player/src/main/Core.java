@@ -45,19 +45,6 @@ public class Core {
 		loadingFrame.add(bar);
 		loadingFrame.setLocationRelativeTo(null);
 
-		// for (int w = 0; w < tilew; w++) {
-		// for (int h = 0; h < tileh; h++) {
-		// barValue++;
-		// bar.setValue(barValue);
-		// if (h == tileh / 2)
-		// tiles[w][h] = new Tile(1);
-		// else if (h > tileh / 2)
-		// tiles[w][h] = new Tile(2);
-		// else
-		// tiles[w][h] = new Tile(0);
-		// list.add(tiles[w][h]);
-		// }
-		// }
 		for (int w = 0; w < tilew; w++) {
 			for (int h = 0; h < tileh; h++) {
 				long time = System.nanoTime();
