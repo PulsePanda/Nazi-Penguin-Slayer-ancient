@@ -28,5 +28,10 @@ public class Panel extends JPanel {
 						tile.h, null);
 			}
 		}
+
+		// draw player
+		Player player = Core.getPlayer();
+		g.drawImage(player.getImage(), player.getX(), player.getY(),
+				player.getW(), player.getH(), null);
 	}
 }

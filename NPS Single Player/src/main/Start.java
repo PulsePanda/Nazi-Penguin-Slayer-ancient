@@ -14,6 +14,9 @@ public class Start {
 		f.add(new Panel());
 		f.setLocationRelativeTo(null);
 		Thread refreshThread = new Thread(new HandleEverythingLoop(f));
+		Thread playerThread = new Thread(new PlayerThread());
+
 		refreshThread.start();
+		playerThread.start();
 	}
 }

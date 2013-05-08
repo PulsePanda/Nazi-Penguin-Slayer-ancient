@@ -1,7 +1,8 @@
 package main;
 
 public class HandleEverythingLoop implements Runnable {
-	Frame frame;
+	private Frame frame;
+	private static Core core = Core.getCore();
 
 	public HandleEverythingLoop(Frame f) {
 		frame = f;

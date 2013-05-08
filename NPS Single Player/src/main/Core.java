@@ -8,12 +8,13 @@ import javax.swing.JProgressBar;
 public class Core {
 	private static int tilew = 50, tileh = 30, day = 0, barValue = 0, xOff = 0,
 			yOff = 0;
-	public static Tile[][] tiles = new Tile[tilew][tileh];
-	public static ArrayList list = new ArrayList();
+	private static Tile[][] tiles = new Tile[tilew][tileh];
+	private static ArrayList<Tile> list = new ArrayList<Tile>();
 	private static Core core;
 	private static Frame frame;
 	private static JProgressBar bar = new JProgressBar();
 	private static boolean running = true, paused = false;
+	private static Player player;
 
 	public Core() {
 		bar.setBounds(20, 50, 255, 25);
@@ -23,6 +24,12 @@ public class Core {
 
 		createTiles();
 		initTiles();
+
+		player = new Player();
+	}
+
+	public static Core getCore() {
+		return core;
 	}
 
 	public void createTiles() {
@@ -34,6 +41,10 @@ public class Core {
 				list.add(tiles[w][h]);
 			}
 		}
+	}
+
+	public static Player getPlayer() {
+		return player;
 	}
 
 	public void initTiles() {
@@ -70,6 +81,8 @@ public class Core {
 																// is stone
 					tiles[w][h] = new Tile(3);
 				}
+
+				list.add(tiles[w][h]);
 			}
 		}
 
@@ -99,7 +112,7 @@ public class Core {
 		frame = f;
 	}
 
-	public ArrayList getList() {
+	public static ArrayList<Tile> getList() {
 		return list;
 	}
 
