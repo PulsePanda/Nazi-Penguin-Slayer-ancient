@@ -35,10 +35,7 @@ public class Core {
 	public void createTiles() {
 		for (int w = 0; w < tilew; w++) {
 			for (int h = 0; h < tileh; h++) {
-				// barValue++;
-				// bar.setValue(barValue);
 				tiles[w][h] = new Tile(0);
-				list.add(tiles[w][h]);
 			}
 		}
 	}
