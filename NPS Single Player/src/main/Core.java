@@ -60,23 +60,23 @@ public class Core {
 				bar.setValue(barValue);
 				if (h == tileh / 2) { // set the grass lvl at half way
 					if (time % 2 == 0)
-						tiles[w][subtract(h, 1)] = new Tile(1);
-					tiles[w][h] = new Tile(1);
+						tiles[w][subtract(h, 1)].setID(1);
+					tiles[w][h].setID(1);
 				}
 				if (tiles[w][subtract(h, 1)].getID() == 1) {// if tile above
 															// is grass
-					tiles[w][h] = new Tile(2);
+					tiles[w][h].setID(2);
 				}
 				if (tiles[w][subtract(h, 1)].getID() == 2) { // if tile above
 																// is dirt
-					tiles[w][h] = new Tile(2);
+					tiles[w][h].setID(2);
 				}
 				if (h == 25) {
-					tiles[w][h] = new Tile(3);
+					tiles[w][h].setID(3);
 				}
 				if (tiles[w][subtract(h, 1)].getID() == 3) { // if tile above
 																// is stone
-					tiles[w][h] = new Tile(3);
+					tiles[w][h].setID(3);
 				}
 
 				list.add(tiles[w][h]);
