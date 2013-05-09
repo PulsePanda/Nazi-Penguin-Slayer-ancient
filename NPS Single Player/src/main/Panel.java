@@ -26,8 +26,6 @@ public class Panel extends JPanel {
 				tile.setY(y);
 				g.drawImage(tile.getImage(), tile.getX(), tile.getY(), tile.w,
 						tile.h, null);
-				if (tile.getID() == 1)
-					g.drawRect(tile.getX(), tile.getY(), tile.w, tile.h);
 			}
 		}
 
@@ -35,6 +33,5 @@ public class Panel extends JPanel {
 		Player player = Core.getPlayer();
 		g.drawImage(player.getImage(), player.getX(), player.getY(),
 				player.getW(), player.getH(), null);
-		g.drawRect(player.getX(), player.getY(), player.getW(), player.getH());
 	}
 }
