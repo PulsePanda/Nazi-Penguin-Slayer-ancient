@@ -74,7 +74,7 @@ public class Tile {
 
 	public Rectangle getBounds() {
 		if (getID() == 0)
-			return null;
+			return new Rectangle();
 		else
 			return new Rectangle(x, y, w, h);
 	}

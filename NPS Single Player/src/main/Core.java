@@ -9,7 +9,7 @@ public class Core {
 	private static int tilew = 50, tileh = 30, day = 0, barValue = 0, xOff = 0,
 			yOff = 0;
 	private static Tile[][] tiles = new Tile[tilew][tileh];
-	private static ArrayList<Tile> list = new ArrayList<Tile>();
+	public static ArrayList<Tile> list = new ArrayList<Tile>();
 	private static Core core;
 	private static Frame frame;
 	private static JProgressBar bar = new JProgressBar();
