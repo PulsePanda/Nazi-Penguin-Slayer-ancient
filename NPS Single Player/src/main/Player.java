@@ -9,7 +9,7 @@ public class Player {
 	private static BufferedImage img;
 	private static String imgDir = FILES.playerImage;
 	private static IO io = new IO();
-	private static int x = 0, y = 0, w = 100, h = 100, moveSpeed = 10;
+	private static int x = 0, y = 0, w = 25, h = 25, moveSpeed = 10;
 	private static boolean visible = true;
 	private static Core core;
 
