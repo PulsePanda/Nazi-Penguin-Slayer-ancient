@@ -72,6 +72,8 @@ public class Core {
 					tiles[w][h].setID(2);
 				}
 				if (h == 25) {
+					if (time % 2 == 0)
+						tiles[w][subtract(h, 1)].setID(3);
 					tiles[w][h].setID(3);
 				}
 				if (tiles[w][subtract(h, 1)].getID() == 3) { // if tile above
