@@ -7,9 +7,10 @@ import java.util.ArrayList;
 public class Player {
 
 	private static BufferedImage img;
-	private static String imgDir = FILES.playerImage;
+	private static String imgDir = FILES.playerImage, facing = "right";
 	private static IO io = new IO();
-	private static int x = 0, y = 0, w = 25, h = 25, moveSpeed = 6;
+	private static int x = 0, y = 0, w = 20, h = 20, moveSpeed = 15, moveX = 0,
+			moveY = 0;
 	private static boolean visible = true;
 	private static Core core;
 
@@ -22,15 +23,27 @@ public class Player {
 		return img;
 	}
 
-	public void move(int adjustX, int adjustY) {
-		x += adjustX;
-		y += adjustY;
+	public void move() {
+		x += moveX;
+		y += moveY;
 	}
 
 	public void applyGravity() {
-		if (isColliding())
+		if (isColliding()) {
+			moveY = 0;
 			return;
-		move(0, moveSpeed);
+		}
+		setMoveX(0);
+		moveY = 1;
+		move();
+	}
+
+	public void setMoveX(int x) {
+		moveX = x;
+	}
+
+	public void setMoveY(int y) {
+		moveY = y;
 	}
 
 	public boolean isColliding() {
@@ -65,5 +78,9 @@ public class Player {
 
 	public int getH() {
 		return h;
+	}
+
+	public int getMoveSpeed() {
+		return moveSpeed;
 	}
 }

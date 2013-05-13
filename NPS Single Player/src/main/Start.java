@@ -1,5 +1,7 @@
 package main;
 
+import java.awt.event.KeyEvent;
+
 import javax.swing.JProgressBar;
 
 public class Start {
@@ -13,6 +15,7 @@ public class Start {
 		core.setFrame(f);
 		f.add(new Panel());
 		f.setLocationRelativeTo(null);
+		f.addKeyListener(new KeyClass());
 		Thread refreshThread = new Thread(new HandleEverythingLoop(f));
 		Thread playerThread = new Thread(new PlayerThread());
 

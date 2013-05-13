@@ -43,7 +43,7 @@ public class Core {
 		return core;
 	}
 
-	public static Properties getProperties() {
+	public Properties getProperties() {
 		return properties;
 	}
 

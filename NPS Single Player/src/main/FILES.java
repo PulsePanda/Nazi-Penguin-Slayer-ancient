@@ -1,5 +1,10 @@
 package main;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.util.Properties;
+
 public class FILES {
 	// public static final String dirtBlock = "../graphic/Dirt Block.png";
 	// public static final String stoneBlock = "../graphic/Stone Block.png";
@@ -17,4 +22,16 @@ public class FILES {
 	public static final String properties = "A:\\Google Drive\\AVTECH\\NPS\\Files\\bin\\properties.properties";
 
 	public static final String version = "0.0.1";
+
+	public static boolean saveProperties(Properties prop) {
+		try {
+			prop.save(new FileOutputStream(new File(properties)),
+					"Properties File for Nazi Penguin Slayer");
+			return true;
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			Dialogs.errorDiagExit("Cannot Find Properties File! Please Reinstall The Game");
+			return false;
+		}
+	}
 }

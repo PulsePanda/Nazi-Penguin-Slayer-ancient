@@ -21,9 +21,10 @@ public class PlayerThread implements Runnable {
 			}
 
 			player.applyGravity();
+			player.move();
 
 			try {
-				Thread.sleep(20);
+				Thread.sleep(player.getMoveSpeed());
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
