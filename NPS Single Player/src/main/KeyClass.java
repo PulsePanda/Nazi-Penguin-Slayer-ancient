@@ -25,7 +25,7 @@ public class KeyClass implements KeyListener {
 		} else if (key == Integer.parseInt(properties.getProperty("left"))) {
 			player.setMoveX(-1);
 		} else if (key == Integer.parseInt(properties.getProperty("jump"))) {
-
+			player.jump();
 		} else if (key == Integer.parseInt(properties.getProperty("attack"))) {
 
 		} else if (key == Integer.parseInt(properties.getProperty("duck"))) {

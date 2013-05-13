@@ -11,7 +11,7 @@ public class Player {
 	private static IO io = new IO();
 	private static int x = 0, y = 0, w = 20, h = 20, moveSpeed = 15, moveX = 0,
 			moveY = 0;
-	private static boolean visible = true;
+	private static boolean visible = true, allowGravity = true;
 	private static Core core;
 
 	public Player() {
@@ -29,13 +29,29 @@ public class Player {
 	}
 
 	public void applyGravity() {
-		if (isColliding()) {
-			moveY = 0;
-			return;
+		if (allowGravity) {
+			if (isColliding()) {
+				moveY = 0;
+				return;
+			}
+			setMoveX(0);
+			moveY = 1;
+			move();
 		}
-		setMoveX(0);
-		moveY = 1;
-		move();
+	}
+
+	public void jump() {
+		allowGravity = false;
+		for (int i = 15; i > 0; i--) {
+			x -= i;
+
+			try {
+				Thread.sleep(20);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		allowGravity = true;
 	}
 
 	public void setMoveX(int x) {
