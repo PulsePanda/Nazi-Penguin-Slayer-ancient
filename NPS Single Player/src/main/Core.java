@@ -1,6 +1,10 @@
 package main;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Properties;
 
 import javax.swing.JFrame;
 import javax.swing.JProgressBar;
@@ -15,8 +19,15 @@ public class Core {
 	private static JProgressBar bar = new JProgressBar();
 	private static boolean running = true, paused = false;
 	private static Player player;
+	private static Properties properties = new Properties();
 
 	public Core() {
+		try {
+			properties.load(new FileInputStream(FILES.properties));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		bar.setBounds(20, 50, 255, 25);
 		bar.setMaximum(tilew * tileh);
 		bar.setMinimum(0);
@@ -30,6 +41,10 @@ public class Core {
 
 	public static Core getCore() {
 		return core;
+	}
+
+	public static Properties getProperties() {
+		return properties;
 	}
 
 	public void createTiles() {
