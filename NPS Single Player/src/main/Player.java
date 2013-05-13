@@ -56,8 +56,24 @@ public class Player {
 		return false;
 	}
 
+	public boolean isCollidingMovingRight() {
+		return false;
+	}
+
+	public boolean isCollidingMovingLeft() {
+		return false;
+	}
+
 	public Rectangle getBounds() {
 		return new Rectangle(x, y, w, h);
+	}
+
+	public Rectangle getRightBounds() {
+		return new Rectangle(x + w - 1, y + 1, 1, h - 2);
+	}
+
+	public Rectangle getLeftBounds() {
+		return new Rectangle(x + 1, y + 1, 1, h - 2);
 	}
 
 	public boolean isVisible() {

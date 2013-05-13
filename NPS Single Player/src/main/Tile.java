@@ -37,6 +37,14 @@ public class Tile {
 		return x;
 	}
 
+	public Rectangle getRightBounds() {
+		return new Rectangle(x + w - 1, y + 1, 1, h - 2);
+	}
+
+	public Rectangle getLeftBounds() {
+		return new Rectangle(x + 1, y + 1, 1, h - 2);
+	}
+
 	public void setY(int i) {
 		y = i;
 	}
