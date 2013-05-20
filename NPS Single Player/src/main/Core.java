@@ -81,9 +81,13 @@ public class Core {
 				long time = System.nanoTime();
 				barValue++;
 				bar.setValue(barValue);
+				if (h == (tileh / 2) - 1) { // set the grass lvl at above half
+											// way
+					if (time % 2 == 0) {
+						tiles[w][h].setID(1);
+					}
+				}
 				if (h == tileh / 2) { // set the grass lvl at half way
-					if (time % 2 == 0)
-						tiles[w][subtract(h, 1)].setID(1);
 					tiles[w][h].setID(1);
 				}
 				if (tiles[w][subtract(h, 1)].getID() == 1) {// if tile above
