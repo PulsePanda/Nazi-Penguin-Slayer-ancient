@@ -9,9 +9,10 @@ public class Player {
 	private static BufferedImage img;
 	private static String imgDir = FILES.playerImage, facing = "right";
 	private static IO io = new IO();
-	private static int x = 0, y = 0, w = 20, h = 20, moveSpeed = 15, moveX = 0,
-			moveY = 0;
-	private static boolean visible = true, allowGravity = true;
+	private static int x = 0, y = 0, w = 20, h = w, baseMoveSpeed = 15,
+			moveSpeed = baseMoveSpeed, moveX = 0, moveY = 0, jumpHeight = 30;
+	private static boolean visible = true, allowGravity = true,
+			falling = false, ableToMove = true;
 	private static Core core;
 
 	public Player() {
@@ -24,34 +25,37 @@ public class Player {
 	}
 
 	public void move() {
+		if (!ableToMove)
+			return;
 		x += moveX;
 		y += moveY;
 	}
 
 	public void applyGravity() {
-		if (allowGravity) {
-			if (isColliding()) {
-				moveY = 0;
-				return;
-			}
-			setMoveX(0);
-			moveY = 1;
-			move();
+		if (!allowGravity)
+			return;
+
+		if (isColliding()) {
+			moveY = 0;
+			falling = false;
+			moveSpeed = baseMoveSpeed;
+			return;
 		}
+
+		falling = true;
+		moveY = moveSpeed / 5;
+		move();
+	}
+
+	public boolean isFalling() {
+		return falling;
 	}
 
 	public void jump() {
 		allowGravity = false;
-		for (int i = 15; i > 0; i--) {
-			x -= i;
-
-			try {
-				Thread.sleep(20);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-		allowGravity = true;
+		// do the jump
+		y -= jumpHeight;
+		// allowGravity = true;
 	}
 
 	public void setMoveX(int x) {
@@ -110,6 +114,10 @@ public class Player {
 
 	public int getH() {
 		return h;
+	}
+
+	public int getBaseMoveSpeed() {
+		return baseMoveSpeed;
 	}
 
 	public int getMoveSpeed() {

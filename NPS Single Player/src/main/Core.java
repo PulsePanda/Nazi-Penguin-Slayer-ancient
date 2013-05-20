@@ -43,6 +43,14 @@ public class Core {
 		return core;
 	}
 
+	public void setXOff(int x) {
+		xOff = x;
+	}
+
+	public void setYOff(int y) {
+		yOff = y;
+	}
+
 	public Properties getProperties() {
 		return properties;
 	}

@@ -6,9 +6,10 @@ import javax.swing.JPanel;
 
 public class Panel extends JPanel {
 	IO io = new IO();
+	Core core;
 
 	public Panel() {
-
+		core = Core.getCore();
 	}
 
 	public void paint(Graphics g) {
@@ -20,8 +21,8 @@ public class Panel extends JPanel {
 		for (int i = 0; i < Core.getTileArrayWidth(); i++) {
 			for (int a = 0; a < Core.getTileArrayHeight(); a++) {
 				Tile tile = tiles[i][a];
-				int x = i * tile.w + Core.getXOff(), y = a * tile.h
-						+ Core.getYOff();
+				int x = i * tile.w + Core.getXOff();
+				int y = a * tile.h + Core.getYOff();
 				tile.setX(x);
 				tile.setY(y);
 				g.drawImage(tile.getImage(), tile.getX(), tile.getY(), tile.w,
