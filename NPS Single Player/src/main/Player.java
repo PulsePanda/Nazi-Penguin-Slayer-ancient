@@ -11,7 +11,7 @@ public class Player {
 	private static IO io = new IO();
 	private static int x = 0, y = 0, w = 20, h = w, baseMoveSpeed = 10,
 			moveSpeed = baseMoveSpeed, moveX = 0, moveY = 0, jumpHeight = 40,
-			fallSpeed = 1;
+			fallSpeed = 4;
 	private static boolean visible = true, allowGravity = true,
 			falling = false, ableToMove = true;
 	private static Core core;
@@ -56,6 +56,7 @@ public class Player {
 		allowGravity = false;
 		// do the jump
 		y -= jumpHeight;
+
 		allowGravity = true;
 	}
 
