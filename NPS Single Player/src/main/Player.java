@@ -9,11 +9,11 @@ public class Player {
 	private static BufferedImage img;
 	private static String imgDir = FILES.playerImage, facing = "right";
 	private static IO io = new IO();
-	private static int x = 0, y = 0, w = 20, h = w, baseMoveSpeed = 10,
+	private static int x = 0, y = 200, w = 15, h = w, baseMoveSpeed = 10,
 			moveSpeed = baseMoveSpeed, moveX = 0, moveY = 0, jumpHeight = 40,
-			fallSpeed = 4;
+			fallSpeed = 2;
 	private static boolean visible = true, allowGravity = true,
-			falling = false, ableToMove = true;
+			falling = false, ableToMove = true, jumping = false;
 	private static Core core;
 
 	public Player() {
@@ -39,6 +39,7 @@ public class Player {
 		if (isColliding()) {
 			moveY = 0;
 			falling = false;
+			jumping = false;
 			moveSpeed = baseMoveSpeed;
 			return;
 		}
@@ -53,6 +54,9 @@ public class Player {
 	}
 
 	public void jump() {
+		if (jumping)
+			return;
+		jumping = true;
 		allowGravity = false;
 		// do the jump
 		y -= jumpHeight;
