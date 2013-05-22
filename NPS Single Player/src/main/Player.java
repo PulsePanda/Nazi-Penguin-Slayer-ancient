@@ -29,8 +29,6 @@ public class Player {
 		core = Core.getCore();
 		if (!ableToMove)
 			return;
-		// x += moveX;
-		// y += moveY;
 		core.setYOff(moveY);
 		core.setXOff(moveX);
 	}
@@ -73,7 +71,7 @@ public class Player {
 		 * question, am i updating the right thing?
 		 */
 		for (int i = jumpHeight; i > 0; i--) {
-			// y -= i;
+//			 y -= i;
 			setMoveY(i);
 
 			try {
