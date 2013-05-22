@@ -10,7 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JProgressBar;
 
 public class Core {
-	private static int tilew = 50, tileh = 30, day = 0, barValue = 0, xOff = 0,
+	private static int tilew = 200, tileh = 40, day = 0, barValue = 0, xOff = -1000,
 			yOff = 0;
 	public static int threadDelay = 20;
 	private static Tile[][] tiles = new Tile[tilew][tileh];
