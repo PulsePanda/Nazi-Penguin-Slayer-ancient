@@ -16,7 +16,7 @@ public class Start {
 		f.add(new Panel());
 		f.setLocationRelativeTo(null);
 		f.addKeyListener(new KeyClass());
-		Thread refreshThread = new Thread(new HandleEverythingLoop(f));
+		Thread refreshThread = new Thread(new RefreshThread(f));
 		Thread playerThread = new Thread(new PlayerThread());
 
 		refreshThread.start();

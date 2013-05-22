@@ -9,8 +9,8 @@ public class Player {
 	private static BufferedImage img;
 	private static String imgDir = FILES.playerImage, facing = "right";
 	private static IO io = new IO();
-	private static int x = 0, y = 200, w = 15, h = w, baseMoveSpeed = 10,
-			moveSpeed = baseMoveSpeed, moveX = 0, moveY = 0, jumpHeight = 40,
+	public static int x = 0, y = 200, w = 15, h = w, baseMoveSpeed = 10,
+			moveSpeed = baseMoveSpeed, moveX = 0, moveY = 0, jumpHeight = 20,
 			fallSpeed = 2;
 	private static boolean visible = true, allowGravity = true,
 			falling = false, ableToMove = true, jumping = false;
@@ -30,6 +30,7 @@ public class Player {
 			return;
 		x += moveX;
 		y += moveY;
+		System.out.println(moveY);
 	}
 
 	public void applyGravity() {
@@ -59,7 +60,26 @@ public class Player {
 		jumping = true;
 		allowGravity = false;
 		// do the jump
-		y -= jumpHeight;
+
+		// the only thing that is working right now :(
+		// y -= jumpHeight;
+
+		/**
+		 * the loop to jump. for some reason the stupid graphics wont update
+		 * till its done tho... NOTE: i found that the paint method in the panel
+		 * actually doesnt get the new and improved y.... which begs the
+		 * question, am i updating the right thing?
+		 */
+		for (int i = jumpHeight; i > 0; i--) {
+			// y -= i;
+			setMoveY(-i);
+
+			try {
+				Thread.sleep(10);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 
 		allowGravity = true;
 	}

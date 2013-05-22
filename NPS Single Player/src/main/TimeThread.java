@@ -18,6 +18,13 @@ public class TimeThread implements Runnable {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
+			
+			try {
+				Thread.sleep(Core.threadDelay);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 

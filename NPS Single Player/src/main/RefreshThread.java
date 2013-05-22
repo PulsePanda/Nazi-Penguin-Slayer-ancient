@@ -1,10 +1,10 @@
 package main;
 
-public class HandleEverythingLoop implements Runnable {
+public class RefreshThread implements Runnable {
 	private Frame frame;
 	private static Core core = Core.getCore();
 
-	public HandleEverythingLoop(Frame f) {
+	public RefreshThread(Frame f) {
 		frame = f;
 	}
 
@@ -19,7 +19,7 @@ public class HandleEverythingLoop implements Runnable {
 			}
 			frame.refresh();
 			try {
-				Thread.sleep(10);
+				Thread.sleep(Core.threadDelay);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

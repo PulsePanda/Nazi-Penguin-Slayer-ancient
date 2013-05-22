@@ -24,7 +24,7 @@ public class PlayerThread implements Runnable {
 			player.move();
 
 			try {
-				Thread.sleep(20);
+				Thread.sleep(Core.threadDelay);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

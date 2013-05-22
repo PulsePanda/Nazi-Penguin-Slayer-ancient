@@ -12,6 +12,7 @@ import javax.swing.JProgressBar;
 public class Core {
 	private static int tilew = 50, tileh = 30, day = 0, barValue = 0, xOff = 0,
 			yOff = 0;
+	public static int threadDelay = 20;
 	private static Tile[][] tiles = new Tile[tilew][tileh];
 	public static ArrayList<Tile> list = new ArrayList<Tile>();
 	private static Core core;
