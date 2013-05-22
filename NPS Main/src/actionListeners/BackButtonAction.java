@@ -1,5 +1,6 @@
 package actionListeners;
 
+import main.Dialogs;
 import main.Frame;
 import files.FILES;
 import io.PlaySound;

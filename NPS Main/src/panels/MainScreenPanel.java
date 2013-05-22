@@ -73,8 +73,6 @@ public class MainScreenPanel extends JPanel {
 		exit.setRolloverIcon(new ImageIcon(io.getImage(FILES.exitRollover)));
 		exit.addActionListener(new ExitAction());
 
-		
-
 		// add(exit);
 		add(singlePlayer);
 		add(multiPlayer);
@@ -87,7 +85,7 @@ public class MainScreenPanel extends JPanel {
 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.drawImage(io.getImage(FILES.mainPanelBackgroundImage), 0, -40,
+		g.drawImage(io.getImage(FILES.mainPanelBackgroundImage), 0, 0,
 				Frame.getH(), Frame.getW(), null);
 	}
 }

@@ -56,14 +56,14 @@ public class MultiplayerPanel extends JPanel {
 				.getImage(FILES.backButtonRollover)));
 		back.addActionListener(new BackButtonAction());
 
-//		exit = new JButton();
-//		exit.setIcon(new ImageIcon(io.getImage(FILES.exitButton)));
-//		exit.setBounds(750, 0, 25, 25);
-//		exit.setBorderPainted(false);
-//		exit.setRolloverIcon(new ImageIcon(io.getImage(FILES.exitRollover)));
-//		exit.addActionListener(new ExitAction());
+		// exit = new JButton();
+		// exit.setIcon(new ImageIcon(io.getImage(FILES.exitButton)));
+		// exit.setBounds(750, 0, 25, 25);
+		// exit.setBorderPainted(false);
+		// exit.setRolloverIcon(new ImageIcon(io.getImage(FILES.exitRollover)));
+		// exit.addActionListener(new ExitAction());
 
-//		add(exit);
+		// add(exit);
 		add(host);
 		add(join);
 		add(back);
@@ -71,7 +71,7 @@ public class MultiplayerPanel extends JPanel {
 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.drawImage(io.getImage(FILES.multiplayerBackground), 0, -40,
+		g.drawImage(io.getImage(FILES.multiplayerBackground), 0, 0,
 				Frame.getH(), Frame.getW(), null);
 	}
 
