@@ -1,20 +1,16 @@
 package main;
 
 import io.IO;
-import io.PlaySound;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Component;
-import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionAdapter;
-import java.io.FileInputStream;
-import java.util.Properties;
 
 import javax.swing.*;
 
@@ -33,17 +29,9 @@ public class Frame extends JFrame {
 	private static CardLayout cl;
 	private static JPanel cardPanel;
 	public static DragPanel dp;
-	private static IO io = new IO();
+	private IO io = new IO();
 	private static Point point = new Point();
 	public static JFrame f;
-	public static final JLabel exit = new JLabel(new ImageIcon(
-			io.getImage(FILES.exitButton)));
-	public static final JLabel exitr = new JLabel(new ImageIcon(
-			io.getImage(FILES.exitRollover)));
-	public static final JLabel minimize = new JLabel(new ImageIcon(
-			io.getImage(FILES.minimizeButton)));
-	public static final JLabel minimizer = new JLabel(new ImageIcon(
-			io.getImage(FILES.minimizeRollover)));
 
 	public Frame(int height, int width, int posX, int posY, boolean resizable,
 			JPanel panel, String title) {
@@ -59,20 +47,19 @@ public class Frame extends JFrame {
 		cl = new CardLayout();
 		cardPanel = new JPanel();
 
-		// dp = new DragPanel(800, 40);
-		makeButtons();
+		dp = new DragPanel(800, 40);
 
 		/*
 		 * set up dragging panel
 		 */
 
-		cardPanel.addMouseListener(new MouseAdapter() {
+		dp.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
 				point.x = e.getX();
 				point.y = e.getY();
 			}
 		});
-		cardPanel.addMouseMotionListener(new MouseMotionAdapter() {
+		dp.addMouseMotionListener(new MouseMotionAdapter() {
 			public void mouseDragged(MouseEvent e) {
 				Point p = getLocation();
 				setLocation(p.x + e.getX() - point.x, p.y + e.getY() - point.y);
@@ -104,13 +91,9 @@ public class Frame extends JFrame {
 		cardPanel.add(new MultiplayerPanel(getW(), getH()), "MULTIPLAYER");
 		cardPanel.add(new OptionPanel(getW(), getH()), "OPTIONS");
 
-		// add(dp, BorderLayout.NORTH);
-		add(minimizer);
-		add(minimize);
-		add(exit);
-		add(exitr);
-
+		add(dp, BorderLayout.NORTH);
 		add(cardPanel);
+
 		setIconImage(io.getImage(FILES.taskbarIcon));
 
 		/*
@@ -120,64 +103,6 @@ public class Frame extends JFrame {
 
 		setAlwaysOnTop(false);
 		// setState(Frame.ICONIFIED);
-	}
-
-	public static void makeButtons() {
-		exitr.setVisible(false);
-
-		exit.addMouseListener(new MouseAdapter() {
-			public void mouseEntered(MouseEvent arg0) {
-				exit.setVisible(false);
-				exitr.setVisible(true);
-			}
-		});
-
-		exitr.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent e) {
-				try {
-					Properties p = new Properties();
-					p.load(new FileInputStream("properties.properties"));
-					p.setProperty("running", "false");
-					FILES.saveProperties(p);
-
-					PlaySound.playSound(FILES.buttonClicked);
-					System.exit(0);
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-
-			public void mouseExited(MouseEvent arg0) {
-				exitr.setVisible(false);
-				exit.setVisible(true);
-			}
-		});
-
-		minimizer.setVisible(false);
-
-		minimize.addMouseListener(new MouseAdapter() {
-			public void mouseEntered(MouseEvent e) {
-				minimize.setVisible(false);
-				minimizer.setVisible(true);
-			}
-		});
-
-		minimizer.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent e) {
-				((Frame) Frame.f).setMinimized();
-			}
-
-			public void mouseExited(MouseEvent e) {
-				minimizer.setVisible(false);
-				minimize.setVisible(true);
-			}
-		});
-
-		exitr.setBounds(750, 5, 30, 30);
-		exit.setBounds(750, 5, 30, 30);
-		minimizer.setBounds(710, 5, 30, 30);
-		minimize.setBounds(710, 5, 30, 30);
 	}
 
 	public static int getW() {
@@ -202,10 +127,6 @@ public class Frame extends JFrame {
 
 	public static void changePanel(String panelName) {
 		cl.show(cardPanel, "" + panelName);
-	}
-
-	public static JFrame getFrame() {
-		return f;
 	}
 
 	public void disposeFrame() {

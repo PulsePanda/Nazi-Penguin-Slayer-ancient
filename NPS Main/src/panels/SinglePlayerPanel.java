@@ -79,7 +79,7 @@ public class SinglePlayerPanel extends JPanel {
 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.drawImage(io.getImage(FILES.singlePlayerBackground), 0, 0,
+		g.drawImage(io.getImage(FILES.singlePlayerBackground), 0, -40,
 				Frame.getH(), Frame.getW(), null);
 	}
 }

@@ -49,21 +49,21 @@ public class OptionPanel extends JPanel {
 		controls.addActionListener(new ControlButtonAction());
 		controls.setBounds(275, 250, 250, 50);
 
-		// exit = new JButton();
-		// exit.setIcon(new ImageIcon(io.getImage(FILES.exitButton)));
-		// exit.setBounds(750, 0, 25, 25);
-		// exit.setBorderPainted(false);
-		// exit.setRolloverIcon(new ImageIcon(io.getImage(FILES.exitRollover)));
-		// exit.addActionListener(new ExitAction());
+//		exit = new JButton();
+//		exit.setIcon(new ImageIcon(io.getImage(FILES.exitButton)));
+//		exit.setBounds(750, 0, 25, 25);
+//		exit.setBorderPainted(false);
+//		exit.setRolloverIcon(new ImageIcon(io.getImage(FILES.exitRollover)));
+//		exit.addActionListener(new ExitAction());
 
-		// add(exit);
+//		add(exit);
 		add(back);
 		add(controls);
 	}
 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.drawImage(io.getImage(FILES.optionBackground), 0, 0, Frame.getH(),
+		g.drawImage(io.getImage(FILES.optionBackground), 0, -40, Frame.getH(),
 				Frame.getW(), null);
 	}
 }
