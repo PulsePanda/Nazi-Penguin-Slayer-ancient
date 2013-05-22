@@ -34,6 +34,5 @@ public class Panel extends JPanel {
 		Player player = Core.getPlayer();
 		g.drawImage(player.getImage(), player.getX(), player.getY(),
 				player.getW(), player.getH(), null);
-//		System.out.println(player.getY());
 	}
 }

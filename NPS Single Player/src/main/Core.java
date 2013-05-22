@@ -45,11 +45,11 @@ public class Core {
 	}
 
 	public void setXOff(int x) {
-		xOff = x;
+		xOff += x;
 	}
 
 	public void setYOff(int y) {
-		yOff = y;
+		yOff += y;
 	}
 
 	public Properties getProperties() {

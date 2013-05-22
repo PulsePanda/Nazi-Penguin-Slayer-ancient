@@ -23,6 +23,7 @@ public class PlayerThread implements Runnable {
 			player.applyGravity();
 			player.move();
 
+//			core.setYOff(1);
 			try {
 				Thread.sleep(Core.threadDelay);
 			} catch (InterruptedException e) {

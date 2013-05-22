@@ -9,9 +9,9 @@ public class Player {
 	private static BufferedImage img;
 	private static String imgDir = FILES.playerImage, facing = "right";
 	private static IO io = new IO();
-	public static int x = 0, y = 200, w = 15, h = w, baseMoveSpeed = 10,
+	private static int x = 0, y = 200, w = 15, h = w, baseMoveSpeed = 10,
 			moveSpeed = baseMoveSpeed, moveX = 0, moveY = 0, jumpHeight = 20,
-			fallSpeed = 2;
+			fallSpeed = -2;
 	private static boolean visible = true, allowGravity = true,
 			falling = false, ableToMove = true, jumping = false;
 	private static Core core;
@@ -26,11 +26,13 @@ public class Player {
 	}
 
 	public void move() {
+		core = Core.getCore();
 		if (!ableToMove)
 			return;
-		x += moveX;
-		y += moveY;
-		System.out.println(moveY);
+		// x += moveX;
+		// y += moveY;
+		core.setYOff(moveY);
+		core.setXOff(moveX);
 	}
 
 	public void applyGravity() {
@@ -47,7 +49,7 @@ public class Player {
 
 		falling = true;
 		moveY = fallSpeed;
-		move();
+		// move();
 	}
 
 	public boolean isFalling() {
@@ -72,7 +74,7 @@ public class Player {
 		 */
 		for (int i = jumpHeight; i > 0; i--) {
 			// y -= i;
-			setMoveY(-i);
+			setMoveY(i);
 
 			try {
 				Thread.sleep(10);

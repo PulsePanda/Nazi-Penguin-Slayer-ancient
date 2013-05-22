@@ -19,7 +19,10 @@ public class Start {
 		Thread refreshThread = new Thread(new RefreshThread(f));
 		Thread playerThread = new Thread(new PlayerThread());
 
+		refreshThread.setName("refresh thread");
 		refreshThread.start();
+
+		playerThread.setName("player Thread");
 		playerThread.start();
 	}
 }
