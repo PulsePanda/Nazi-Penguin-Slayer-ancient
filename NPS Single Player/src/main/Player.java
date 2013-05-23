@@ -9,7 +9,7 @@ public class Player {
 	private static BufferedImage img;
 	private static String imgDir = FILES.playerImage, facing = "right";
 	private static IO io = new IO();
-	private static int x = 493, y = 250, w = 15, h = w, baseMoveSpeed = 10,
+	private static int x = 493, y = 250, w = 20, h = w, baseMoveSpeed = 10,
 			moveSpeed = baseMoveSpeed, moveX = 0, moveY = 0, jumpHeight = 20,
 			fallSpeed = -2;
 	private static boolean visible = true, allowGravity = true,
@@ -59,19 +59,16 @@ public class Player {
 			return;
 		jumping = true;
 		allowGravity = false;
-		// do the jump
-
-		// the only thing that is working right now :(
-		// y -= jumpHeight;
 
 		/**
 		 * the loop to jump. for some reason the stupid graphics wont update
 		 * till its done tho... NOTE: i found that the paint method in the panel
 		 * actually doesnt get the new and improved y.... which begs the
-		 * question, am i updating the right thing?
+		 * question, am i updating the right thing? NOTE: if i take out the
+		 * thread pause, no jump occurs... but if i make it 1, the jump is
+		 * tiny... so we have a huge problem
 		 */
 		for (int i = jumpHeight; i > 0; i--) {
-//			 y -= i;
 			setMoveY(i);
 
 			try {
