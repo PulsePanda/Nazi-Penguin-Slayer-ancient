@@ -108,6 +108,16 @@ public class Login extends Start {
 		f.setAlwaysOnTop(false);
 	}
 
+	public static void createFrame2() {
+		f = new JFrame("Nazi Penguin Slayer   Version: " + version);
+		f.setSize(850, 500);
+		f.setResizable(false);
+		f.setLocationRelativeTo(null);
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		f.setVisible(true);
+	}
+
 	private static void login(String user, String pass) {
 		username = user;
 		password = pass;
