@@ -32,10 +32,10 @@ public class Start {
 	public static void main(String[] args) {
 		// loadEverything();
 		loadProperties();
-		if (currentProp.getProperty("running").equals("true")) {
-			Dialogs.msgDialog("Game already running. Either close this game, or close the other one.");
-			System.exit(0);
-		}
+		// if (currentProp.getProperty("running").equals("true")) {
+		// Dialogs.msgDialog("Game already running. Either close this game, or close the other one.");
+		// System.exit(0);
+		// }
 
 		if (!currentProp.getProperty("version").equals(version)) {
 			currentProp.setProperty("version", version);
@@ -45,7 +45,7 @@ public class Start {
 		// startMenuFrame();
 		// } else
 		// Login.createFrame();
-		startMenuFrame();
+		startMenuFrame(); // take this away when cleaning up
 	}
 
 	public static void startMenuFrame() {
