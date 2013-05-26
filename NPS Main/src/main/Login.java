@@ -3,6 +3,7 @@ package main;
 import files.FILES;
 import io.Connection;
 
+import java.awt.BorderLayout;
 import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,7 +21,9 @@ import java.util.Properties;
 
 import javax.swing.*;
 
+import panels.LoginPanel;
 import panels.MainScreenPanel;
+import panels.NewsPanel;
 
 public class Login extends Start {
 
@@ -109,12 +112,17 @@ public class Login extends Start {
 	}
 
 	public static void createFrame2() {
+		NewsPanel np = new NewsPanel(850, 350);
+		LoginPanel lp = new LoginPanel(850, 150);
+
 		f = new JFrame("Nazi Penguin Slayer   Version: " + version);
 		f.setSize(850, 500);
-		f.setResizable(false);
+		f.setResizable(true);
 		f.setLocationRelativeTo(null);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+		f.add(np, BorderLayout.NORTH);
+		f.add(lp, BorderLayout.SOUTH);
 		f.setVisible(true);
 	}
 
