@@ -21,9 +21,7 @@ import java.util.Properties;
 
 import javax.swing.*;
 
-import panels.LoginPanel;
 import panels.MainScreenPanel;
-import panels.NewsPanel;
 
 public class Login extends Start {
 
@@ -37,6 +35,7 @@ public class Login extends Start {
 	public static String username, password;
 	public static boolean loggedin = false;
 	public static Properties userProperties = new Properties();
+	private static JEditorPane display;
 
 	public static void createFrame() {
 		if (!serverOnline) {
@@ -112,17 +111,23 @@ public class Login extends Start {
 	}
 
 	public static void createFrame2() {
-		NewsPanel np = new NewsPanel(850, 350);
-		LoginPanel lp = new LoginPanel(850, 150);
-
 		f = new JFrame("Nazi Penguin Slayer   Version: " + version);
 		f.setSize(850, 500);
 		f.setResizable(true);
 		f.setLocationRelativeTo(null);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		f.add(np, BorderLayout.NORTH);
-		f.add(lp, BorderLayout.SOUTH);
+		display = new JEditorPane();
+		display.setEditable(false);
+		try {
+			display.setPage("http://npslayer.tumblr.com");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		user = new JTextField();
+
+		f.add(new JScrollPane(display), BorderLayout.CENTER);
 		f.setVisible(true);
 	}
 
