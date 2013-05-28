@@ -24,14 +24,13 @@ import main.Dialogs;
 import main.Frame;
 import files.FILES;
 
-public class DragPanel extends JPanel {
+public class DragPanel extends Panel {
 
-	int width, height, image = 1;
+	int image = 1;
 	IO io = new IO();
 
 	public DragPanel(int width, int height) {
-		this.width = width;
-		this.height = height;
+		super(width, height);
 
 		setLayout(null);
 
@@ -103,10 +102,6 @@ public class DragPanel extends JPanel {
 		add(minimize);
 		add(exit);
 		add(exitr);
-	}
-
-	public Dimension getPreferredSize() {
-		return new Dimension(width, height);
 	}
 
 	public void changeImage(int i) {

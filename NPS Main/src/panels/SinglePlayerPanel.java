@@ -18,15 +18,13 @@ import actionListeners.SinglePlayerStartAction;
 
 import main.Frame;
 
-public class SinglePlayerPanel extends JPanel {
+public class SinglePlayerPanel extends Panel {
 
-	private int width, height;
 	IO io = new IO();
 	JButton resume, startNew, back, exit;
 
 	public SinglePlayerPanel(int w, int h) {
-		width = w;
-		height = h;
+		super(w, h);
 		setLayout(null);
 		setUpButtons();
 	}

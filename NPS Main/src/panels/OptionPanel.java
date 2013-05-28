@@ -15,21 +15,15 @@ import actionListeners.ExitAction;
 import main.Frame;
 import files.FILES;
 
-public class OptionPanel extends JPanel {
+public class OptionPanel extends Panel {
 
-	private int width, height;
 	IO io = new IO();
 	JButton controls, back, exit;
 
 	public OptionPanel(int w, int h) {
-		width = w;
-		height = h;
+		super(w, h);
 		setLayout(null);
 		makeButtons();
-	}
-
-	public OptionPanel() {
-		// TODO Auto-generated constructor stub
 	}
 
 	private void makeButtons() {
@@ -49,14 +43,14 @@ public class OptionPanel extends JPanel {
 		controls.addActionListener(new ControlButtonAction());
 		controls.setBounds(275, 250, 250, 50);
 
-//		exit = new JButton();
-//		exit.setIcon(new ImageIcon(io.getImage(FILES.exitButton)));
-//		exit.setBounds(750, 0, 25, 25);
-//		exit.setBorderPainted(false);
-//		exit.setRolloverIcon(new ImageIcon(io.getImage(FILES.exitRollover)));
-//		exit.addActionListener(new ExitAction());
+		// exit = new JButton();
+		// exit.setIcon(new ImageIcon(io.getImage(FILES.exitButton)));
+		// exit.setBounds(750, 0, 25, 25);
+		// exit.setBorderPainted(false);
+		// exit.setRolloverIcon(new ImageIcon(io.getImage(FILES.exitRollover)));
+		// exit.addActionListener(new ExitAction());
 
-//		add(exit);
+		// add(exit);
 		add(back);
 		add(controls);
 	}

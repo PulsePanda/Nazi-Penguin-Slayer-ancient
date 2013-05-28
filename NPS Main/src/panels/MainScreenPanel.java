@@ -24,18 +24,13 @@ import files.FILES;
 import main.Dialogs;
 import main.Frame;
 
-public class MainScreenPanel extends JPanel {
+public class MainScreenPanel extends Panel {
 
-	int width, height;
 	JButton singlePlayer, multiPlayer, options, exit;
 	IO io = new IO();
 
-	public MainScreenPanel() {
-	}
-
 	public MainScreenPanel(int width, int height) {
-		this.width = width;
-		this.height = height;
+		super(width, height);
 		setLayout(null);
 		addButtons();
 	}
@@ -73,16 +68,10 @@ public class MainScreenPanel extends JPanel {
 		exit.setRolloverIcon(new ImageIcon(io.getImage(FILES.exitRollover)));
 		exit.addActionListener(new ExitAction());
 
-		
-
 		// add(exit);
 		add(singlePlayer);
 		add(multiPlayer);
 		add(options);
-	}
-
-	public Dimension getPreferredSize() {
-		return new Dimension(width, height);
 	}
 
 	public void paintComponent(Graphics g) {

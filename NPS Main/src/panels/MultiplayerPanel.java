@@ -17,15 +17,13 @@ import actionListeners.SinglePlayerAction;
 import main.Frame;
 import files.FILES;
 
-public class MultiplayerPanel extends JPanel {
+public class MultiplayerPanel extends Panel {
 
-	private int width, height;
 	IO io = new IO();
 	JButton host, join, back, exit;
 
 	public MultiplayerPanel(int w, int h) {
-		width = w;
-		height = h;
+		super(w, h);
 		setLayout(null);
 		addButtons();
 	}
@@ -56,14 +54,14 @@ public class MultiplayerPanel extends JPanel {
 				.getImage(FILES.backButtonRollover)));
 		back.addActionListener(new BackButtonAction());
 
-//		exit = new JButton();
-//		exit.setIcon(new ImageIcon(io.getImage(FILES.exitButton)));
-//		exit.setBounds(750, 0, 25, 25);
-//		exit.setBorderPainted(false);
-//		exit.setRolloverIcon(new ImageIcon(io.getImage(FILES.exitRollover)));
-//		exit.addActionListener(new ExitAction());
+		// exit = new JButton();
+		// exit.setIcon(new ImageIcon(io.getImage(FILES.exitButton)));
+		// exit.setBounds(750, 0, 25, 25);
+		// exit.setBorderPainted(false);
+		// exit.setRolloverIcon(new ImageIcon(io.getImage(FILES.exitRollover)));
+		// exit.addActionListener(new ExitAction());
 
-//		add(exit);
+		// add(exit);
 		add(host);
 		add(join);
 		add(back);

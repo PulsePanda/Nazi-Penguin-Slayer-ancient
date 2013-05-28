@@ -175,13 +175,8 @@ public class Login extends Start {
 			f.dispose();
 			return;
 		}
-		// try {
-		// userProperties.save(new FileOutputStream(
-		// new File("C:\\Program Files\\AVTECH\\NPS\\Files\\users\\"
-		// + username)), username + "'s properties file");
-		// } catch (FileNotFoundException e) {
-		// e.printStackTrace();
-		// }
+
+		// put the bottom part here
 	}
 
 	public static void setProperties(Properties p) {
