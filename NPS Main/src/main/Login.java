@@ -23,6 +23,7 @@ import javax.swing.*;
 
 import panels.LoginPanel;
 import panels.MainScreenPanel;
+import panels.OptionsWindow;
 
 public class Login extends Start {
 
@@ -39,80 +40,7 @@ public class Login extends Start {
 	public static Properties userProperties = new Properties();
 	private static JEditorPane display;
 
-	// public static void createFrame() {
-	// if (!serverOnline) {
-	// Connection c = new Connection("nazipenguinslayer.no-ip.org",
-	// "6987", null, null);
-	// JOptionPane.showMessageDialog(null,
-	// "Server offline. Please try again later or check the FAQ.");
-	// System.exit(0);
-	// }
-	//
-	// f = new JFrame("Login");
-	// user = new JTextField();
-	// pass = new JPasswordField();
-	// cancel = new JButton();
-	// login = new JButton();
-	//
-	// user.setBounds(5, 10, WIDTH - 15, 25);
-	// user.setText("Username");
-	// user.addFocusListener(new FocusListener() {
-	// public void focusGained(FocusEvent arg0) {
-	// user.setText("");
-	// }
-	//
-	// public void focusLost(FocusEvent arg0) {
-	// }
-	// });
-	//
-	// pass.setBounds(5, 40, WIDTH - 15, 25);
-	// pass.setText("Password");
-	// pass.addFocusListener(new FocusListener() {
-	// public void focusGained(FocusEvent arg0) {
-	// pass.setText("");
-	// }
-	//
-	// public void focusLost(FocusEvent arg0) {
-	// }
-	// });
-	//
-	// login.setBounds(5, 80, WIDTH - 15, 50);
-	// login.addActionListener(new ActionListener() {
-	// public void actionPerformed(ActionEvent e) {
-	// login(user.getText(), pass.getText());
-	// }
-	// });
-	// login.setText("add image, login");
-	//
-	// cancel.setBounds(5, 135, WIDTH - 15, 50);
-	// cancel.addActionListener(new ActionListener() {
-	// public void actionPerformed(ActionEvent arg0) {
-	// System.exit(0);
-	// }
-	// });
-	// cancel.setText("add image, cancel");
-	//
-	// f.setResizable(false);
-	// f.setAlwaysOnTop(true);
-	// f.setSize(WIDTH, HEIGHT);
-	// f.setLocationRelativeTo(null);
-	// f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-	// f.setLayout(null);
-	// f.add(user);
-	// f.add(pass);
-	// f.add(cancel);
-	// f.add(login);
-	// f.setFocusable(true);
-	// f.setVisible(true);
-	//
-	// // make frame show on top of other windows
-	// f.setAlwaysOnTop(true);
-	// f.toFront();
-	// f.requestFocus();
-	// f.setAlwaysOnTop(false);
-	// }
-
-	public static void createFrame2() {
+	public static void createFrame() {
 		f = new JFrame("Nazi Penguin Slayer   Version: " + version);
 		f.setSize(850, 500);
 		f.setResizable(false);
@@ -126,13 +54,14 @@ public class Login extends Start {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		display.setBorder(null);
 
 		f.add(new JScrollPane(display), BorderLayout.CENTER);
 		f.add(new LoginPanel(width, 100), BorderLayout.SOUTH);
 		f.setVisible(true);
 	}
 
-	private static void login(String user, String pass) {
+	public static void login(String user, String pass) {
 		username = user;
 		password = pass;
 		String dir = "login temp.properties";
@@ -182,5 +111,9 @@ public class Login extends Start {
 
 	public static void setProperties(Properties p) {
 		userProperties = p;
+	}
+
+	public static void showOptionsWindow() {
+		new OptionsWindow(f);
 	}
 }

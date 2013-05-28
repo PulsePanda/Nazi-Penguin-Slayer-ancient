@@ -79,6 +79,12 @@ public class FILES {
 	// end of control window parts
 
 	/**
+	 * login window parts
+	 */
+	public static final String loginBackground = "../graphic/Login Window Background.png";
+	// end of login window parts
+
+	/**
 	 * directories
 	 */
 	public static final String mainDir = "../AVTECH/NPS";
