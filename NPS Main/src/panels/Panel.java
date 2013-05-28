@@ -4,7 +4,7 @@ import java.awt.Dimension;
 import javax.swing.JPanel;
 
 public class Panel extends JPanel {
-	public int width, height;
+	private int width, height;
 
 	public Panel(int width, int height) {
 		this.width = width;
