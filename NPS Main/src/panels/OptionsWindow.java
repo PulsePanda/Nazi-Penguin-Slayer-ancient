@@ -15,7 +15,7 @@ public class OptionsWindow {
 	private void init() {
 		JDialog dialog = new JDialog(parent, true);
 		dialog.setSize(400, 220);
-//		dialog.setLocationRelativeTo(relativeTo);
+		dialog.setLocationRelativeTo(parent);
 		
 		dialog.setVisible(true);
 	}
