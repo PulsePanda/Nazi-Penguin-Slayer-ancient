@@ -44,8 +44,8 @@ public class Start {
 		// if (currentProp.getProperty("running").equals("true")) {
 		// startMenuFrame();
 		// } else
-		Login.createFrame();
-		// startMenuFrame(); // take this away when cleaning up
+		// Login.createFrame(); //use this in final version :D
+		startMenuFrame(); // take this away when cleaning up
 	}
 
 	public static void startMenuFrame() {
@@ -65,10 +65,15 @@ public class Start {
 	private static void loadProperties() {
 		currentProp = new Properties();
 		try {
-			// currentProp.load(new FileInputStream("properties.properties"));
+			// // currentProp.load(new
+			// FileInputStream("properties.properties"));
+			// currentProp
+			// .load(new FileInputStream(
+			// "A:\\Google Drive\\AVTECH\\NPS\\Files\\bin\\properties.properties"));
+
 			currentProp
 					.load(new FileInputStream(
-							"A:\\Google Drive\\AVTECH\\NPS\\Files\\bin\\properties.properties"));
+							"C:\\Users\\Austin\\Google Drive\\AVTECH\\NPS\\Files\\bin\\properties.properties"));
 		} catch (IOException e) {
 			e.printStackTrace();
 			Dialogs.errorDiagExit("Cannot Find Properties File! Please Reinstall The Game");
