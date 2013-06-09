@@ -1,4 +1,4 @@
-1. make the graphics only paint if they are within the frame boundries *
+[check]1. make the graphics only paint if they are within the frame boundries *
 
 * so there is 1 box extending past the edge of the frame... so like, frame width is able to hold 50 boxes. there are 52 boxes,
 box number 1 starting before the visible area, and box 2 is the first visible box...
