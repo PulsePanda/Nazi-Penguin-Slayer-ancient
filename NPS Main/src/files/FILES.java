@@ -97,6 +97,12 @@ public class FILES {
 	 */
 	public static final String VERSION = "0.0.1";
 
+	/**
+	 * link stuff
+	 */
+	public static final String IPAddress = "nazipenguinslayer.no-ip.org";
+	public static final String port = "6987";
+
 	public static boolean saveProperties(Properties prop) {
 		try {
 			prop.save(new FileOutputStream(new File(propDir)),

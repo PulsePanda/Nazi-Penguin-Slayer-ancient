@@ -92,8 +92,8 @@ public class Login extends Start {
 			return;
 		}
 
-		Connection conn = new Connection("nazipenguinslayer.no-ip.org", "6987",
-				null, "login");
+		Connection conn = new Connection(FILES.IPAddress, FILES.port, null,
+				"login");
 
 		if (!loggedin) {
 			JOptionPane

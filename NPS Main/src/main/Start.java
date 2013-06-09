@@ -44,8 +44,8 @@ public class Start {
 		// if (currentProp.getProperty("running").equals("true")) {
 		// startMenuFrame();
 		// } else
-		// Login.createFrame(); //use this in final version :D
-		startMenuFrame(); // take this away when cleaning up
+		 Login.createFrame(); //use this in final version :D
+//		startMenuFrame(); // take this away when cleaning up
 	}
 
 	public static void startMenuFrame() {

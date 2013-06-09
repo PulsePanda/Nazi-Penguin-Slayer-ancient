@@ -1,5 +1,6 @@
 package panels;
 
+import io.Connection;
 import io.IO;
 
 import java.awt.Color;
@@ -40,6 +41,12 @@ public class LoginPanel extends Panel {
 			}
 		});
 		login.setBounds(755, 50, 80, 24);
+		// if the server is offline, change the button
+		Connection c = new Connection(FILES.IPAddress, FILES.port, null, null);
+		if (!Login.serverOnline) {
+			login.setText("OFFLINE");
+			login.setEnabled(false);
+		}
 
 		options = new JButton("Options");
 		options.addActionListener(new ActionListener() {
