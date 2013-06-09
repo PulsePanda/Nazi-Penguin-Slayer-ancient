@@ -44,6 +44,10 @@ public class Start {
 		// startMenuFrame();
 		// } else
 		SplashScreen ss = new SplashScreen();
+		try {
+			Thread.sleep(1000);
+		} catch (Exception e) {
+		}
 		Login.createFrame(); // use this in final version :D
 		ss.remove();
 		// startMenuFrame(); // take this away when cleaning up
