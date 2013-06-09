@@ -41,9 +41,6 @@ public class Panel extends JPanel {
 				tile.setX(x);
 				tile.setY(y);
 				checkDraw(tile, g);
-				// g.drawImage(tile.getImage(), tile.getX(), tile.getY(),
-				// tile.w,
-				// tile.h, null);
 			}
 		}
 

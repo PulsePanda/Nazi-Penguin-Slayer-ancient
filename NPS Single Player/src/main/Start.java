@@ -18,11 +18,15 @@ public class Start {
 		f.addKeyListener(new KeyClass());
 		Thread refreshThread = new Thread(new RefreshThread(f));
 		Thread playerThread = new Thread(new PlayerThread());
+		Thread timeThread = new Thread(new TimeThread());
 
 		refreshThread.setName("refresh thread");
 		refreshThread.start();
 
 		playerThread.setName("player Thread");
 		playerThread.start();
+
+		timeThread.setName("time thread");
+		timeThread.start();
 	}
 }

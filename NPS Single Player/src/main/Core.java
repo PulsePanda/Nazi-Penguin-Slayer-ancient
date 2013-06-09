@@ -10,8 +10,8 @@ import javax.swing.JFrame;
 import javax.swing.JProgressBar;
 
 public class Core {
-	private static int tilew = 200, tileh = 40, day = 0, barValue = 0, xOff = -1000,
-			yOff = 0;
+	private static int tilew = 200, tileh = 40, day = 0, barValue = 0,
+			xOff = -1000, yOff = 0;
 	public static int threadDelay = 20;
 	private static Tile[][] tiles = new Tile[tilew][tileh];
 	public static ArrayList<Tile> list = new ArrayList<Tile>();
@@ -69,7 +69,6 @@ public class Core {
 	}
 
 	public void initTiles() {
-		// test!!!
 		Frame loadingFrame = new Frame("Loading World...", null, 300, 200);
 		loadingFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		loadingFrame.setLayout(null);
@@ -77,6 +76,7 @@ public class Core {
 		loadingFrame.add(bar);
 		loadingFrame.setLocationRelativeTo(null);
 
+		// actually set what the tiles will actually be
 		for (int w = 0; w < tilew; w++) {
 			for (int h = 0; h < tileh; h++) {
 				long time = System.nanoTime();
@@ -149,6 +149,14 @@ public class Core {
 
 	public static int getDay() {
 		return day;
+	}
+
+	public static void addDay() {
+		day++;
+	}
+
+	public static void setDay(int i) {
+		day = i;
 	}
 
 	public static Tile[][] getTiles() {
