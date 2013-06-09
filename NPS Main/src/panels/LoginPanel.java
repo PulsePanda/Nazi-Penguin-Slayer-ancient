@@ -42,7 +42,8 @@ public class LoginPanel extends Panel {
 		});
 		login.setBounds(755, 50, 80, 24);
 		// if the server is offline, change the button
-		Connection c = new Connection(FILES.IPAddress, FILES.port, null, null);
+		Connection c = new Connection(FILES.IPAddress, FILES.port, null,
+				"online");
 		if (!Login.serverOnline) {
 			login.setText("OFFLINE");
 			login.setEnabled(false);

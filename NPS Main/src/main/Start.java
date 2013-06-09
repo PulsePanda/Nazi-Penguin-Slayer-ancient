@@ -3,8 +3,6 @@ package main;
 import files.FILES;
 import io.IO;
 import io.PlaySound;
-
-import java.awt.SplashScreen;
 import java.awt.event.KeyEvent;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -20,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import panels.MainScreenPanel;
+import panels.SplashScreen;
 
 public class Start {
 
@@ -44,8 +43,10 @@ public class Start {
 		// if (currentProp.getProperty("running").equals("true")) {
 		// startMenuFrame();
 		// } else
-		 Login.createFrame(); //use this in final version :D
-//		startMenuFrame(); // take this away when cleaning up
+		SplashScreen ss = new SplashScreen();
+		Login.createFrame(); // use this in final version :D
+		ss.remove();
+		// startMenuFrame(); // take this away when cleaning up
 	}
 
 	public static void startMenuFrame() {

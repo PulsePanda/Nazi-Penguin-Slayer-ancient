@@ -21,12 +21,10 @@ public class UpdateFrame extends JFrame implements Serializable {
 	public static void main(String[] args) {
 		SplashScreen ss = new SplashScreen();
 		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+			Thread.sleep(1500);
+		} catch (Exception e) {
 		}
 		ss.remove();
-
 		UpdateFrame uf = new UpdateFrame();
 		// uf.openGame();
 	}

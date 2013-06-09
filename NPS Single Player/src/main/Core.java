@@ -56,6 +56,7 @@ public class Core {
 		return properties;
 	}
 
+	// actually make the tiles, init all to 0
 	public void createTiles() {
 		for (int w = 0; w < tilew; w++) {
 			for (int h = 0; h < tileh; h++) {
@@ -76,7 +77,10 @@ public class Core {
 		loadingFrame.add(bar);
 		loadingFrame.setLocationRelativeTo(null);
 
-		// actually set what the tiles will actually be
+		/**
+		 * actually set what the tiles will actually be also need to make this
+		 * do things better
+		 */
 		for (int w = 0; w < tilew; w++) {
 			for (int h = 0; h < tileh; h++) {
 				long time = System.nanoTime();
