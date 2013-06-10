@@ -43,13 +43,13 @@ public class Start {
 		// if (currentProp.getProperty("running").equals("true")) {
 		// startMenuFrame();
 		// } else
-		SplashScreen ss = new SplashScreen();
-		try {
-			Thread.sleep(1000);
-		} catch (Exception e) {
-		}
+//		SplashScreen ss = new SplashScreen();
+//		try {
+//			Thread.sleep(1000);
+//		} catch (Exception e) {
+//		}
 		Login.createFrame(); // use this in final version :D
-		ss.remove();
+//		ss.remove();
 		// startMenuFrame(); // take this away when cleaning up
 	}
 

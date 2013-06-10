@@ -50,7 +50,9 @@ public class Login extends Start {
 		display = new JEditorPane();
 		display.setEditable(false);
 		try {
-			display.setPage("http://npslayer.tumblr.com/");
+//			display.setPage("http://npslayer.tumblr.com/");
+
+			display.setPage("http://avtechsoftware.weebly.com/");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
