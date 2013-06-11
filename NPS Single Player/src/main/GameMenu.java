@@ -1,6 +1,7 @@
 package main;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
@@ -18,12 +19,15 @@ public class GameMenu extends JPanel {
 	private Core core = Core.getCore();
 	private static final IO io = new IO();
 	private Point point = new Point();
+	private String title = "";
 
-	public GameMenu() {
+	public GameMenu(String t) {
+		title = t;
 		init();
 	}
 
-	public GameMenu(int w, int h) {
+	public GameMenu(String t, int w, int h) {
+		title = t;
 		this.w = w;
 		this.h = h;
 		init();
@@ -83,5 +87,13 @@ public class GameMenu extends JPanel {
 
 	public void paint(Graphics g) {
 		g.drawImage(io.getImage(FILES.ingameMenuBackground), 0, 0, w, h, null);
+		g.setColor(Color.white);
+
+		/**
+		 * add a change to the title font and size here
+		 */
+
+		int titleWidth = title.length(), stringX = (w / 2) - (titleWidth / 2);
+		g.drawString(title, stringX, 10);
 	}
 }

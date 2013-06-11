@@ -7,7 +7,7 @@ import javax.swing.JProgressBar;
 
 public class Start {
 	static Frame f;
-	private static GameMenu exitMenu = new GameMenu();
+	private static GameMenu exitMenu = new GameMenu("Menu");
 
 	public static void main(String[] args) {
 		Core core = new Core();
