@@ -1,6 +1,8 @@
 package main;
 
 import java.awt.Graphics;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
 
@@ -10,6 +12,11 @@ public class Panel extends JPanel {
 
 	public Panel() {
 		core = Core.getCore();
+		addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				core.getFrame().requestFocus();
+			}
+		});
 	}
 
 	public void checkDraw(Tile tile, Graphics g) {

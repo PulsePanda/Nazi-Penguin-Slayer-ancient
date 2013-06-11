@@ -17,6 +17,7 @@ public class Core {
 	public static ArrayList<Tile> list = new ArrayList<Tile>();
 	private static Core core;
 	private static Frame frame;
+	private static GameMenu exitMenu;
 	private static JProgressBar bar = new JProgressBar();
 	private static boolean running = true, paused = false;
 	private static Player player;
@@ -122,7 +123,7 @@ public class Core {
 			}
 		}
 
-		loadingFrame.delete();
+		loadingFrame.remove();
 	}
 
 	public static int getXOff() {
@@ -142,6 +143,14 @@ public class Core {
 
 	public void setCore(Core core) {
 		this.core = core;
+	}
+
+	public void setExitMenu(GameMenu gm) {
+		exitMenu = gm;
+	}
+
+	public GameMenu getExitMenu() {
+		return exitMenu;
 	}
 
 	public void setFrame(Frame f) {

@@ -23,7 +23,7 @@ public class FILES {
 	// "A:\\Google Drive\\AVTECH\\NPS\\Files\\bin\\properties.properties"; //for
 	// desktop
 	public static final String properties = "C:\\Users\\Austin\\Google Drive\\AVTECH\\NPS\\Files\\bin\\properties.properties"; // for
-																																// laptop
+	public static final String ingameMenuBackground = "C:\\Users\\Austin\\Google Drive\\AVTECH\\NPS\\Files\\graphic\\Ingame Menu Background.png";
 
 	public static final String version = "0.0.1";
 

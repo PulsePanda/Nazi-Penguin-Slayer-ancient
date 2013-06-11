@@ -2,10 +2,12 @@ package main;
 
 import java.awt.event.KeyEvent;
 
+import javax.swing.JFrame;
 import javax.swing.JProgressBar;
 
 public class Start {
 	static Frame f;
+	private static GameMenu exitMenu = new GameMenu();
 
 	public static void main(String[] args) {
 		Core core = new Core();
@@ -13,6 +15,9 @@ public class Start {
 
 		f = new Frame("NPS", null, 1000, 600);
 		core.setFrame(f);
+		initExitMenu();
+		f.add(exitMenu);
+		core.setExitMenu(exitMenu);
 		f.add(new Panel());
 		f.setLocationRelativeTo(null);
 		f.addKeyListener(new KeyClass());
@@ -28,5 +33,12 @@ public class Start {
 
 		timeThread.setName("time thread");
 		timeThread.start();
+	}
+
+	private static void initExitMenu() {
+		JFrame f = Core.getFrame();
+		int x = (f.getWidth() / 2) - (exitMenu.getWidth() / 2), y = (f
+				.getHeight() / 2) - (exitMenu.getHeight() / 2);
+		exitMenu.setLocation(x, y);
 	}
 }

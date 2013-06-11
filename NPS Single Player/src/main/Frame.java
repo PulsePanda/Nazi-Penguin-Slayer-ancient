@@ -30,7 +30,7 @@ public class Frame extends JFrame {
 		setVisible(true);
 	}
 
-	public void delete() {
+	public void remove() {
 		this.dispose();
 	}
 
