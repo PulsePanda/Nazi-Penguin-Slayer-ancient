@@ -99,14 +99,6 @@ public class Player {
 		return false;
 	}
 
-	public boolean isCollidingMovingRight() {
-		return false;
-	}
-
-	public boolean isCollidingMovingLeft() {
-		return false;
-	}
-
 	public Rectangle getBounds() {
 		return new Rectangle(x, y, w, h);
 	}

@@ -181,7 +181,7 @@ public class Core {
 	}
 
 	public void setCore(Core core) {
-		core = core;
+		this.core = core;
 	}
 
 	public void setExitMenu(GameMenu gm) {
