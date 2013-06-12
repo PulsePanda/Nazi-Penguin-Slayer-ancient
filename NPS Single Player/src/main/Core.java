@@ -88,18 +88,43 @@ public class Core {
 				barValue++;
 				bar.setValue(barValue);
 
-				// if (h == (tileh / 2) - 1) { // (maybe) set the grass lvl at
-				// // above half way
-				// if (time % 2 == 0) {
-				// tiles[w][h].setID(1);
-				// }
-				// }
+				/**
+				 * where it generates everything above the base grass line...
+				 */
+				if (h == (tileh / 2) - 1) {
+					if (time % 5 == 0)
+						tiles[w][h].setID(1);
+				}
+
+				if (h == (tileh / 2) - 1) { // (maybe) set the grass lvl at
+					// above half way
+					if (time % 13 == 0) {
+						tiles[w][h].setID(1);
+						tiles[add(w, 1, 'w')][h].setID(1);
+						tiles[add(w, 2, 'w')][h].setID(1);
+						tiles[add(w, 1, 'w')][subtract(h, 1)].setID(1);
+					}
+				}
+
+				/**
+				 * make there not be any 101 blocks
+				 */
+				if (h <= tileh / 2) {
+					if (tiles[subtract(w, 2)][h].getID() == 1) {
+						if (tiles[subtract(w, 1)][h].getID() == 0) {
+							if (tiles[w][h].getID() == 1) {
+								tiles[subtract(w, 1)][h].setID(1);
+							}
+						}
+					}
+				}
 
 				/**
 				 * main part of the generation, keep all of this
 				 */
 				if (h == tileh / 2) { // set the grass lvl at half way
-					tiles[w][h].setID(1);
+					if (tiles[w][subtract(h, 1)].getID() != 1)
+						tiles[w][h].setID(1);
 				}
 				if (tiles[w][subtract(h, 1)].getID() == 1) {// if tile above
 															// is grass
@@ -109,7 +134,7 @@ public class Core {
 																// is dirt
 					tiles[w][h].setID(2);
 				}
-				if (h == 25) {
+				if (h == 25) { // random generation of stone
 					if (time % 2 == 0)
 						tiles[w][subtract(h, 1)].setID(3);
 					tiles[w][h].setID(3);
@@ -141,8 +166,22 @@ public class Core {
 			return initial - amount;
 	}
 
+	public int add(int initial, int amount, char wh) {
+		if (wh == 'w') {
+			if (initial + amount >= tilew)
+				return tilew - 1;
+			else
+				return initial + amount;
+		} else {
+			if (initial + amount >= tileh)
+				return tileh - 1;
+			else
+				return initial + amount;
+		}
+	}
+
 	public void setCore(Core core) {
-		this.core = core;
+		core = core;
 	}
 
 	public void setExitMenu(GameMenu gm) {

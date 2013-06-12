@@ -73,13 +73,18 @@ public class Tile {
 	}
 
 	public void setID(int ID) {
-		this.ID = ID;
-		if (ID != 0) {
-			img = getImageString(ID);
-			image = io.getImage(img);
-		} else {
-			image = null;
-			img = null;
+		try {
+			this.ID = ID;
+			if (ID != 0) {
+				img = getImageString(ID);
+				image = io.getImage(img);
+			} else {
+				image = null;
+				img = null;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return;
 		}
 	}
 
