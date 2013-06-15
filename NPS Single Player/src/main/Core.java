@@ -88,61 +88,109 @@ public class Core {
 				barValue++;
 				bar.setValue(barValue);
 
-				/**
-				 * where it generates everything above the base grass line...
-				 */
-				if (h == (tileh / 2) - 1) {
-					if (time % 5 == 0)
-						tiles[w][h].setID(1);
-				}
+				// /**
+				// * where it generates everything above the base grass line...
+				// */
+				// if (h == (tileh / 2) - 1) { // this if statement makes blocks
+				// of
+				// // 2. 0110
+				// if (time % 5 == 0) {
+				// tiles[w][h].setID(1);
+				// tiles[add(w, 1, 'w')][h].setID(1);
+				// }
+				// }
+				//
+				// // this makes blocks 4 on bot, 2 on top
+				// if (h == (tileh / 2) - 1) {
+				// if (time % 13 == 0) {
+				// tiles[w][h].setID(1);
+				// tiles[add(w, 1, 'w')][h].setID(2);
+				// tiles[add(w, 2, 'w')][h].setID(2);
+				// tiles[add(w, 3, 'w')][h].setID(1);
+				// tiles[add(w, 1, 'w')][add(h, 1, 'h')].setID(1);
+				// tiles[add(w, 2, 'w')][add(h, 2, 'h')].setID(1);
+				// }
+				// }
+				//
+				// // this is making that wierd little point thingy
+				// if (h == (tileh / 2) - 1) { // (maybe) set the grass lvl at
+				// // above half way
+				// if (time % 10 == 0) {
+				// tiles[w][h].setID(1);
+				// tiles[add(w, 1, 'w')][h].setID(1);
+				// tiles[add(w, 2, 'w')][h].setID(1);
+				// tiles[add(w, 1, 'w')][subtract(h, 1)].setID(1);
+				//
+				// }
+				// }
+				//
+				// /**
+				// * make there not be any 101 blocks
+				// */
+				// if (h <= tileh / 2) {
+				// if (tiles[subtract(w, 2)][h].getID() == 1) {
+				// if (tiles[subtract(w, 1)][h].getID() == 0) {
+				// if (tiles[w][h].getID() == 1) {
+				// tiles[subtract(w, 1)][h].setID(1);
+				// tiles[subtract(w, 1)][add(h, 1, 'h')].setID(2);
+				// }
+				// }
+				// }
+				// }
+				//
+				// /**
+				// * main part of the generation, keep all of this
+				// */
+				// if (h == tileh / 2) { // set the grass lvl at half way
+				// if (tiles[w][subtract(h, 1)].getID() != 1)
+				// tiles[w][h].setID(1);
+				// }
+				// if (tiles[w][subtract(h, 1)].getID() == 1) {// if tile above
+				// // is grass
+				// tiles[w][h].setID(2);
+				// }
+				// if (tiles[w][subtract(h, 1)].getID() == 2) { // if tile above
+				// // is dirt
+				// tiles[w][h].setID(2);
+				// }
+				// if (h == 25) { // random generation of stone
+				// if (time % 2 == 0)
+				// tiles[w][subtract(h, 1)].setID(3);
+				// tiles[w][h].setID(3);
+				// }
+				// if (tiles[w][subtract(h, 1)].getID() == 3) { // if tile above
+				// // is stone
+				// tiles[w][h].setID(3);
+				// }
+				//
+				// // make sure the top tile is grass
+				// if (tiles[w][subtract(h, 1)].getID() == 0) {
+				// if (tiles[w][h].getID() != 0) {
+				// tiles[w][h].setID(1);
+				// }
+				// }
 
-				if (h == (tileh / 2) - 1) { // (maybe) set the grass lvl at
-					// above half way
-					if (time % 13 == 0) {
-						tiles[w][h].setID(1);
-						tiles[add(w, 1, 'w')][h].setID(1);
-						tiles[add(w, 2, 'w')][h].setID(1);
-						tiles[add(w, 1, 'w')][subtract(h, 1)].setID(1);
-					}
-				}
+				/***************
+				 * different try
+				 */
+				// establish the base line of the grass
+				// keep this one first
+				if (h == tileh / 2)
+					tiles[w][h].setID(1);
 
 				/**
-				 * make there not be any 101 blocks
+				 * put these last two if's last to clean up everything
 				 */
-				if (h <= tileh / 2) {
-					if (tiles[subtract(w, 2)][h].getID() == 1) {
-						if (tiles[subtract(w, 1)][h].getID() == 0) {
-							if (tiles[w][h].getID() == 1) {
-								tiles[subtract(w, 1)][h].setID(1);
-							}
-						}
-					}
-				}
-
-				/**
-				 * main part of the generation, keep all of this
-				 */
-				if (h == tileh / 2) { // set the grass lvl at half way
-					if (tiles[w][subtract(h, 1)].getID() != 1)
+				// make sure the top block is grass
+				if (tiles[w][subtract(h, 1)].getID() == 0)
+					if (tiles[w][h].getID() != 0)
 						tiles[w][h].setID(1);
-				}
-				if (tiles[w][subtract(h, 1)].getID() == 1) {// if tile above
-															// is grass
-					tiles[w][h].setID(2);
-				}
-				if (tiles[w][subtract(h, 1)].getID() == 2) { // if tile above
-																// is dirt
-					tiles[w][h].setID(2);
-				}
-				if (h == 25) { // random generation of stone
-					if (time % 2 == 0)
-						tiles[w][subtract(h, 1)].setID(3);
-					tiles[w][h].setID(3);
-				}
-				if (tiles[w][subtract(h, 1)].getID() == 3) { // if tile above
-																// is stone
-					tiles[w][h].setID(3);
-				}
+
+				// make sure that all the blocks until there is a straight line
+				// under the grass is dirt
+				if (tiles[w][subtract(h, 1)].getID() == 1)
+					tiles[w][h].setID(2); // set to dirt if directly under the
+											// grass
 
 				list.add(tiles[w][h]);
 			}

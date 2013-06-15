@@ -94,6 +94,8 @@ public class GameMenu extends JPanel {
 		 */
 
 		int titleWidth = title.length(), stringX = (w / 2) - (titleWidth / 2);
-		g.drawString(title, stringX, 10);
+		g.setFont(new Font("Arial", Font.ITALIC, 20));
+		g.setColor(Color.white);
+		g.drawString(title, stringX, 20);
 	}
 }
