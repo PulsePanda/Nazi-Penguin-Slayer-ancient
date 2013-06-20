@@ -21,9 +21,10 @@ public class FILES {
 	public static final String backgroundImage = "C:\\back.png";
 	public static final String playerImage = "C:\\player.png";
 	public static final String ingameMenuBackground = "C:\\imb.png";
-//	public static final String properties = "A:\\Google Drive\\AVTECH\\NPS\\Files\\bin\\properties.properties"; // for
+	public static final String properties = "A:\\Google Drive\\AVTECH\\NPS\\Files\\bin\\properties.properties"; // for
 																												// desktop
-	public static final String properties = "C:\\Users\\Austin\\Google Drive\\AVTECH\\NPS\\Files\\bin\\properties.properties";
+	// public static final String properties =
+	// "C:\\Users\\Austin\\Google Drive\\AVTECH\\NPS\\Files\\bin\\properties.properties";
 	// // for
 
 	public static final String version = "0.0.1";
