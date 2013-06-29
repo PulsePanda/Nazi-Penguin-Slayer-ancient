@@ -173,10 +173,31 @@ public class Core {
 				/***************
 				 * different try
 				 */
+
+				/**
+				 * keep this one first
+				 */
 				// establish the base line of the grass
-				// keep this one first
 				if (h == tileh / 2)
 					tiles[w][h].setID(1);
+
+				/**
+				 * everything else
+				 */
+				// establish 2nd level increase. h - 1
+				if (h == (tileh / 2) - 1
+						&& tiles[subtract(w, 1)][h].getID() != 1
+						&& tiles[subtract(w, 2)][h].getID() != 1
+						&& tiles[subtract(w, 3)][h].getID() != 1) {
+					// the ands make sure there is a gap of 3
+
+					if (time % 8 == 0) {
+						tiles[w][h].setID(1);
+						tiles[add(w, 1, 'w')][h].setID(1);
+						tiles[add(w, 2, 'w')][h].setID(1);
+						tiles[add(w, 1, 'w')][subtract(h, 1)].setID(1);
+					}
+				}
 
 				/**
 				 * put these last two if's last to clean up everything
@@ -191,6 +212,8 @@ public class Core {
 				if (tiles[w][subtract(h, 1)].getID() == 1)
 					tiles[w][h].setID(2); // set to dirt if directly under the
 											// grass
+				if (h == (tileh / 2) + 1)
+					tiles[w][h].setID(2);
 
 				list.add(tiles[w][h]);
 			}
