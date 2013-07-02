@@ -27,6 +27,8 @@ public class Core {
 		try {
 			properties.load(new FileInputStream(FILES.properties));
 		} catch (Exception e) {
+			Dialogs.errorDiagExit("Cannot find the properties file at "
+					+ FILES.properties + ".\nPlease reinstall the game.");
 			e.printStackTrace();
 		}
 
@@ -193,9 +195,10 @@ public class Core {
 
 					if (time % 8 == 0) {
 						tiles[w][h].setID(1);
-						tiles[add(w, 1, 'w')][h].setID(1);
+						tiles[add(w, 1, 'w')][h].setID(2);
 						tiles[add(w, 2, 'w')][h].setID(1);
 						tiles[add(w, 1, 'w')][subtract(h, 1)].setID(1);
+						// tiles[add(w, 1, 'w')][add(h, 1, 'h')].setID(2);
 					}
 				}
 
@@ -303,7 +306,15 @@ public class Core {
 		return running;
 	}
 
+	public static void setRunning(boolean b) {
+		running = b;
+	}
+
 	public static boolean isPaused() {
 		return paused;
+	}
+
+	public static void pause(boolean b) {
+		paused = b;
 	}
 }

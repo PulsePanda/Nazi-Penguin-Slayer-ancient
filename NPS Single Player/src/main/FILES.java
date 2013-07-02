@@ -12,7 +12,8 @@ public class FILES {
 	// public static final String backgroundImage =
 	// "../graphic/Game Background.png";
 	// public static final String playerImage = "../graphic/Player.png";
-	// public static final STring ingameMenuBackground = "../graphic/Ingame Menu Background.png";
+	// public static final STring ingameMenuBackground =
+	// "../graphic/Ingame Menu Background.png";
 	// public static final String properties = "properties.properties";
 
 	public static final String dirtBlock = "C:\\dirt.png";
@@ -21,11 +22,9 @@ public class FILES {
 	public static final String backgroundImage = "C:\\back.png";
 	public static final String playerImage = "C:\\player.png";
 	public static final String ingameMenuBackground = "C:\\imb.png";
-	public static final String properties = "A:\\Google Drive\\AVTECH\\NPS\\Files\\bin\\properties.properties"; // for
-																												// desktop
 	// public static final String properties =
-	// "C:\\Users\\Austin\\Google Drive\\AVTECH\\NPS\\Files\\bin\\properties.properties";
-	// // for
+	// "A:\\Google Drive\\AVTECH\\NPS\\Files\\bin\\properties.properties";
+	public static final String properties = "C:\\Users\\Austin\\Google Drive\\AVTECH\\NPS\\Files\\bin\\properties.properties";
 
 	public static final String version = "0.0.1";
 
@@ -36,7 +35,8 @@ public class FILES {
 			return true;
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-			Dialogs.errorDiagExit("Cannot Find Properties File! Please Reinstall The Game");
+			Dialogs.errorDiagExit("Cannot find the properties file at "
+					+ FILES.properties + ".\nPlease reinstall the game.");
 			return false;
 		}
 	}

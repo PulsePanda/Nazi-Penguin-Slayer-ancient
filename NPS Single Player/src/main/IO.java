@@ -29,6 +29,7 @@ public class IO {
 		try {
 			img = ImageIO.read(dirFile);
 		} catch (IOException e) {
+			Dialogs.errorDiagExit("Cannot read the image " + dir + "!");
 		}
 		return img;
 	}
@@ -51,7 +52,7 @@ public class IO {
 
 				bufferedWriter.close();
 			} catch (IOException ioexception) {
-				Dialogs.errorDiagExit("Could not write to " + dest);
+				Dialogs.errorDiagExit("Could not write to " + dest + ".");
 			}
 		} else {
 			int i = 1;
@@ -75,7 +76,8 @@ public class IO {
 
 				bw.close();
 			} catch (Exception e) {
-				Dialogs.errorDiagExit("Could not write to " + dest);
+				Dialogs.errorDiagExit("Could not write to " + dest + ".");
+				e.printStackTrace();
 			}
 		}
 	}
@@ -87,6 +89,7 @@ public class IO {
 			BufferedWriter bw = new BufferedWriter(fw);
 			bw.write("");
 		} catch (IOException e) {
+			Dialogs.msgDialog("Could not erase " + dest + ".");
 			e.printStackTrace();
 		}
 	}
@@ -105,11 +108,10 @@ public class IO {
 			}
 
 			bufferedReader.close();
-		} catch (FileNotFoundException filenotfoundexxeption) {
+		} catch (Exception e) {
 			Dialogs.errorDiagExit("File " + controlsfilefinaldir
 					+ " does not exist");
-		} catch (IOException ioexception) {
-			ioexception.printStackTrace();
+			e.printStackTrace();
 		}
 		return stringRead;
 	}
@@ -133,7 +135,8 @@ public class IO {
 			bufferedReader.close();
 		} catch (IOException ioexception) {
 			Dialogs.errorDiagExit("Could not read txt file from the JAR! Path: "
-					+ dir);
+					+ dir + ".");
+			ioexception.printStackTrace();
 		}
 
 		return read;
@@ -156,10 +159,9 @@ public class IO {
 			}
 
 			bufferedReader.close();
-		} catch (FileNotFoundException filenotfoundexxeption) {
+		} catch (Exception e) {
 			Dialogs.errorDiagExit("File " + dir + " does not exist");
-		} catch (IOException ioexception) {
-			ioexception.printStackTrace();
+			e.printStackTrace();
 		}
 		return al;
 	}
@@ -183,6 +185,7 @@ public class IO {
 
 		} catch (IOException ioexception) {
 			Dialogs.errorDiagExit("Could not write to " + dir);
+			ioexception.printStackTrace();
 		}
 	}
 
@@ -203,6 +206,7 @@ public class IO {
 				file.createNewFile();
 			} catch (IOException e) {
 				Dialogs.errorDiagExit("Could not create file " + file.getPath());
+				e.printStackTrace();
 			}
 		else
 			return;
@@ -215,6 +219,7 @@ public class IO {
 			s = readSpecificLine(dir, 1);
 		} catch (Exception e) {
 			Dialogs.errorDiagExit("Could not read the file " + dir);
+			e.printStackTrace();
 		}
 		try {
 			if (s.equals(null) || s.equals(""))

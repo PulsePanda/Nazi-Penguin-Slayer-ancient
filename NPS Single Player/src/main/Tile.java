@@ -8,10 +8,11 @@
 
 package main;
 
+import java.awt.Component;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
-public class Tile {
+public class Tile extends Component {
 	String img;
 	int ID;
 	BufferedImage image;
@@ -65,18 +66,13 @@ public class Tile {
 	}
 
 	public void setID(int ID) {
-		try {
-			this.ID = ID;
-			if (ID != 0) {
-				img = getImageString(ID);
-				image = io.getImage(img);
-			} else {
-				image = null;
-				img = null;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			return;
+		this.ID = ID;
+		if (ID != 0) {
+			img = getImageString(ID);
+			image = io.getImage(img);
+		} else {
+			image = null;
+			img = null;
 		}
 	}
 
