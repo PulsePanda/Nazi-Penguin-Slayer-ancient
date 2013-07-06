@@ -62,6 +62,10 @@ public class Login extends Start {
 
 		f.add(new JScrollPane(display), BorderLayout.CENTER);
 		f.add(new LoginPanel(width, 100), BorderLayout.SOUTH);
+//		if (!serverOnline) {
+//			Dialogs.errorDiagExit("Server is not reachable. Please try again later."
+//					+ "We are sorry for the inconvenience!");
+//		}
 		f.setVisible(true);
 	}
 

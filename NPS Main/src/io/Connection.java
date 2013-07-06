@@ -49,6 +49,7 @@ public class Connection implements Serializable {
 			break;
 		case "createAccount":
 			createAccount();
+			break;
 		default:
 			break;
 		}

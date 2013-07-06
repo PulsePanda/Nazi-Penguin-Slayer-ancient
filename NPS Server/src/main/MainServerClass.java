@@ -1,5 +1,9 @@
 package main;
 
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -9,6 +13,13 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Set;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JTextArea;
 
 public class MainServerClass implements Serializable {
 
@@ -23,15 +34,27 @@ public class MainServerClass implements Serializable {
 	static String filesToUpdateFinalDir = "/home/pi/Programming/NPS/Files/bin/Files to Update final Dirs.txt";
 	public static ArrayList<String> loggedin = new ArrayList<String>();
 
+	// parts of the frame
+	static JFrame frame = new JFrame("NPS Server");
+	static JTabbedPane tabbedPane = new JTabbedPane();
+
+	static JPanel outputPanel = new JPanel();
+	static JTextArea textArea = new JTextArea();
+
+	static JPanel commandPanel = new JPanel();
+
+	static JButton activateAccount = new JButton("Activate Account");
+	static JButton closeServer = new JButton("Close Server");
+
 	public static void main(String[] args) {
 		makeFrame();
 
 		filesToUpdateArray = readWholeFile(filesToUpdateDir);
 		filesToUpdateFinalArray = readWholeFile(filesToUpdateFinalDir);
 
-		System.out.println("Made by AVTECH Software\n");
-		System.out.println("Version: " + MainServerThread.version + "\n");
-		System.out.println("Server Started\nType 'exit' to exit.\n");
+		textArea.append("Made by AVTECH Software\n");
+		textArea.append("Version: " + MainServerThread.version + "\n");
+		textArea.append("Server Started\nType 'exit' to exit.\n");
 
 		try {
 			serverSocket = new ServerSocket(6987);
@@ -39,8 +62,6 @@ public class MainServerClass implements Serializable {
 			e.printStackTrace();
 			System.exit(-1);
 		}
-
-		setup();
 
 		while (listening) {
 			try {
@@ -55,13 +76,42 @@ public class MainServerClass implements Serializable {
 	}
 
 	private static void makeFrame() {
+		tabbedPane.addTab("Output", outputPanel);
+		tabbedPane.addTab("Commands", commandPanel);
 
-	}
+		/**
+		 * set up panels
+		 */
+		// set up the output panel
+		textArea.setBounds(0, 0, 500, 400);
+		textArea.setEditable(false);
+		outputPanel.setBounds(0, 0, 500, 400);
+		outputPanel.setLayout(new BorderLayout());
+		outputPanel.add(new JScrollPane(textArea), BorderLayout.CENTER);
 
-	public static void setup() {
-		// Frame f = new Frame("Server", 300, 300, false);
-		Thread t = new Thread(new Listener());
-		t.start();
+		// set up the commands panel
+		commandPanel.setBounds(0, 0, 500, 400);
+		commandPanel.setLayout(new FlowLayout());
+		activateAccount.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+			}
+		});
+		commandPanel.add(activateAccount);
+
+		closeServer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+			}
+		});
+		commandPanel.add(closeServer);
+
+		frame.setSize(500, 400);
+		frame.add(tabbedPane);
+		frame.setLocationRelativeTo(null);
+		frame.setResizable(false);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		frame.setVisible(true);
 	}
 
 	public static ArrayList<String> getConnected() {
@@ -73,7 +123,7 @@ public class MainServerClass implements Serializable {
 	}
 
 	public static void shutdown() {
-		System.out.println("Shutting Down...");
+		textArea.append("Shutting Down...");
 		setListening(false);
 		boolean isOneAlive = true;
 		while (isOneAlive) {
@@ -84,7 +134,7 @@ public class MainServerClass implements Serializable {
 				}
 			}
 		}
-		System.out.println("Shutdown. Goodbye!");
+		textArea.append("Shutdown. Goodbye!");
 		System.exit(0);
 	}
 

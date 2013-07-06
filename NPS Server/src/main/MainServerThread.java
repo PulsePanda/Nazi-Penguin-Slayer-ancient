@@ -40,7 +40,7 @@ public class MainServerThread extends MainServerClass implements Runnable,
 			out = new ObjectOutputStream(socket.getOutputStream());
 			out.flush();
 			in = new ObjectInputStream(socket.getInputStream());
-			System.out.println("New connection from "
+			textArea.append("New connection from "
 					+ socket.getLocalAddress().toString()
 					+ " has been established.");
 		} catch (Exception e) {
@@ -52,19 +52,19 @@ public class MainServerThread extends MainServerClass implements Runnable,
 		switch ((String) read()) {
 		case "update":
 			send("ok");
-			System.out.println(socket.getLocalAddress().toString()
+			textArea.append(socket.getLocalAddress().toString()
 					+ " is updating\n");
 			updateClient();
 			break;
 		case "login":
 			send("ok");
-			System.out.println(socket.getLocalAddress().toString()
+			textArea.append(socket.getLocalAddress().toString()
 					+ " is logging in\n");
 			login();
 			break;
 		case "logout":
 			send("ok");
-			System.out.println(socket.getLocalAddress().toString()
+			textArea.append(socket.getLocalAddress().toString()
 					+ " is logging out\n");
 			logout();
 			break;
@@ -208,7 +208,7 @@ public class MainServerThread extends MainServerClass implements Runnable,
 
 		if (usernameMatched && passwordMatched && activated) {
 
-			System.out.println(socket.getLocalAddress() + " " + username
+			textArea.append(socket.getLocalAddress() + " " + username
 					+ " successfully logged in\n");
 			loggedin.add(socket.getLocalAddress().toString());
 			send(p);
@@ -229,7 +229,7 @@ public class MainServerThread extends MainServerClass implements Runnable,
 			out.flush();
 			out.close();
 			socket.close();
-			System.out.println("Closed Everything on "
+			textArea.append("Closed Everything on "
 					+ socket.getLocalAddress().toString() + "\n");
 		} catch (Exception e) {
 			e.printStackTrace();
