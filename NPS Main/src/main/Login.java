@@ -17,6 +17,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
 import java.util.Properties;
 
 import javax.swing.*;
@@ -29,6 +30,9 @@ public class Login extends Start {
 
 	static JFrame f;
 	static JTextField user;
+	public static String createUsername, createPassword, createName,
+			createEmail;
+	public static boolean uniqueUsername = true;
 	static JPasswordField pass;
 	static JButton cancel, login;
 	public static boolean serverOnline = true;
@@ -105,8 +109,6 @@ public class Login extends Start {
 			f.dispose();
 			return;
 		}
-
-		// put the bottom part here
 	}
 
 	public static void setProperties(Properties p) {
@@ -115,5 +117,96 @@ public class Login extends Start {
 
 	public static void showOptionsWindow() {
 		new OptionsWindow(f);
+	}
+
+	private static void openPaypal() {
+		try {
+			Desktop desktop = java.awt.Desktop.getDesktop();
+
+			URI oURL = new URI(
+					"https://www.paypal.com/us/cgi-bin/webscr?cmd=_flow&SESSION=v2Er1"
+							+ "RgMWXZuAPevHUMjU5io9Q6ptsjwnw45RLgL0_ftS0ON5YIN6jcSZuK&dispatch=5"
+							+ "0a222a57771920b6a3d7b606239e4d529b525e0b7e69bf0224adecfb0124e9b61f7"
+							+ "37ba21b081988da7a3c03e3ee25661350b6a36dba24a");
+			desktop.browse(oURL);
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+	}
+
+	public static void createAccount() {
+		JFrame parent = Frame.f;
+		final JDialog createAW = new JDialog(parent, true);
+		final JTextField fullName = new JTextField();
+		fullName.setBounds(75, 10, 200, 25);
+		createAW.add(fullName);
+		final JLabel fullNameLabel = new JLabel("Full Name:");
+		fullNameLabel.setBounds(10, 11, 100, 25);
+		createAW.add(fullNameLabel);
+
+		final JTextField username = new JTextField();
+		username.setBounds(75, 40, 200, 25);
+		createAW.add(username);
+		final JLabel usernameLabel = new JLabel("Username:");
+		usernameLabel.setBounds(9, 41, 100, 25);
+		createAW.add(usernameLabel);
+
+		final JPasswordField password = new JPasswordField();
+		password.setBounds(75, 70, 200, 25);
+		createAW.add(password);
+		final JLabel passwordLabel = new JLabel("Password:");
+		passwordLabel.setBounds(10, 71, 100, 25);
+		createAW.add(passwordLabel);
+
+		final JTextField email = new JTextField();
+		email.setBounds(75, 100, 200, 25);
+		createAW.add(email);
+		final JLabel emailLabel = new JLabel("Email:");
+		emailLabel.setBounds(10, 101, 100, 25);
+		createAW.add(emailLabel);
+
+		final JButton paypal = new JButton("Pay With Paypal");
+		paypal.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (email.getText().equals("") || fullName.getText().equals("")
+						|| username.getText().equals("") || password.equals("")) {
+					Dialogs.msgDialog("Please fill in every field!");
+					return;
+				}
+				if (!email.getText().contains("@")
+						|| !email.getText().contains(".")) {
+					Dialogs.msgDialog("Please enter a valid email address!");
+					return;
+				}
+				/**
+				 * check for unique username
+				 */
+				createUsername = username.getText();
+				Connection conn = new Connection(FILES.IPAddress, FILES.port,
+						null, "uniqueUsername");
+				if (!uniqueUsername) {
+					Dialogs.msgDialog("Username is already in use! Please try again!");
+					return;
+				}
+
+				createUsername = username.getText();
+				createPassword = password.getText();
+				createName = fullName.getText();
+				createEmail = email.getText();
+				Connection c = new Connection(FILES.IPAddress, FILES.port,
+						null, "createAccount");
+				openPaypal();
+				createAW.dispose();
+			}
+		});
+		paypal.setBounds(10, 130, 265, 50);
+		createAW.add(paypal);
+
+		createAW.setSize(300, 250);
+		createAW.setLayout(null);
+		createAW.setLocationRelativeTo(parent);
+		createAW.setResizable(false);
+
+		createAW.setVisible(true);
 	}
 }

@@ -11,6 +11,7 @@ import java.util.Properties;
 
 import javax.swing.JProgressBar;
 
+import main.Dialogs;
 import main.Login;
 
 public class Connection implements Serializable {
@@ -43,8 +44,61 @@ public class Connection implements Serializable {
 		case "login":
 			login();
 			break;
+		case "uniqueUsername":
+			uniqueUsername();
+			break;
+		case "createAccount":
+			createAccount();
 		default:
 			break;
+		}
+	}
+
+	private void createAccount() {
+		String user = Login.createUsername;
+		String pass = Login.createPassword;
+		String email = Login.createEmail;
+		String name = Login.createName;
+
+		send("createAccount");
+		if (!read().equals("ok")) {
+			Dialogs.msgDialog("Account creation has failed! Please do not complete the"
+					+ "\nPaypal payment! Please try again later.");
+			return;
+		}
+
+		send(user);
+		if (!read().equals("ok")) {
+			Dialogs.msgDialog("Account creation has failed! Please do not complete the"
+					+ "\nPaypal payment! Please try again later.");
+			return;
+		}
+
+		send(pass);
+		if (!read().equals("ok")) {
+			Dialogs.msgDialog("Account creation has failed! Please do not complete the"
+					+ "\nPaypal payment! Please try again later.");
+			return;
+		}
+
+		send(email);
+		if (!read().equals("ok")) {
+			Dialogs.msgDialog("Account creation has failed! Please do not complete the"
+					+ "\nPaypal payment! Please try again later.");
+			return;
+		}
+
+		send(name);
+		if (!read().equals("ok")) {
+			Dialogs.msgDialog("Account creation has failed! Please do not complete the"
+					+ "\nPaypal payment! Please try again later.");
+			return;
+		}
+
+		if (!read().equals("done")) {
+			Dialogs.msgDialog("Account creation has failed! Please do not complete the"
+					+ "\nPaypal payment! Please try again later.");
+			return;
 		}
 	}
 
@@ -85,7 +139,25 @@ public class Connection implements Serializable {
 
 		Login.setProperties((Properties) read());
 		Login.loggedin = true;
+		closeEverything();
 		return;
+	}
+
+	public void uniqueUsername() {
+		String username = Login.createUsername;
+		send("uniqueUsername");
+		if (!read().equals("ok")) {
+			Login.uniqueUsername = false;
+			return;
+		}
+
+		send(username);
+		if (read().equals("matched")) {
+			Login.uniqueUsername = false;
+			return;
+		}
+
+		closeEverything();
 	}
 
 	public void closeEverything() {

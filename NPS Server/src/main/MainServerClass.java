@@ -24,6 +24,7 @@ public class MainServerClass implements Serializable {
 	public static ArrayList<String> loggedin = new ArrayList<String>();
 
 	public static void main(String[] args) {
+		makeFrame();
 
 		filesToUpdateArray = readWholeFile(filesToUpdateDir);
 		filesToUpdateFinalArray = readWholeFile(filesToUpdateFinalDir);
@@ -51,6 +52,10 @@ public class MainServerClass implements Serializable {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	private static void makeFrame() {
+
 	}
 
 	public static void setup() {

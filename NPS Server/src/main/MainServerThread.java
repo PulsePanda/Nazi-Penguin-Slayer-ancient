@@ -4,6 +4,7 @@ import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -67,7 +68,72 @@ public class MainServerThread extends MainServerClass implements Runnable,
 					+ " is logging out\n");
 			logout();
 			break;
+		case "uniqueUsername":
+			send("ok");
+			checkUniqueUsername();
+			break;
+		case "createAccount":
+			send("ok");
+			createAccount();
+			break;
 		}
+	}
+
+	private void createAccount() {
+		String user;
+		String pass;
+		String email;
+		String name;
+
+		user = (String) read();
+		send("ok");
+
+		pass = (String) read();
+		send("ok");
+
+		email = (String) read();
+		send("ok");
+
+		name = (String) read();
+		send("ok");
+
+		/**
+		 * create the new properties file containing the info
+		 */
+		Properties p = new Properties();
+		p.setProperty("username", user);
+		p.setProperty("password", pass);
+		p.setProperty("name", name);
+		p.setProperty("email", email);
+		p.setProperty("activated", "false");
+
+		try {
+			FileWriter fw = new FileWriter("/home/pi/Programming/NPS/Users/"
+					+ user + ".properties");
+			p.store(fw, user + " user properties");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		send("done");
+		closeEverything();
+	}
+
+	private void checkUniqueUsername() {
+		String[] alf;
+		File originDir = new File("/home/pi/Programming/NPS/Users");
+		alf = originDir.list();
+
+		String username = (String) read();
+
+		for (int i = 0; i < alf.length; i++) {
+			if (alf[i].equals(username)) {
+				send("matched");
+			}
+		}
+
+		closeEverything();
 	}
 
 	public void updateClient() {
@@ -107,7 +173,7 @@ public class MainServerThread extends MainServerClass implements Runnable,
 	public void login() {
 		String u = (String) read();
 		username = u;
-		boolean usernameMatched = false, passwordMatched = false;
+		boolean usernameMatched = false, passwordMatched = false, activated = false;
 		Properties p = new Properties();
 
 		String[] alf;
@@ -130,6 +196,8 @@ public class MainServerThread extends MainServerClass implements Runnable,
 			if (p.getProperty("password").equals(password)) {
 				send("matched");
 				passwordMatched = true;
+				if (p.getProperty("activated").equals("true"))
+					activated = true;
 			} else {
 				send("no");
 			}
@@ -138,7 +206,7 @@ public class MainServerThread extends MainServerClass implements Runnable,
 			return;
 		}
 
-		if (usernameMatched && passwordMatched) {
+		if (usernameMatched && passwordMatched && activated) {
 
 			System.out.println(socket.getLocalAddress() + " " + username
 					+ " successfully logged in\n");

@@ -1,3 +1,18 @@
 list of things to do :D
 
 >change up the random generation so that there arent so many lumps, but there are nice hills :D
+
+>make the collision work
+
+>make sure that the changes i made to "create account" and stuff work, ie the server will check for a
+unique login name, the server will create a new account file, etc.
+
+>make the game so when you first download it, you only download the login client, because i want the
+login client to actually update the updater if needed, then start it. when you first start the login
+client, i want it to download EVERYTHING from there, which means that i need it to check to see if there
+is the properties file (or something), and send to the server that it needs to download everything, and
+the server needs to get a list of EVERYTHING in the AVTECH folder, digitalize it, and send it using
+the pre-existing updateobject in the server... (currently, the updater is run first, then it starts the
+main jar, which holds the login frame as well)
+
+>make the server GUI based
