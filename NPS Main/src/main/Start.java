@@ -48,9 +48,9 @@ public class Start {
 			Thread.sleep(1000);
 		} catch (Exception e) {
 		}
-		Login.createFrame(); // use this in final version :D
+//		Login.createFrame(); // use this in final version :D
 //		ss.remove();
-		// startMenuFrame(); // take this away when cleaning up
+		 startMenuFrame(); // take this away when cleaning up
 	}
 
 	public static void startMenuFrame() {

@@ -1,11 +1,18 @@
 package panels;
 
 import io.IO;
+import io.PlaySound;
 
+import java.awt.Desktop;
 import java.awt.Graphics;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import actionListeners.BackButtonAction;
@@ -20,7 +27,7 @@ import files.FILES;
 public class MultiplayerPanel extends Panel {
 
 	IO io = new IO();
-	JButton host, join, back, exit;
+	JLabel host, join, back, exit;
 
 	public MultiplayerPanel(int w, int h) {
 		super(w, h);
@@ -29,39 +36,96 @@ public class MultiplayerPanel extends Panel {
 	}
 
 	private void addButtons() {
-		host = new JButton();
-		join = new JButton();
-		back = new JButton();
+		host = new JLabel();
+		join = new JLabel();
+		back = new JLabel();
 
 		host.setIcon(new ImageIcon(io.getImage(FILES.multiplayerHostButton)));
 		host.setBounds(275, 175, 250, 50);
-		host.setBorderPainted(false);
-		host.setRolloverIcon(new ImageIcon(io
-				.getImage(FILES.multiplayerHostRollover)));
-		host.addActionListener(new HostButtonAction());
+		host.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				try {
+					PlaySound.playSound(FILES.buttonClicked);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
+				try {
+					Desktop desktop = Desktop.getDesktop();
+					File openFile = new File("NPS Multi Host.jar");
+					desktop.open(openFile);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				host.setIcon(new ImageIcon(io
+						.getImage(FILES.multiplayerHostRollover)));
+			}
+
+			public void mouseExited(MouseEvent e) {
+				host.setIcon(new ImageIcon(io
+						.getImage(FILES.multiplayerHostButton)));
+			}
+		});
 
 		join.setIcon(new ImageIcon(io.getImage(FILES.multiplayerJoinButton)));
 		join.setBounds(275, 250, 250, 50);
-		join.setBorderPainted(false);
-		join.setRolloverIcon(new ImageIcon(io
-				.getImage(FILES.mulitplayerJoinRollover)));
-		join.addActionListener(new JoinButtonAction());
+		join.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				try {
+					PlaySound.playSound(FILES.buttonClicked);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
+				try {
+					Desktop desktop = Desktop.getDesktop();
+					File openFile = new File("NPS Multi Join.jar");
+					desktop.open(openFile);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				join.setIcon(new ImageIcon(io
+						.getImage(FILES.multiplayerJoinRollover)));
+			}
+
+			public void mouseExited(MouseEvent e) {
+				join.setIcon(new ImageIcon(io
+						.getImage(FILES.multiplayerJoinButton)));
+			}
+		});
 
 		back.setIcon(new ImageIcon(io.getImage(FILES.backButton)));
 		back.setBounds(275, 325, 250, 50);
-		back.setBorderPainted(false);
-		back.setRolloverIcon(new ImageIcon(io
-				.getImage(FILES.backButtonRollover)));
-		back.addActionListener(new BackButtonAction());
+		back.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				Frame.changePanel("MAINSCREEN");
+				Frame.dp.changeImage(1);
+				try {
+					PlaySound.playSound(FILES.buttonClicked);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
 
-		// exit = new JButton();
-		// exit.setIcon(new ImageIcon(io.getImage(FILES.exitButton)));
-		// exit.setBounds(750, 0, 25, 25);
-		// exit.setBorderPainted(false);
-		// exit.setRolloverIcon(new ImageIcon(io.getImage(FILES.exitRollover)));
-		// exit.addActionListener(new ExitAction());
+			public void mouseEntered(MouseEvent e) {
+				back.setIcon(new ImageIcon(io
+						.getImage(FILES.backButtonRollover)));
+			}
 
-		// add(exit);
+			public void mouseExited(MouseEvent e) {
+				back.setIcon(new ImageIcon(io.getImage(FILES.backButton)));
+			}
+		});
+
 		add(host);
 		add(join);
 		add(back);

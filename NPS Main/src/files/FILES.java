@@ -37,7 +37,7 @@ public class FILES {
 	public static final String multiplayerHostButton = "../graphic/Host Button.png";
 	public static final String multiplayerHostRollover = "../graphic/Host Rollover.png";
 	public static final String multiplayerJoinButton = "../graphic/Join Button.png";
-	public static final String mulitplayerJoinRollover = "../graphic/Join Rollover.png";
+	public static final String multiplayerJoinRollover = "../graphic/Join Rollover.png";
 	public static final String multiplayerBackground = "../graphic/Multiplayer Background.png";
 	// end of multiplayer menu parts
 
