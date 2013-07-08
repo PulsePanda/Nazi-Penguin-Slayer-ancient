@@ -1,7 +1,6 @@
 package panels;
 
 import io.IO;
-import io.PlaySound;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -27,7 +26,7 @@ import main.Frame;
 
 public class MainScreenPanel extends Panel {
 
-	JLabel singlePlayer, multiPlayer, options;
+	JButton singlePlayer, multiPlayer, options, exit;
 	IO io = new IO();
 
 	public MainScreenPanel(int width, int height) {
@@ -37,84 +36,37 @@ public class MainScreenPanel extends Panel {
 	}
 
 	public void addButtons() {
-		singlePlayer = new JLabel();
+		singlePlayer = new JButton();
 		singlePlayer.setIcon(new ImageIcon(io
 				.getImage(FILES.singlePlayerButton)));
 		singlePlayer.setBounds(275, 175, 250, 50);
-		singlePlayer.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent e) {
-				Frame.changePanel("SINGLEPLAYER");
-				Frame.dp.changeImage(2);
+		singlePlayer.setBorderPainted(false);
+		singlePlayer.setRolloverIcon(new ImageIcon(io
+				.getImage(FILES.singlePlayerRollover)));
+		singlePlayer.addActionListener(new SinglePlayerAction());
 
-				try {
-					PlaySound.playSound(FILES.buttonClicked);
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-
-			public void mouseEntered(MouseEvent e) {
-				singlePlayer.setIcon(new ImageIcon(io
-						.getImage(FILES.singlePlayerRollover)));
-			}
-
-			public void mouseExited(MouseEvent e) {
-				singlePlayer.setIcon(new ImageIcon(io
-						.getImage(FILES.singlePlayerButton)));
-			}
-		});
-
-		multiPlayer = new JLabel();
+		multiPlayer = new JButton();
 		multiPlayer
 				.setIcon(new ImageIcon(io.getImage(FILES.multiPlayerButton)));
 		multiPlayer.setBounds(275, 250, 250, 50);
-		multiPlayer.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent e) {
-				Frame.changePanel("MULTIPLAYER");
-				Frame.dp.changeImage(3);
-				try {
-					PlaySound.playSound(FILES.buttonClicked);
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
+		multiPlayer.setBorderPainted(false);
+		multiPlayer.setRolloverIcon(new ImageIcon(io
+				.getImage(FILES.multiPlayerRollover)));
+		multiPlayer.addActionListener(new MultiPlayerAction());
 
-			public void mouseEntered(MouseEvent e) {
-				multiPlayer.setIcon(new ImageIcon(io
-						.getImage(FILES.multiPlayerRollover)));
-			}
-
-			public void mouseExited(MouseEvent e) {
-				multiPlayer.setIcon(new ImageIcon(io
-						.getImage(FILES.multiPlayerButton)));
-			}
-		});
-
-		options = new JLabel();
+		options = new JButton();
 		options.setIcon(new ImageIcon(io.getImage(FILES.optionButton)));
 		options.setBounds(275, 325, 250, 50);
-		options.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent e) {
-				Frame.changePanel("OPTIONS");
-				Frame.dp.changeImage(4);
-				try {
-					PlaySound.playSound(FILES.buttonClicked);
-				} catch (Exception e2) {
-					// TODO Auto-generated catch block
-					e2.printStackTrace();
-				}
-			}
+		options.setBorderPainted(false);
+		options.setRolloverIcon(new ImageIcon(io.getImage(FILES.optionRollover)));
+		options.addActionListener(new OptionAction());
 
-			public void mouseEntered(MouseEvent e) {
-				options.setIcon(new ImageIcon(io.getImage(FILES.optionRollover)));
-			}
-
-			public void mouseExited(MouseEvent e) {
-				options.setIcon(new ImageIcon(io.getImage(FILES.optionButton)));
-			}
-		});
+		exit = new JButton();
+		exit.setIcon(new ImageIcon(io.getImage(FILES.exitButton)));
+		exit.setBounds(750, 0, 25, 25);
+		exit.setBorderPainted(false);
+		exit.setRolloverIcon(new ImageIcon(io.getImage(FILES.exitRollover)));
+		exit.addActionListener(new ExitAction());
 
 		// add(exit);
 		add(singlePlayer);
