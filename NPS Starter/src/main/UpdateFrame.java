@@ -25,8 +25,7 @@ public class UpdateFrame extends JFrame implements Serializable {
 	public static void main(String[] args) {
 		Properties p = new Properties();
 		try {
-//			p.load(new FileInputStream("properties.properties"));
-			p.load(new FileInputStream("A:\\Google Drive\\AVTECH\\NPS\\Files\\bin\\properties.properties"));
+			p.load(new FileInputStream("properties.properties"));
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
@@ -39,19 +38,19 @@ public class UpdateFrame extends JFrame implements Serializable {
 			// if the program isnt running
 			p.setProperty("running", "true");
 			try {
-				p.save(new FileOutputStream(new File("A:\\Google Drive\\AVTECH\\NPS\\Files\\bin\\properties.properties")),
+				p.save(new FileOutputStream(new File("properties.properties")),
 						"Properties File for Nazi Penguin Slayer");
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
 		}
 
-//		SplashScreen ss = new SplashScreen();
+		SplashScreen ss = new SplashScreen();
 		try {
 			Thread.sleep(1500);
 		} catch (Exception e) {
 		}
-//		ss.remove();
+		ss.remove();
 		UpdateFrame uf = new UpdateFrame();
 		// uf.openGame();
 	}
