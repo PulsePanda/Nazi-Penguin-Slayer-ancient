@@ -31,8 +31,8 @@ public class LoginPanel extends Panel {
 	}
 
 	private void create() {
-		userField.setBounds(595, 20, 155, 25);
-		passField.setBounds(595, 50, 155, 25);
+		userField.setBounds(550, 20, 155, 25);
+		passField.setBounds(550, 50, 155, 25);
 
 		login = new JButton("Login");
 		login.addActionListener(new ActionListener() {
@@ -40,7 +40,7 @@ public class LoginPanel extends Panel {
 				Login.login(userField.getText(), passField.getText());
 			}
 		});
-		login.setBounds(755, 50, 80, 24);
+		login.setBounds(710, 50, 125, 24);
 		// if the server is offline, change the button
 		Connection c = new Connection(FILES.IPAddress, FILES.port, null,
 				"online");
@@ -52,10 +52,14 @@ public class LoginPanel extends Panel {
 		options = new JButton("Create Account");
 		options.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Login.showOptionsWindow();
+				// Login.showOptionsWindow();
+				Login.createAccount();
 			}
 		});
-		options.setBounds(755, 20, 80, 24);
+		options.setBounds(710, 20, 125, 24);
+		if (!Login.serverOnline) {
+			options.setEnabled(false);
+		}
 
 		add(userField);
 		add(passField);
