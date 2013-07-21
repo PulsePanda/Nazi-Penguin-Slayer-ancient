@@ -62,10 +62,10 @@ public class Login extends Start {
 
 		f.add(new JScrollPane(display), BorderLayout.CENTER);
 		f.add(new LoginPanel(width, 100), BorderLayout.SOUTH);
-//		if (!serverOnline) {
-//			Dialogs.errorDiagExit("Server is not reachable. Please try again later."
-//					+ "We are sorry for the inconvenience!");
-//		}
+		// if (!serverOnline) {
+		// Dialogs.errorDiagExit("Server is not reachable. Please try again later."
+		// + "We are sorry for the inconvenience!");
+		// }
 		f.setVisible(true);
 	}
 
@@ -128,10 +128,7 @@ public class Login extends Start {
 			Desktop desktop = java.awt.Desktop.getDesktop();
 
 			URI oURL = new URI(
-					"https://www.paypal.com/us/cgi-bin/webscr?cmd=_flow&SESSION=v2Er1"
-							+ "RgMWXZuAPevHUMjU5io9Q6ptsjwnw45RLgL0_ftS0ON5YIN6jcSZuK&dispatch=5"
-							+ "0a222a57771920b6a3d7b606239e4d529b525e0b7e69bf0224adecfb0124e9b61f7"
-							+ "37ba21b081988da7a3c03e3ee25661350b6a36dba24a");
+					"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=PTJ4TDY34UVD2");
 			desktop.browse(oURL);
 		} catch (Exception e1) {
 			e1.printStackTrace();
