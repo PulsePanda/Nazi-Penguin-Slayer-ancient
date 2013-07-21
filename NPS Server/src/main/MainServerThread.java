@@ -108,8 +108,8 @@ public class MainServerThread extends MainServerClass implements Runnable,
 		p.setProperty("activated", "false");
 
 		try {
-			FileWriter fw = new FileWriter("/home/pi/Programming/NPS/Users/"
-					+ user + ".properties");
+			FileWriter fw = new FileWriter("A:\\test\\users\\" + user
+					+ ".properties");
 			p.store(fw, user + " user properties");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -122,7 +122,8 @@ public class MainServerThread extends MainServerClass implements Runnable,
 
 	private void checkUniqueUsername() {
 		String[] alf;
-		File originDir = new File("/home/pi/Programming/NPS/Users");
+		// File originDir = new File("/home/pi/Programming/NPS/Users");
+		File originDir = new File("A:\\test\\users");
 		alf = originDir.list();
 
 		String username = (String) read();
