@@ -2,6 +2,9 @@ package main;
 
 import java.awt.*;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.Serializable;
 import java.net.InetAddress;
@@ -9,6 +12,7 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
 import java.net.UnknownHostException;
+import java.util.Properties;
 
 import javax.swing.*;
 
@@ -19,6 +23,28 @@ public class UpdateFrame extends JFrame implements Serializable {
 	JProgressBar bar = new JProgressBar();
 
 	public static void main(String[] args) {
+		Properties p = new Properties();
+		try {
+			p.load(new FileInputStream("properties.properties"));
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+		// check to see if the game is already running
+		if (p.getProperty("running").equals("true")) {
+			// if the game is running
+			JOptionPane.showMessageDialog(null, "NPS is already running!");
+			System.exit(0);
+		} else {
+			// if the program isnt running
+			p.setProperty("running", "true");
+			try {
+				p.save(new FileOutputStream(new File("properties.properties")),
+						"Properties File for Nazi Penguin Slayer");
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+		}
+
 		SplashScreen ss = new SplashScreen();
 		try {
 			Thread.sleep(1500);

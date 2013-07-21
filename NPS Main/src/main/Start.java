@@ -29,33 +29,23 @@ public class Start {
 	public static Properties currentProp;
 
 	public static void main(String[] args) {
-		// loadEverything();
 		loadProperties();
-		// if (currentProp.getProperty("running").equals("true")) {
-		// Dialogs.msgDialog("Game already running. Either close this game, or close the other one.");
-		// System.exit(0);
-		// }
 
 		if (!currentProp.getProperty("version").equals(version)) {
 			currentProp.setProperty("version", version);
 		}
 
-		// if (currentProp.getProperty("running").equals("true")) {
-		// startMenuFrame();
-		// } else
-//		SplashScreen ss = new SplashScreen();
+		// SplashScreen ss = new SplashScreen();
 		try {
 			Thread.sleep(1000);
 		} catch (Exception e) {
 		}
 		Login.createFrame(); // use this in final version :D
-//		ss.remove();
+		// ss.remove();
 		// startMenuFrame(); // take this away when cleaning up
 	}
 
 	public static void startMenuFrame() {
-		currentProp.setProperty("running", "true");
-		FILES.saveProperties(currentProp);
 		mf = new Frame(800, 500, 0, 0, false, new MainScreenPanel(mf.getW(),
 				mf.getH()), "Nazi Penguin Slayer");
 
@@ -70,13 +60,6 @@ public class Start {
 	private static void loadProperties() {
 		currentProp = new Properties();
 		try {
-			// currentProp.load(new FileInputStream("properties.properties"));
-			// //default
-
-			// currentProp
-			// .load(new FileInputStream(
-			// "A:\\Google Drive\\AVTECH\\NPS\\Files\\bin\\properties.properties"));
-
 			currentProp
 					.load(new FileInputStream(
 							"C:\\Users\\Austin\\Google Drive\\AVTECH\\NPS\\Files\\bin\\properties.properties"));
