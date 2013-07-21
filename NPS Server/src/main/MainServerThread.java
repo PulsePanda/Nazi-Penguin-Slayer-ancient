@@ -42,7 +42,7 @@ public class MainServerThread extends MainServerClass implements Runnable,
 			in = new ObjectInputStream(socket.getInputStream());
 			textArea.append("New connection from "
 					+ socket.getLocalAddress().toString()
-					+ " has been established.");
+					+ " has been established.\n");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -80,6 +80,7 @@ public class MainServerThread extends MainServerClass implements Runnable,
 	}
 
 	private void createAccount() {
+		textArea.append("creating account\n");
 		String user;
 		String pass;
 		String email;
@@ -121,6 +122,7 @@ public class MainServerThread extends MainServerClass implements Runnable,
 	}
 
 	private void checkUniqueUsername() {
+		textArea.append("checking for a unique username\n");
 		String[] alf;
 		// File originDir = new File("/home/pi/Programming/NPS/Users");
 		File originDir = new File("A:\\test\\users");
