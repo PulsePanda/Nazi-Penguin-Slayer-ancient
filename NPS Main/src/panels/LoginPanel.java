@@ -49,7 +49,7 @@ public class LoginPanel extends Panel {
 			login.setEnabled(false);
 		}
 
-		options = new JButton("Options");
+		options = new JButton("Create Account");
 		options.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Login.showOptionsWindow();
