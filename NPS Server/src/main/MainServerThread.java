@@ -185,7 +185,7 @@ public class MainServerThread extends MainServerClass implements Runnable,
 		Properties p = new Properties();
 
 		String[] alf;
-		File originDir = new File("/home/pi/Programming/NPS/Users");
+		File originDir = new File("A:\\test\\users");
 		alf = originDir.list();
 
 		for (int i = 0; i < alf.length; i++) {
