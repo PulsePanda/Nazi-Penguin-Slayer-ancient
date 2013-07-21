@@ -30,8 +30,8 @@ public class MainServerClass implements Serializable {
 	public static ArrayList<String> filesToUpdateArray = new ArrayList<String>();
 	public static ArrayList<String> filesToUpdateFinalArray = new ArrayList<String>();
 	public static ArrayList<String> connectedIPs = new ArrayList<String>();
-	static String filesToUpdateDir = "/home/pi/Programming/NPS/Files/bin/Files to Update.txt";
-	static String filesToUpdateFinalDir = "/home/pi/Programming/NPS/Files/bin/Files to Update final Dirs.txt";
+	static String filesToUpdateDir = "A:\\test\\Files to Update.txt";
+	static String filesToUpdateFinalDir = "A:\\test\\Files to Update final Dirs.txt";
 	public static ArrayList<String> loggedin = new ArrayList<String>();
 
 	// parts of the frame
@@ -54,7 +54,7 @@ public class MainServerClass implements Serializable {
 
 		textArea.append("Made by AVTECH Software\n");
 		textArea.append("Version: " + MainServerThread.version + "\n");
-		textArea.append("Server Started\nType 'exit' to exit.\n");
+		textArea.append("Server Started\n\n");
 
 		try {
 			serverSocket = new ServerSocket(6987);
@@ -101,7 +101,7 @@ public class MainServerClass implements Serializable {
 
 		closeServer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				shutdown();
 			}
 		});
 		commandPanel.add(closeServer);
