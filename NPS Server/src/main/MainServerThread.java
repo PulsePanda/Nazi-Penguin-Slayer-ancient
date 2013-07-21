@@ -80,7 +80,6 @@ public class MainServerThread extends MainServerClass implements Runnable,
 	}
 
 	private void createAccount() {
-		textArea.append("creating account\n");
 		String user;
 		String pass;
 		String email;
@@ -122,7 +121,7 @@ public class MainServerThread extends MainServerClass implements Runnable,
 	}
 
 	private void checkUniqueUsername() {
-		textArea.append("checking for a unique username\n");
+		boolean matched = false;
 		String[] alf;
 		// File originDir = new File("/home/pi/Programming/NPS/Users");
 		File originDir = new File("A:\\test\\users");
@@ -131,9 +130,15 @@ public class MainServerThread extends MainServerClass implements Runnable,
 		String username = (String) read();
 
 		for (int i = 0; i < alf.length; i++) {
-			if (alf[i].equals(username)) {
-				send("matched");
+			if (alf[i].equals(username + ".properties")) {
+				matched = true;
 			}
+		}
+
+		if (matched) {
+			send("matched");
+		} else {
+			send("no match");
 		}
 
 		closeEverything();

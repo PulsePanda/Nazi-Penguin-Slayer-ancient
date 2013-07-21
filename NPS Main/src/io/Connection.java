@@ -146,6 +146,7 @@ public class Connection implements Serializable {
 
 	public void uniqueUsername() {
 		String username = Login.createUsername;
+		
 		send("uniqueUsername");
 		if (!read().equals("ok")) {
 			Login.uniqueUsername = false;

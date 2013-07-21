@@ -60,7 +60,7 @@ public class Start {
 	private static void loadProperties() {
 		currentProp = new Properties();
 		try {
-			currentProp.load(new FileInputStream("properties.properties"));
+			currentProp.load(new FileInputStream("A:\\Google Drive\\AVTECH\\NPS\\Files\\bin\\properties.properties"));
 		} catch (IOException e) {
 			e.printStackTrace();
 			Dialogs.errorDiagExit("Cannot Find Properties File! Please Reinstall The Game");
