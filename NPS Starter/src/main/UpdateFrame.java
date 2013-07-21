@@ -21,9 +21,9 @@ public class UpdateFrame extends JFrame implements Serializable {
 	JLabel title;
 	static boolean serverOnline = true;
 	JProgressBar bar = new JProgressBar();
+	static Properties p = new Properties();
 
 	public static void main(String[] args) {
-		Properties p = new Properties();
 		try {
 			p.load(new FileInputStream("properties.properties"));
 		} catch (Exception e1) {
@@ -81,6 +81,13 @@ public class UpdateFrame extends JFrame implements Serializable {
 							null,
 							"Server is offline. Make sure you are\nconnected to the internet, and try again."
 									+ "\nIf problem continues, please check our FAQ's");
+			p.setProperty("running", "false");
+			try {
+				p.save(new FileOutputStream(new File("properties.properties")),
+						"Properties File for Nazi Penguin Slayer");
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
 		} else
 			try {
 				Desktop desktop = Desktop.getDesktop();
