@@ -6,7 +6,4 @@ would be a hill, another would be a cave pit, etc...)
 
 >make the collision work
 
->make sure that the changes i made to "create account" and stuff work, ie the server will check for a
-unique login name, the server will create a new account file, etc.
-
 >change how the game updates, so that it will know what files to download, instead of individual...

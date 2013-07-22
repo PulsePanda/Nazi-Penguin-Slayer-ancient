@@ -5,21 +5,27 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Serializable;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Properties;
 import java.util.Set;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 public class MainServerClass implements Serializable {
 
@@ -94,7 +100,7 @@ public class MainServerClass implements Serializable {
 		commandPanel.setLayout(new FlowLayout());
 		activateAccount.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				activateAccount();
 			}
 		});
 		commandPanel.add(activateAccount);
@@ -158,5 +164,54 @@ public class MainServerClass implements Serializable {
 			e.printStackTrace();
 		}
 		return al;
+	}
+
+	public static void activateAccount() {
+		final JDialog j = new JDialog();
+		j.setLayout(null);
+		j.setSize(330, 100);
+		j.setResizable(false);
+
+		final JTextField email = new JTextField();
+		email.setBounds(10, 10, 300, 25);
+
+		JButton activate = new JButton("Activate");
+		activate.setBounds(10, 35, 300, 25);
+		activate.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				Properties p = new Properties();
+				String[] alf;
+				File originDir = new File("A:\\test\\users");
+				alf = originDir.list();
+
+				for (int i = 0; i < alf.length; i++) {
+					try {
+						String dir = originDir.getPath() + "\\" + alf[i];
+						p.load(new FileInputStream(dir));
+
+						if (p.getProperty("email").equals(email.getText())) {
+							p.setProperty("activated", "true");
+							String user = p.getProperty("username");
+							p.save(new FileOutputStream(new File(dir)), user
+									+ " user properties");
+							textArea.append("User account " + user
+									+ " has been activated.\n");
+						}
+					} catch (Exception e) {
+						textArea.append("User was failed to be activated.\n");
+						e.printStackTrace();
+					}
+				}
+
+				j.dispose();
+			}
+		});
+
+		j.add(email);
+		j.add(activate);
+
+		j.setLocationRelativeTo(frame);
+		j.setVisible(true);
 	}
 }
