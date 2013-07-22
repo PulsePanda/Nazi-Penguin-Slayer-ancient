@@ -5,16 +5,21 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Serializable;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Properties;
 import java.util.Set;
 
@@ -38,7 +43,11 @@ public class MainServerClass implements Serializable {
 	public static ArrayList<String> connectedIPs = new ArrayList<String>();
 	static String filesToUpdateDir = "A:\\test\\Files to Update.txt";
 	static String filesToUpdateFinalDir = "A:\\test\\Files to Update final Dirs.txt";
+	static String logFileDir = "A:\\test\\logs";
 	public static ArrayList<String> loggedin = new ArrayList<String>();
+
+	public static String time, date;
+	public static File logFile;
 
 	// parts of the frame
 	static JFrame frame = new JFrame("NPS Server");
@@ -58,9 +67,9 @@ public class MainServerClass implements Serializable {
 		filesToUpdateArray = readWholeFile(filesToUpdateDir);
 		filesToUpdateFinalArray = readWholeFile(filesToUpdateFinalDir);
 
-		textArea.append("Made by AVTECH Software\n");
-		textArea.append("Version: " + MainServerThread.version + "\n");
-		textArea.append("Server Started\n\n");
+		updateArea("Made by AVTECH Software");
+		updateArea("Version: " + MainServerThread.version);
+		updateArea("Server Started");
 
 		try {
 			serverSocket = new ServerSocket(6987);
@@ -82,6 +91,7 @@ public class MainServerClass implements Serializable {
 	}
 
 	private static void makeFrame() {
+		createNewLogFile();
 		tabbedPane.addTab("Output", outputPanel);
 		tabbedPane.addTab("Commands", commandPanel);
 
@@ -129,7 +139,7 @@ public class MainServerClass implements Serializable {
 	}
 
 	public static void shutdown() {
-		textArea.append("Shutting Down...");
+		updateArea("Shutting Down...");
 		setListening(false);
 		boolean isOneAlive = true;
 		while (isOneAlive) {
@@ -140,7 +150,7 @@ public class MainServerClass implements Serializable {
 				}
 			}
 		}
-		textArea.append("Shutdown. Goodbye!");
+		updateArea("Shutdown. Goodbye!");
 		System.exit(0);
 	}
 
@@ -195,11 +205,11 @@ public class MainServerClass implements Serializable {
 							String user = p.getProperty("username");
 							p.save(new FileOutputStream(new File(dir)), user
 									+ " user properties");
-							textArea.append("User account " + user
-									+ " has been activated.\n");
+							updateArea("User account " + user
+									+ " has been activated.");
 						}
 					} catch (Exception e) {
-						textArea.append("User was failed to be activated.\n");
+						updateArea("User was failed to be activated.");
 						e.printStackTrace();
 					}
 				}
@@ -213,5 +223,37 @@ public class MainServerClass implements Serializable {
 
 		j.setLocationRelativeTo(frame);
 		j.setVisible(true);
+	}
+
+	private static void createNewLogFile() {
+		String filename;
+		time = new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance()
+				.getTime());
+		date = new SimpleDateFormat("MM-dd-yyyy").format(Calendar.getInstance()
+				.getTime());
+
+		filename = logFileDir + "\\" + date + ".txt";
+
+		logFile = new File(filename);
+		if (!logFile.exists())
+			try {
+				logFile.createNewFile();
+			} catch (IOException e) {
+				updateArea("Unable to create the new log file at " + filename);
+			}
+	}
+
+	public static void updateArea(String s) {
+		BufferedWriter writer;
+		try {
+			writer = new BufferedWriter(new FileWriter(logFile, true));
+			writer.write(time + ": " + s);
+			writer.newLine();
+			writer.close();
+		} catch (IOException e) {
+			textArea.append(time + ": " + "Unable to write to the log file!\n");
+			e.printStackTrace();
+		}
+		textArea.append(time + ": " + s + "\n");
 	}
 }

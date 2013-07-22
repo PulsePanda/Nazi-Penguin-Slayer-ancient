@@ -40,9 +40,9 @@ public class MainServerThread extends MainServerClass implements Runnable,
 			out = new ObjectOutputStream(socket.getOutputStream());
 			out.flush();
 			in = new ObjectInputStream(socket.getInputStream());
-			textArea.append("New connection from "
+			MainServerClass.updateArea("New connection from "
 					+ socket.getLocalAddress().toString()
-					+ " has been established.\n");
+					+ " has been established.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -52,20 +52,20 @@ public class MainServerThread extends MainServerClass implements Runnable,
 		switch ((String) read()) {
 		case "update":
 			send("ok");
-			textArea.append(socket.getLocalAddress().toString()
-					+ " is updating\n");
+			MainServerClass.updateArea(socket.getLocalAddress().toString()
+					+ " is updating");
 			updateClient();
 			break;
 		case "login":
 			send("ok");
-			textArea.append(socket.getLocalAddress().toString()
-					+ " is logging in\n");
+			MainServerClass.updateArea(socket.getLocalAddress().toString()
+					+ " is logging in");
 			login();
 			break;
 		case "logout":
 			send("ok");
-			textArea.append(socket.getLocalAddress().toString()
-					+ " is logging out\n");
+			MainServerClass.updateArea(socket.getLocalAddress().toString()
+					+ " is logging out");
 			logout();
 			break;
 		case "uniqueUsername":
@@ -216,8 +216,8 @@ public class MainServerThread extends MainServerClass implements Runnable,
 
 		if (usernameMatched && passwordMatched && activated) {
 
-			textArea.append(socket.getLocalAddress() + " " + username
-					+ " successfully logged in\n");
+			MainServerClass.updateArea(socket.getLocalAddress() + " "
+					+ username + " successfully logged in");
 			loggedin.add(socket.getLocalAddress().toString());
 			send(p);
 		}
@@ -237,8 +237,8 @@ public class MainServerThread extends MainServerClass implements Runnable,
 			out.flush();
 			out.close();
 			socket.close();
-			textArea.append("Closed Everything on "
-					+ socket.getLocalAddress().toString() + "\n");
+			MainServerClass.updateArea("Closed Everything on "
+					+ socket.getLocalAddress().toString());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
