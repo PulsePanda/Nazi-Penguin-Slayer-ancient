@@ -32,7 +32,6 @@ public class MainServerThread extends MainServerClass implements Runnable,
 	ObjectOutputStream out;
 	static String version = "0.0.1";
 	String username;
-	static ArrayList<File> finalFiles = new ArrayList<File>();
 
 	public MainServerThread(Socket s) {
 		socket = s;
@@ -155,31 +154,11 @@ public class MainServerThread extends MainServerClass implements Runnable,
 		if (!read().equals("ok"))
 			return;
 
-		/**
-		 * put a way to read the size of EVERY file, and send it to the client
-		 * 
-		 * OR CONTROVERSLY, HAVE THE CLIENT DO THE SAME, AND JUST SEND THE INFO.
-		 * LESS DATA SENT
-		 */
-
-		String gameDir = "A:\\test\\NPS\\Files\\";
-		File original = new File(gameDir);
-
-		getList(original); // adds all of the FILES to the variable finalFiles
-		FileInfo[] fileInfos = new FileInfo[finalFiles.size()]; //make an array of objects that i need 
-
-		/**
-		 * end of test
-		 */
-
 		// tell client the number of files going to be sent
 		send(filesToUpdateArray.size());
 		if (!read().equals("ok"))
 			return;
 
-		/**
-		 * would have to change how this "sending" thing would work though...
-		 */
 		// send the files
 		for (int i = 0; i < filesToUpdateArray.size(); i++) {
 			String localFileDir = filesToUpdateArray.get(i);
@@ -188,7 +167,7 @@ public class MainServerThread extends MainServerClass implements Runnable,
 			UpdateObject uo = new UpdateObject(clientFileDir,
 					copyFile(localFileDir));
 
-			send(uo);
+			send(uo); // ERROR SENDING THE OBJECT!!!!!
 			if (!read().equals("ok"))
 				return;
 		}
@@ -197,19 +176,6 @@ public class MainServerThread extends MainServerClass implements Runnable,
 		if (!read().equals("ok"))
 			return;
 		closeEverything();
-	}
-
-	public static void getList(File f) {
-		File[] files = f.listFiles();
-
-		for (int i = 0; i < files.length; i++) {
-			if (files[i].isDirectory())
-				getList(files[i]);
-			else if (files[i].isFile())
-				finalFiles.add(files[i]);
-			else
-				System.out.println("fail");
-		}
 	}
 
 	public void login() {
@@ -289,28 +255,10 @@ public class MainServerThread extends MainServerClass implements Runnable,
 			BufferedInputStream bis = new BufferedInputStream(fis);
 			bis.read(mybytearray, 0, mybytearray.length);
 		} catch (Exception e) {
-			MainServerClass.updateArea(e.getMessage());
+			e.printStackTrace();
 		}
 
 		return mybytearray;
-	}
-
-	public int getFileSize(String dir) {
-		File f = new File(dir);
-		byte[] mybytearray = null;
-
-		try {
-			mybytearray = new byte[(int) f.length()];
-			FileInputStream fis;
-			fis = new FileInputStream(f);
-			BufferedInputStream bis = new BufferedInputStream(fis);
-			bis.read(mybytearray, 0, mybytearray.length);
-		} catch (Exception e) {
-			MainServerClass.updateArea(e.getMessage());
-		}
-
-		int length = mybytearray.length;
-		return length;
 	}
 
 	public boolean isClientUpToDate() {
@@ -332,7 +280,7 @@ public class MainServerThread extends MainServerClass implements Runnable,
 			out.writeObject(ob);
 			out.flush();
 		} catch (IOException e) {
-			MainServerClass.updateArea(e.getMessage());
+			e.printStackTrace();
 		}
 	}
 
