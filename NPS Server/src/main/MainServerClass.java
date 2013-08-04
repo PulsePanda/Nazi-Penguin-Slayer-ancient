@@ -44,6 +44,7 @@ public class MainServerClass implements Serializable {
 	static String filesToUpdateDir = "A:\\test\\Files to Update.txt";
 	static String filesToUpdateFinalDir = "A:\\test\\Files to Update final Dirs.txt";
 	static String logFileDir = "A:\\test\\logs";
+	public static String updateDir = "A:\\test\\updates";
 	public static ArrayList<String> loggedin = new ArrayList<String>();
 
 	public static String time, date;
