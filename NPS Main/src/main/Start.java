@@ -25,7 +25,7 @@ public class Start {
 	public static Frame mf;
 	static IO io = new IO();
 	static PlaySound l = new PlaySound();
-	static final String version = "0.0.1";
+	static final String version = "0_0_1";
 	public static Properties currentProp;
 
 	public static void main(String[] args) {
@@ -60,7 +60,9 @@ public class Start {
 	private static void loadProperties() {
 		currentProp = new Properties();
 		try {
-			currentProp.load(new FileInputStream("A:\\Google Drive\\AVTECH\\NPS\\Files\\bin\\properties.properties"));
+			currentProp
+					.load(new FileInputStream(
+							"A:\\Google Drive\\AVTECH\\NPS\\Files\\bin\\properties.properties"));
 		} catch (IOException e) {
 			e.printStackTrace();
 			Dialogs.errorDiagExit("Cannot Find Properties File! Please Reinstall The Game");

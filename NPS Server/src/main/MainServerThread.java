@@ -30,8 +30,9 @@ public class MainServerThread extends MainServerClass implements Runnable,
 	Socket socket;
 	ObjectInputStream in;
 	ObjectOutputStream out;
-	static String version = "0.0.1";
+	static String version = "0_0_1";
 	String username;
+	String clientVersion;
 
 	public MainServerThread(Socket s) {
 		socket = s;
@@ -154,20 +155,44 @@ public class MainServerThread extends MainServerClass implements Runnable,
 		if (!read().equals("ok"))
 			return;
 
-		// tell client the number of files going to be sent
-		send(filesToUpdateArray.size());
+		/**
+		 * figure out which zip to send
+		 * 
+		 * ****test zip is named 0_0_2.zip***
+		 */
+		System.out.println("starting");
+		String clientVersion = "0_0_2";
+		String zipLocation = "A:\\test\\patches\\";
+		File zipsDir = new File(zipLocation);
+		String[] zipFiles = zipsDir.list();
+		ArrayList<File> zipsToSend = new ArrayList<File>();
+		ArrayList<UpdateObject> updateArray = new ArrayList<UpdateObject>();
+		int filesIndex = 0;
+
+		for (int i = 0; i < zipFiles.length; i++) {
+			if (zipFiles[i].equals(clientVersion + ".zip")) {
+				filesIndex = i + 1;
+			}
+		}
+
+		for (int i = filesIndex; i < zipFiles.length; i++) {
+			zipsToSend.add(new File("A:\\test\\patches\\" + zipFiles[i]));
+		}
+
+		// number of files going to be sent
+		send(updateArray.size());
 		if (!read().equals("ok"))
 			return;
 
+		// add all the update files
+		for (int i = 0; i < zipsToSend.size(); i++) {
+			updateArray.add(new UpdateObject(zipsToSend.get(i).getPath(),
+					copyFile(zipsToSend.get(i).getPath())));
+		}
+
 		// send the files
-		for (int i = 0; i < filesToUpdateArray.size(); i++) {
-			String localFileDir = filesToUpdateArray.get(i);
-			String clientFileDir = filesToUpdateFinalArray.get(i);
-
-			UpdateObject uo = new UpdateObject(clientFileDir,
-					copyFile(localFileDir));
-
-			send(uo); // ERROR SENDING THE OBJECT!!!!!
+		for (int i = 0; i < updateArray.size(); i++) {
+			send(updateArray.get(i));
 			if (!read().equals("ok"))
 				return;
 		}
@@ -265,7 +290,7 @@ public class MainServerThread extends MainServerClass implements Runnable,
 		boolean upToDate = false;
 
 		send("get version");
-		String clientVersion = (String) read();
+		clientVersion = (String) read();
 
 		if (clientVersion.equals(version))
 			upToDate = true;

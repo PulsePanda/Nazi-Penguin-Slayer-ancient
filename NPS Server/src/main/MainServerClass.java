@@ -61,6 +61,7 @@ public class MainServerClass implements Serializable {
 
 	static JButton activateAccount = new JButton("Activate Account");
 	static JButton closeServer = new JButton("Close Server");
+	static JButton changeVersion = new JButton("Change Server Version");
 
 	public static void main(String[] args) {
 		makeFrame();
@@ -122,6 +123,12 @@ public class MainServerClass implements Serializable {
 			}
 		});
 		commandPanel.add(closeServer);
+
+		changeVersion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 
 		frame.setSize(500, 400);
 		frame.add(tabbedPane);
