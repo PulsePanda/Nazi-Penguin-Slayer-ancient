@@ -6,6 +6,4 @@ would be a hill, another would be a cave pit, etc...)
 
 >make the collision work
 
->change how the game updates, so that it will know what files to download, instead of individual...
-
 >test the update stuff, then make the "nps starter" unzip the files and move them
