@@ -5,15 +5,15 @@ import java.io.Serializable;
 public class UpdateObject implements Serializable {
 
 	byte[] bytes;
-	String path;
+	String fileName;
 
-	public UpdateObject(String finalDir, byte[] bytes) {
+	public UpdateObject(String fileName, byte[] bytes) {
 		this.bytes = bytes;
-		path = finalDir;
+		this.fileName = fileName;
 	}
 
-	public String getPath() {
-		return path;
+	public String getFileName() {
+		return fileName;
 	}
 
 	public byte[] getFile() {

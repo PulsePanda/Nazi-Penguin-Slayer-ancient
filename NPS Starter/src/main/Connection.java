@@ -63,10 +63,14 @@ public class Connection implements Serializable {
 		if (!read().equals("updating"))
 			return;
 		send("ok");
+
 		numberOfFiles = (int) read();
 		send("ok");
 		bar.setMaximum(numberOfFiles);
 
+		/**
+		 * as far as i have gotten....
+		 */
 		for (int i = 0; i < numberOfFiles; i++) {
 			UpdateObject uo = (UpdateObject) read();
 			copyUpdate(uo);
@@ -93,7 +97,8 @@ public class Connection implements Serializable {
 
 	public void copyUpdate(UpdateObject o) {
 		try {
-			FileOutputStream fileOutStream = new FileOutputStream(o.getPath());
+			FileOutputStream fileOutStream = new FileOutputStream("../patches/"
+					+ o.getFileName());
 			fileOutStream.write(o.getFile());
 			fileOutStream.close();
 		} catch (Exception e) {
@@ -109,7 +114,6 @@ public class Connection implements Serializable {
 			version = p.getProperty("version");
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.err.println("FAIL!!!");
 		}
 		// FileReader fileReader;
 		// String version = null;
