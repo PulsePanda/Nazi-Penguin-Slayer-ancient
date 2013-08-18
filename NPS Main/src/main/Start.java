@@ -25,15 +25,13 @@ public class Start {
 	public static Frame mf;
 	static IO io = new IO();
 	static PlaySound l = new PlaySound();
-	static final String version = "0_0_1";
+	static String version;
 	public static Properties currentProp;
 
 	public static void main(String[] args) {
 		loadProperties();
 
-		if (!currentProp.getProperty("version").equals(version)) {
-			currentProp.setProperty("version", version);
-		}
+		version = currentProp.getProperty("version");
 
 		// SplashScreen ss = new SplashScreen();
 		try {
