@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Properties;
+import java.util.Random;
 
 import javax.swing.JFrame;
 import javax.swing.JProgressBar;
@@ -213,7 +214,17 @@ public class Core {
 
 				list.add(tiles[w][h]);
 			}
+
 		}
+
+		Random rand = new Random();
+		int x, y;
+		x = rand.nextInt(tilew);
+		y = (tileh / 2) - rand.nextInt(6);
+
+		tiles[x][y].setID(1);
+		tiles[x - 1][y - 1].setID(1); // down 1, right 1
+		tiles[x - 2][y - 2].setID(1);
 
 		loadingFrame.remove();
 	}
