@@ -58,38 +58,10 @@ public class Start {
 	private static void loadProperties() {
 		currentProp = new Properties();
 		try {
-			currentProp
-					.load(new FileInputStream(
-							"A:\\Google Drive\\AVTECH\\NPS\\Files\\bin\\properties.properties"));
+			currentProp.load(new FileInputStream(FILES.propDir));
 		} catch (IOException e) {
 			e.printStackTrace();
 			Dialogs.errorDiagExit("Cannot Find Properties File! Please Reinstall The Game");
-		}
-	}
-
-	private static void loadEverything() {
-		Start s = new Start();
-		s.checkImages();
-	}
-
-	private void checkImages() {
-		String[] f = { FILES.backButton, FILES.backButtonRollover,
-				FILES.mainPanelBackgroundImage, FILES.mulitplayerJoinRollover,
-				FILES.multiplayerBackground, FILES.multiPlayerButton,
-				FILES.multiplayerHostButton, FILES.multiplayerHostRollover,
-				FILES.multiplayerJoinButton, FILES.multiPlayerRollover,
-				FILES.optionBackground, FILES.optionButton,
-				FILES.optionRollover, FILES.optionsControlButton,
-				FILES.optionsControlRollover, FILES.singlePlayerBackground,
-				FILES.singlePlayerButton, FILES.singlePlayerRollover,
-				FILES.singlePlayerStartButton, FILES.singlePlayerStartRollover,
-				FILES.exitButton };
-		for (int i = 0; i < f.length; i++) {
-			URL url = this.getClass().getClassLoader().getResource(f[i]);
-			if (url == null) {
-				Dialogs.errorDiagExit("Cannot Find the file from the url "
-						+ f[i] + "!");
-			}
 		}
 	}
 }
