@@ -13,7 +13,10 @@ import java.io.Serializable;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.Properties;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
 import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
@@ -63,10 +66,14 @@ public class Connection implements Serializable {
 		if (!read().equals("updating"))
 			return;
 		send("ok");
+
 		numberOfFiles = (int) read();
 		send("ok");
 		bar.setMaximum(numberOfFiles);
 
+		/**
+		 * as far as i have gotten....
+		 */
 		for (int i = 0; i < numberOfFiles; i++) {
 			UpdateObject uo = (UpdateObject) read();
 			copyUpdate(uo);
@@ -78,6 +85,75 @@ public class Connection implements Serializable {
 		if (!read().equals("done"))
 			return;
 		send("ok");
+
+		/**
+		 * unpack and move the files now
+		 */
+		// get the list of zips downloaded
+		File dir = new File("../patches/");
+		String[] list = dir.list();
+
+		for (int i = 0; i < list.length; i++) {
+			String fileName = "../patches/" + list[i];
+			unZipIt(fileName, "../patches/temp");
+		}
+		// all of the zip files are now unzipped to the temp folder
+
+		// get a list of all the 'temp' files
+		dir = new File("../patches/temp/");
+		list = dir.list();
+
+		String binDir = "../bin/";
+		String imgDir = "../graphic/";
+		String soundDir = "../audio/";
+
+		for (int i = 0; i < list.length; i++) {
+			String fileName = list[i];
+			String filePath = "../patches/temp/" + fileName;
+
+			// if the file belongs in the bin folder
+			if (fileName.contains(".jar") || fileName.contains(".properties")) {
+				// delete the old file
+				File oldFile = new File(binDir + fileName);
+				oldFile.delete();
+				// move the new file to the binDir
+				File newFile = new File(filePath);
+				newFile.renameTo(new File(binDir + fileName));
+			}
+
+			// if the file belongs in the graphic folder
+			if (fileName.contains(".png") || fileName.contains(".jpg")
+					|| fileName.contains(".jpeg") || fileName.contains(".gif")) {
+				// delete the old file
+				File oldFile = new File(imgDir + fileName);
+				oldFile.delete();
+				// move the new file to the binDir
+				File newFile = new File(filePath);
+				newFile.renameTo(new File(imgDir + fileName));
+			}
+
+			// if the file belongs in the audio file
+			if (fileName.contains(".wav") || fileName.contains(".mp3")
+					|| fileName.contains(".mp4")) {
+				// delete the old file
+				File oldFile = new File(soundDir + fileName);
+				oldFile.delete();
+				// move the new file to the binDir
+				File newFile = new File(filePath);
+				newFile.renameTo(new File(soundDir + fileName));
+			}
+
+			// delete all the files in 'patch'
+			deleteEverythingInPatches();
+		}
+	}
+
+	private void deleteEverythingInPatches() {
+		File dir = new File("../patches/");
+		File[] files = dir.listFiles();
+		for (int i = 0; i < files.length; i++) {
+			files[i].delete();
+		}
 	}
 
 	public void closeEverything() {
@@ -93,7 +169,8 @@ public class Connection implements Serializable {
 
 	public void copyUpdate(UpdateObject o) {
 		try {
-			FileOutputStream fileOutStream = new FileOutputStream(o.getPath());
+			FileOutputStream fileOutStream = new FileOutputStream("../patches/"
+					+ o.getFileName());
 			fileOutStream.write(o.getFile());
 			fileOutStream.close();
 		} catch (Exception e) {
@@ -109,7 +186,6 @@ public class Connection implements Serializable {
 			version = p.getProperty("version");
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.err.println("FAIL!!!");
 		}
 		// FileReader fileReader;
 		// String version = null;
@@ -144,6 +220,51 @@ public class Connection implements Serializable {
 			out.flush();
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+	}
+
+	public void unZipIt(String zipFile, String outputFolder) {
+		byte[] buffer = new byte[1024];
+
+		try {
+
+			// create output directory is not exists
+			File folder = new File(outputFolder);
+			if (!folder.exists()) {
+				folder.mkdir();
+			}
+
+			// get the zip file content
+			ZipInputStream zis = new ZipInputStream(
+					new FileInputStream(zipFile));
+			// get the zipped file list entry
+			ZipEntry ze = zis.getNextEntry();
+
+			while (ze != null) {
+
+				String fileName = ze.getName();
+				File newFile = new File(outputFolder + File.separator
+						+ fileName);
+
+				// create all non exists folders
+				// else you will hit FileNotFoundException for compressed folder
+				new File(newFile.getParent()).mkdirs();
+
+				FileOutputStream fos = new FileOutputStream(newFile);
+
+				int len;
+				while ((len = zis.read(buffer)) > 0) {
+					fos.write(buffer, 0, len);
+				}
+
+				fos.close();
+				ze = zis.getNextEntry();
+			}
+
+			zis.closeEntry();
+			zis.close();
+		} catch (IOException ex) {
+			ex.printStackTrace();
 		}
 	}
 }

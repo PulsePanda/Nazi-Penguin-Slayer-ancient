@@ -158,10 +158,8 @@ public class MainServerThread extends MainServerClass implements Runnable,
 		/**
 		 * figure out which zip to send
 		 * 
-		 * ****test zip is named 0_0_2.zip***
 		 */
-		System.out.println("starting");
-		String clientVersion = "0_0_2";
+
 		String zipLocation = "A:\\test\\patches\\";
 		File zipsDir = new File(zipLocation);
 		String[] zipFiles = zipsDir.list();
@@ -186,7 +184,7 @@ public class MainServerThread extends MainServerClass implements Runnable,
 
 		// add all the update files
 		for (int i = 0; i < zipsToSend.size(); i++) {
-			updateArray.add(new UpdateObject(zipsToSend.get(i).getPath(),
+			updateArray.add(new UpdateObject(zipsToSend.get(i).getName(),
 					copyFile(zipsToSend.get(i).getPath())));
 		}
 

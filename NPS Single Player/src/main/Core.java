@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Properties;
+import java.util.Random;
 
 import javax.swing.JFrame;
 import javax.swing.JProgressBar;
@@ -186,24 +187,9 @@ public class Core {
 				/**
 				 * everything else
 				 */
-				// establish 2nd level increase. h - 1
-				if (h == (tileh / 2) - 1
-						&& tiles[subtract(w, 1)][h].getID() != 1
-						&& tiles[subtract(w, 2)][h].getID() != 1
-						&& tiles[subtract(w, 3)][h].getID() != 1) {
-					// the ands make sure there is a gap of 3
-
-					if (time % 8 == 0) {
-						tiles[w][h].setID(1);
-						tiles[add(w, 1, 'w')][h].setID(2);
-						tiles[add(w, 2, 'w')][h].setID(1);
-						tiles[add(w, 1, 'w')][subtract(h, 1)].setID(1);
-						// tiles[add(w, 1, 'w')][add(h, 1, 'h')].setID(2);
-					}
-				}
 
 				/**
-				 * put these last two if's last to clean up everything
+				 * put these two if's last to clean up everything
 				 */
 				// make sure the top block is grass
 				if (tiles[w][subtract(h, 1)].getID() == 0)
@@ -215,12 +201,30 @@ public class Core {
 				if (tiles[w][subtract(h, 1)].getID() == 1)
 					tiles[w][h].setID(2); // set to dirt if directly under the
 											// grass
-				if (h == (tileh / 2) + 1)
-					tiles[w][h].setID(2);
+
+				// sets a base line of the dirt 1 below the half way point. i
+				// dont honestly see a point to this, so i commented it out for
+				// now
+				// if (h == (tileh / 2) + 1)
+				// tiles[w][h].setID(2);
+
+				/*****************
+				 * end of different try
+				 */
 
 				list.add(tiles[w][h]);
 			}
+
 		}
+
+		Random rand = new Random();
+		int x, y;
+		x = rand.nextInt(tilew);
+		y = (tileh / 2) - rand.nextInt(6);
+
+		tiles[x][y].setID(1);
+		tiles[x - 1][y - 1].setID(1); // down 1, right 1
+		tiles[x - 2][y - 2].setID(1);
 
 		loadingFrame.remove();
 	}
