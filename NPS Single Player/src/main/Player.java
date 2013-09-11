@@ -9,9 +9,9 @@ public class Player {
 	private static BufferedImage img;
 	private static String imgDir = FILES.playerImage, facing = "right";
 	private static IO io = new IO();
-	private static int x = 493, y = 250, w = 20, h = w, baseMoveSpeed = 20,
+	private static int x = 493, y = 250, w = 20, h = w, baseMoveSpeed = 5,
 			moveSpeed = baseMoveSpeed, moveX = 0, moveY = 0, jumpHeight = 20,
-			fallSpeed = -2;
+			fallSpeed = -5;
 	private static boolean visible = true, allowGravity = true,
 			falling = false, ableToMove = true, jumping = false;
 	private static Core core;

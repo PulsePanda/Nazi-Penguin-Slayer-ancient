@@ -86,13 +86,19 @@ public class Connection implements Serializable {
 			return;
 		send("ok");
 
-		/**
-		 * unpack and move the files now
-		 */
 		// get the list of zips downloaded
 		File dir = new File("../patches/");
 		String[] list = dir.list();
 
+		/**
+		 * get the newest (most recent version)
+		 */
+		int listLength = list.length;
+		String mostRecentVersion = list[listLength - 1];
+		Properties p = UpdateFrame.p;
+		p.setProperty("version", mostRecentVersion);
+
+		// unzip the files
 		for (int i = 0; i < list.length; i++) {
 			String fileName = "../patches/" + list[i];
 			unZipIt(fileName, "../patches/temp");
