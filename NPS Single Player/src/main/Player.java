@@ -37,7 +37,7 @@ public class Player {
 		if (!allowGravity)
 			return;
 
-		if (isColliding()) {
+		if (isCollidingBottom()) {
 			moveY = 0;
 			falling = false;
 			jumping = false;
@@ -89,12 +89,39 @@ public class Player {
 		moveY = y;
 	}
 
-	public boolean isColliding() {
-		ArrayList<Tile> list = Core.getList();
-		for (int i = 0; i < list.size(); i++) {
-			Tile tile = (Tile) list.get(i);
+	public boolean isCollidingBottom() {
+		ArrayList<Tile> tiles = Core.getList();
+		for (int i = 0; i < tiles.size(); i++) {
+			Tile tile = (Tile) tiles.get(i);
 			if (getBounds().intersects(tile.getBounds()))
 				return true;
+		}
+		return false;
+	}
+
+	public boolean isCollidingRight() {
+		ArrayList<Tile> tiles = Core.getList();
+		for (int i = 0; i < tiles.size(); i++) {
+			Tile tile = (Tile) tiles.get(i);
+
+		}
+		return false;
+	}
+
+	public boolean isCollidingLeft() {
+		ArrayList<Tile> tiles = Core.getList();
+		for (int i = 0; i < tiles.size(); i++) {
+			Tile tile = (Tile) tiles.get(i);
+
+		}
+		return false;
+	}
+
+	public boolean isCollidingTop() {
+		ArrayList<Tile> tiles = Core.getList();
+		for (int i = 0; i < tiles.size(); i++) {
+			Tile tile = (Tile) tiles.get(i);
+
 		}
 		return false;
 	}
