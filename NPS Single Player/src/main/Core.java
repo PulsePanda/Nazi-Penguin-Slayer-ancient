@@ -13,7 +13,7 @@ import javax.swing.JProgressBar;
 
 public class Core {
 	private static int tilew = 200, tileh = 40, day = 0, barValue = 0,
-			xOff = -1000, yOff = 0;
+			tileGroupXOff = -1000, tileGroupYOff = -125;
 	public static int threadDelay = 20;
 	private static Tile[][] tiles = new Tile[tilew][tileh];
 	public static ArrayList<Tile> list = new ArrayList<Tile>();
@@ -24,6 +24,7 @@ public class Core {
 	private static boolean running = true, paused = false;
 	private static Player player;
 	private static Properties properties = new Properties();
+	private static FPSCounter fpsCounter = new FPSCounter();
 
 	public Core() {
 		try {
@@ -45,16 +46,21 @@ public class Core {
 		player = new Player();
 	}
 
+	public static FPSCounter getFPSCounter() {
+		return fpsCounter;
+	}
+
 	public static Core getCore() {
 		return core;
 	}
 
-	public void setXOff(int x) {
-		xOff += x;
+	public void setTileGroupXOff(int x) {
+		tileGroupXOff += x;
 	}
 
-	public void setYOff(int y) {
-		yOff += y;
+	public void setPlayerYOff(int y) {
+		// tileGroupYOff += y;
+		Player.y -= y;
 	}
 
 	public Properties getProperties() {
@@ -146,15 +152,22 @@ public class Core {
 			tiles[x][tileh / 2].setID(2);
 		}
 
+		for (int x = 0; x < tilew; x++) {
+			for (int y = 0; y < tileh; y++) {
+				if (y >= tileh / 2)
+					tiles[x][y].setID(2);
+			}
+		}
+
 		loadingFrame.remove();
 	}
 
 	public static int getXOff() {
-		return xOff;
+		return tileGroupXOff;
 	}
 
 	public static int getYOff() {
-		return yOff;
+		return tileGroupYOff;
 	}
 
 	public int subtract(int initial, int amount) {

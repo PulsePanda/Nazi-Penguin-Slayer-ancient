@@ -70,6 +70,10 @@ public class Login extends Start {
 	}
 
 	public static void login(String user, String pass) {
+		/**
+		 * currently i am going to eliminate the "login temp" file, and just
+		 * have it an actual temp file
+		 */
 		username = user;
 		password = pass;
 		String dir = "login temp.properties";

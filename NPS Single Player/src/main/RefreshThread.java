@@ -18,6 +18,7 @@ public class RefreshThread implements Runnable {
 				}
 			}
 			frame.refresh();
+			Core.getFPSCounter().tick();
 			try {
 				Thread.sleep(Core.threadDelay);
 			} catch (InterruptedException e) {

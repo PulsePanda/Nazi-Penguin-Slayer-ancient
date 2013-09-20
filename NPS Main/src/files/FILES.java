@@ -91,11 +91,11 @@ public class FILES {
 	public static final String filesDir = "../AVTECH/NPS/Files";
 	public static final String propDir = "properties.properties";
 	// end of directories
-
+	
 	/**
 	 * version
 	 */
-	public static final String VERSION = "0.0.1";
+	public static String version;
 
 	/**
 	 * link stuff

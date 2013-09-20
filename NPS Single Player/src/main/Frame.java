@@ -44,6 +44,7 @@ public class Frame extends JFrame {
 
 	public void refresh() {
 		repaint();
-		setTitle("Nazi Penguin Slayer   Day: " + Core.getDay());
+		setTitle("Nazi Penguin Slayer   Day: " + Core.getDay() + "  FPS: "
+				+ Core.getFPSCounter().getFPS());
 	}
 }

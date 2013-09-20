@@ -9,6 +9,7 @@ public class KeyClass implements KeyListener {
 	private Core core;
 	private Properties properties;
 	private Player player;
+	private boolean jumpPushed = false;
 
 	public KeyClass() {
 		core = Core.getCore();
@@ -25,7 +26,10 @@ public class KeyClass implements KeyListener {
 		} else if (key == Integer.parseInt(properties.getProperty("left"))) {
 			player.setMoveX(player.getMoveSpeed());
 		} else if (key == Integer.parseInt(properties.getProperty("jump"))) {
-			player.jump();
+			if (!jumpPushed) {
+				jumpPushed = true;
+				player.jump();
+			}
 		} else if (key == Integer.parseInt(properties.getProperty("attack"))) {
 
 		} else if (key == Integer.parseInt(properties.getProperty("duck"))) {
@@ -45,7 +49,7 @@ public class KeyClass implements KeyListener {
 		} else if (key == Integer.parseInt(properties.getProperty("left"))) {
 			player.setMoveX(0);
 		} else if (key == Integer.parseInt(properties.getProperty("jump"))) {
-
+			jumpPushed = false;
 		} else if (key == Integer.parseInt(properties.getProperty("attack"))) {
 
 		} else if (key == Integer.parseInt(properties.getProperty("duck"))) {

@@ -130,7 +130,7 @@ public class DragPanel extends Panel {
 					null);
 			break;
 		}
-		g.drawString("NPS " + FILES.VERSION + "            AVTECH Software",
+		g.drawString("NPS " + FILES.version + "            AVTECH Software",
 				15, 15);
 	}
 }

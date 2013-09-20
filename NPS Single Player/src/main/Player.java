@@ -9,11 +9,11 @@ public class Player {
 	private static BufferedImage img;
 	private static String imgDir = FILES.playerImage, facing = "right";
 	private static IO io = new IO();
-	private static int x = 493, y = 250, w = 20, h = w, baseMoveSpeed = 5,
-			moveSpeed = baseMoveSpeed, moveX = 0, moveY = 0, jumpHeight = 20,
-			fallSpeed = -5;
-	private static boolean visible = true, allowGravity = true,
-			falling = false, ableToMove = true, jumping = false;
+	public static int x = 493, y = 20, w = 20, h = w, baseMoveSpeed = 5,
+			currentMoveSpeed = baseMoveSpeed, moveX = 0, moveY = 0,
+			jumpHeight = 36, fallSpeed = -3;
+	private static boolean visible = true, falling = false, ableToMove = true,
+			jumping = false;
 	private static Core core;
 
 	public Player() {
@@ -29,25 +29,22 @@ public class Player {
 		core = Core.getCore();
 		if (!ableToMove)
 			return;
-		core.setYOff(moveY);
-		core.setXOff(moveX);
+		core.setTileGroupXOff(moveX);
+		core.setPlayerYOff(moveY);
 	}
 
 	public void applyGravity() {
-		if (!allowGravity)
+		if (jumping)
 			return;
 
 		if (isCollidingBottom()) {
 			moveY = 0;
 			falling = false;
-			jumping = false;
-			moveSpeed = baseMoveSpeed;
 			return;
 		}
 
 		falling = true;
-		moveY = fallSpeed;
-		// move();
+		setMoveY(fallSpeed);
 	}
 
 	public boolean isFalling() {
@@ -55,30 +52,20 @@ public class Player {
 	}
 
 	public void jump() {
-		if (jumping)
+		if (isFalling())
 			return;
 		jumping = true;
-		allowGravity = false;
 
 		/**
 		 * the loop to jump. for some reason the stupid graphics wont update
 		 * till its done tho... NOTE: i found that the paint method in the panel
-		 * actually doesnt get the new and improved y.... which begs the
-		 * question, am i updating the right thing? NOTE: if i take out the
-		 * thread pause, no jump occurs... but if i make it 1, the jump is
-		 * tiny... so we have a huge problem
+		 * actually doesnt get the new and improved y....
 		 */
-		for (int i = jumpHeight; i > 0; i--) {
-			setMoveY(i);
-
-			try {
-				Thread.sleep(10);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+		for (int i = 8; i > 0; i--) {
+			core.setPlayerYOff(i);
 		}
-
-		allowGravity = true;
+		jumping = false;
+		falling = true;
 	}
 
 	public void setMoveX(int x) {
@@ -163,6 +150,6 @@ public class Player {
 	}
 
 	public int getMoveSpeed() {
-		return moveSpeed;
+		return currentMoveSpeed;
 	}
 }

@@ -32,6 +32,7 @@ public class Start {
 		loadProperties();
 
 		version = currentProp.getProperty("version");
+		FILES.version = version;
 
 		// SplashScreen ss = new SplashScreen();
 		try {
