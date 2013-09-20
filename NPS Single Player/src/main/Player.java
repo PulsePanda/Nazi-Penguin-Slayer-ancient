@@ -1,5 +1,6 @@
 package main;
 
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -29,7 +30,10 @@ public class Player {
 		core = Core.getCore();
 		if (!ableToMove)
 			return;
-		core.setTileGroupXOff(moveX);
+		if (moveX < 0 && !isCollidingRight())
+			core.setTileGroupXOff(moveX);
+		if (moveX > 0 && !isCollidingLeft())
+			core.setTileGroupXOff(moveX);
 		core.setPlayerYOff(moveY);
 	}
 
@@ -56,7 +60,8 @@ public class Player {
 			return;
 		jumping = true;
 
-		for (int i = 8; i > 0; i--) { // wanna set a way to make 8! more automatic
+		for (int i = 8; i > 0; i--) { // wanna set a way to make 8! more
+										// automatic
 			core.setPlayerYOff(i);
 		}
 		jumping = false;
@@ -75,7 +80,7 @@ public class Player {
 		ArrayList<Tile> tiles = Core.getList();
 		for (int i = 0; i < tiles.size(); i++) {
 			Tile tile = (Tile) tiles.get(i);
-			if (getBounds().intersects(tile.getBounds()))
+			if (getBottomBounds().intersects(tile.getBounds()))
 				return true;
 		}
 		return false;
@@ -85,7 +90,8 @@ public class Player {
 		ArrayList<Tile> tiles = Core.getList();
 		for (int i = 0; i < tiles.size(); i++) {
 			Tile tile = (Tile) tiles.get(i);
-
+			if (getRightBounds().intersects(tile.getBounds()))
+				return true;
 		}
 		return false;
 	}
@@ -94,7 +100,8 @@ public class Player {
 		ArrayList<Tile> tiles = Core.getList();
 		for (int i = 0; i < tiles.size(); i++) {
 			Tile tile = (Tile) tiles.get(i);
-
+			if (getLeftBounds().intersects(tile.getBounds()))
+				return true;
 		}
 		return false;
 	}
@@ -103,7 +110,8 @@ public class Player {
 		ArrayList<Tile> tiles = Core.getList();
 		for (int i = 0; i < tiles.size(); i++) {
 			Tile tile = (Tile) tiles.get(i);
-
+			if (getTopBounds().intersects(tile.getBounds()))
+				return true;
 		}
 		return false;
 	}
@@ -113,11 +121,19 @@ public class Player {
 	}
 
 	public Rectangle getRightBounds() {
-		return new Rectangle(x + w - 1, y + 1, 1, h - 2);
+		return new Rectangle(x + w - 1, y + getH() / 2, 1, 1);
 	}
 
 	public Rectangle getLeftBounds() {
-		return new Rectangle(x + 1, y + 1, 1, h - 2);
+		return new Rectangle(x, y + getH() / 2, 1, 1);
+	}
+
+	public Rectangle getBottomBounds() {
+		return new Rectangle(x + getW() / 2, y + getH(), 1, 1);
+	}
+
+	public Rectangle getTopBounds() {
+		return new Rectangle(x + getW() / 2, y, 1, 1);
 	}
 
 	public boolean isVisible() {
