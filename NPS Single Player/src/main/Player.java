@@ -56,12 +56,7 @@ public class Player {
 			return;
 		jumping = true;
 
-		/**
-		 * the loop to jump. for some reason the stupid graphics wont update
-		 * till its done tho... NOTE: i found that the paint method in the panel
-		 * actually doesnt get the new and improved y....
-		 */
-		for (int i = 8; i > 0; i--) {
+		for (int i = 8; i > 0; i--) { // wanna set a way to make 8! more automatic
 			core.setPlayerYOff(i);
 		}
 		jumping = false;
