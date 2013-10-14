@@ -1,6 +1,13 @@
 list of things to do :D
 
->make the collision work
+>fix the lag created when a nice background is implemented
+	possible fixes: make file size smaller
+	figure out why only loading the image 1 time makes the player disappear
+	make everything scale, so that i can make the game in a 20x20 window, and then have it all scale
+		up to reduce lag
+	try a buffer strategy? (no idea how...)
+
+>fix jumping thing (otherwise take out jumping, and have the player auto move upward
 
 >add weapons
 

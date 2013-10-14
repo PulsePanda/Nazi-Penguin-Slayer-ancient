@@ -4,12 +4,15 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
 public class Panel extends JPanel {
-	IO io = new IO();
+	static IO io = new IO();
 	Core core;
+	private static final BufferedImage backgroundImage = io
+			.getImage(FILES.backgroundImage);
 
 	public Panel() {
 		core = Core.getCore();
@@ -36,8 +39,8 @@ public class Panel extends JPanel {
 
 	public void paint(Graphics g) {
 		// draw background image first
-		g.drawImage(io.getImage(FILES.backgroundImage), 0, 0, Core.getFrame()
-				.getWidth(), Core.getFrame().getHeight(), null);
+		g.drawImage(backgroundImage, 0, 0, Core.getFrame().getWidth(), Core
+				.getFrame().getHeight(), null);
 
 		// work with the tiles
 		Tile[][] tiles = Core.getTiles();
