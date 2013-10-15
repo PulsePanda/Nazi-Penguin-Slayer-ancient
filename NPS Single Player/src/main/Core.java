@@ -19,7 +19,7 @@ public class Core {
 	public static ArrayList<Tile> list = new ArrayList<Tile>();
 	private static Core core;
 	private static Frame frame;
-	private static GameMenu exitMenu;
+	private static PauseMenu exitMenu;
 	private static JProgressBar bar = new JProgressBar();
 	private static boolean running = true, paused = false;
 	private static Player player;
@@ -195,11 +195,11 @@ public class Core {
 		this.core = core;
 	}
 
-	public void setExitMenu(GameMenu gm) {
+	public void setExitMenu(PauseMenu gm) {
 		exitMenu = gm;
 	}
 
-	public GameMenu getExitMenu() {
+	public PauseMenu getExitMenu() {
 		return exitMenu;
 	}
 

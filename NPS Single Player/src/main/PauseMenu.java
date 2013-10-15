@@ -13,7 +13,7 @@ import java.awt.event.MouseMotionAdapter;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class GameMenu extends JPanel {
+public class PauseMenu extends JPanel {
 
 	private int w = 400, h = 300;
 	private Core core = Core.getCore();
@@ -21,12 +21,12 @@ public class GameMenu extends JPanel {
 	private Point point = new Point();
 	private String title = "";
 
-	public GameMenu(String t) {
+	public PauseMenu(String t) {
 		title = t;
 		init();
 	}
 
-	public GameMenu(String t, int w, int h) {
+	public PauseMenu(String t, int w, int h) {
 		title = t;
 		this.w = w;
 		this.h = h;
