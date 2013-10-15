@@ -62,7 +62,7 @@ public class Menu extends JPanel {
 	}
 
 	public void remove() {
-		setVisible(false);
+		visible(false);
 		core.getFrame().requestFocus();
 	}
 
@@ -86,5 +86,6 @@ public class Menu extends JPanel {
 
 	public void visible(boolean v) {
 		setVisible(v);
+		core.pause(v);
 	}
 }
