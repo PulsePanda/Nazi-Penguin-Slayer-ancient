@@ -43,7 +43,7 @@ public class Core {
 		createTiles();
 		initTiles();
 
-		player = new Player();
+		player = new Player(FILES.playerImage, 493, 20, 20, 20);
 	}
 
 	public static FPSCounter getFPSCounter() {
