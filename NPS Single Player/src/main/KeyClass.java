@@ -4,6 +4,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Properties;
 
+import javax.swing.JOptionPane;
+
 public class KeyClass implements KeyListener {
 
 	private Core core;
@@ -33,6 +35,8 @@ public class KeyClass implements KeyListener {
 		} else if (key == Integer.parseInt(properties.getProperty("attack"))) {
 
 		} else if (key == Integer.parseInt(properties.getProperty("duck"))) {
+
+		} else if (key == Integer.parseInt(properties.getProperty("inventory"))) {
 
 		} else if (key == KeyEvent.VK_ESCAPE) {
 			core.getExitMenu().setVisible(true);
