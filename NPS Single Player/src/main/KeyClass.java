@@ -37,9 +37,10 @@ public class KeyClass implements KeyListener {
 		} else if (key == Integer.parseInt(properties.getProperty("duck"))) {
 
 		} else if (key == Integer.parseInt(properties.getProperty("inventory"))) {
-
+			core.getInventoryMenu().visible(true);
+			core.getInventoryMenu().requestFocus();
 		} else if (key == KeyEvent.VK_ESCAPE) {
-			core.getExitMenu().setVisible(true);
+			core.getExitMenu().visible(true);
 			core.getExitMenu().requestFocus();
 		}
 	}

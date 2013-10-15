@@ -8,6 +8,7 @@ import javax.swing.JProgressBar;
 public class Start {
 	static Frame f;
 	private static PauseMenu exitMenu = new PauseMenu("Menu");
+	private static InventoryMenu invMenu = new InventoryMenu("Inventory");
 
 	public static void main(String[] args) {
 		Core core = new Core();
@@ -15,9 +16,15 @@ public class Start {
 
 		f = new Frame("NPS", null, 1000, 600);
 		core.setFrame(f);
+
 		initExitMenu();
 		f.add(exitMenu);
 		core.setExitMenu(exitMenu);
+
+		initPauseMenu();
+		f.add(invMenu);
+		core.setInventoryMenu(invMenu);
+
 		f.add(new Panel());
 		f.setLocationRelativeTo(null);
 		f.addKeyListener(new KeyClass());
@@ -34,7 +41,7 @@ public class Start {
 		timeThread.setName("time thread");
 		timeThread.start();
 
-		exitMenu.setVisible(true);
+		exitMenu.visible(true);
 	}
 
 	private static void initExitMenu() {
@@ -42,5 +49,9 @@ public class Start {
 		int x = (f.getWidth() / 2) - (exitMenu.getWidth() / 2), y = (f
 				.getHeight() / 2) - (exitMenu.getHeight() / 2);
 		exitMenu.setLocation(x, y);
+	}
+
+	private static void initPauseMenu() {
+		invMenu.setMoveable(true);
 	}
 }

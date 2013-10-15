@@ -66,18 +66,25 @@ public class Menu extends JPanel {
 		core.getFrame().requestFocus();
 	}
 
-	public void setMoveable() {
-		addMouseListener(new MouseAdapter() {
-			public void mousePressed(MouseEvent e) {
-				point.x = e.getX();
-				point.y = e.getY();
-			}
-		});
-		addMouseMotionListener(new MouseMotionAdapter() {
-			public void mouseDragged(MouseEvent e) {
-				Point p = getLocation();
-				setLocation(p.x + e.getX() - point.x, p.y + e.getY() - point.y);
-			}
-		});
+	public void setMoveable(boolean m) {
+		if (m) {
+			addMouseListener(new MouseAdapter() {
+				public void mousePressed(MouseEvent e) {
+					point.x = e.getX();
+					point.y = e.getY();
+				}
+			});
+			addMouseMotionListener(new MouseMotionAdapter() {
+				public void mouseDragged(MouseEvent e) {
+					Point p = getLocation();
+					setLocation(p.x + e.getX() - point.x, p.y + e.getY()
+							- point.y);
+				}
+			});
+		}
+	}
+
+	public void visible(boolean v) {
+		setVisible(v);
 	}
 }

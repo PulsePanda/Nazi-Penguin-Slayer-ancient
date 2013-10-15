@@ -20,6 +20,7 @@ public class Core {
 	private static Core core;
 	private static Frame frame;
 	private static PauseMenu exitMenu;
+	private static InventoryMenu invMenu;
 	private static JProgressBar bar = new JProgressBar();
 	private static boolean running = true, paused = false;
 	private static Player player;
@@ -201,6 +202,14 @@ public class Core {
 
 	public PauseMenu getExitMenu() {
 		return exitMenu;
+	}
+
+	public void setInventoryMenu(InventoryMenu invM) {
+		invMenu = invM;
+	}
+
+	public InventoryMenu getInventoryMenu() {
+		return invMenu;
 	}
 
 	public void setFrame(Frame f) {
