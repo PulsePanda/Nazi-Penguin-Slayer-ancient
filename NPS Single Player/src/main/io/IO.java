@@ -1,4 +1,4 @@
-package main;
+package main.io;
 
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
-import main.Dialogs;
+import main.components.frames.Dialogs;
 
 public class IO {
 	public BufferedImage getImage(String dir) {

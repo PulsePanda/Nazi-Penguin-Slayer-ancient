@@ -1,4 +1,4 @@
-package main;
+package main.components.panels;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -7,6 +7,13 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
+
+import main.Core;
+import main.components.frames.Frame;
+import main.io.FILES;
+import main.io.IO;
+import main.sprites.Player;
+import main.sprites.Tile;
 
 public class Panel extends JPanel {
 	static IO io = new IO();

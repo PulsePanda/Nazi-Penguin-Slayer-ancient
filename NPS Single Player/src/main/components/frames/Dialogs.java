@@ -1,6 +1,9 @@
-package main;
+package main.components.frames;
 
 import javax.swing.JOptionPane;
+
+import main.Core;
+import main.io.IO;
 
 public class Dialogs extends JOptionPane {
 

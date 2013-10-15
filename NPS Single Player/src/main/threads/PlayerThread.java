@@ -1,4 +1,7 @@
-package main;
+package main.threads;
+
+import main.Core;
+import main.sprites.Player;
 
 public class PlayerThread implements Runnable {
 

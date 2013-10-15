@@ -5,6 +5,15 @@ import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
 import javax.swing.JProgressBar;
 
+import main.components.frames.Frame;
+import main.components.panels.Panel;
+import main.components.panels.PauseMenu;
+import main.io.KeyClass;
+import main.items.inventory.InventoryMenu;
+import main.threads.PlayerThread;
+import main.threads.RefreshThread;
+import main.threads.TimeThread;
+
 public class Start {
 	static Frame f;
 	private static PauseMenu exitMenu = new PauseMenu("Menu");

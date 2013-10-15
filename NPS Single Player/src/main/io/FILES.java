@@ -1,9 +1,11 @@
-package main;
+package main.io;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.Properties;
+
+import main.components.frames.Dialogs;
 
 public class FILES {
 	public static final String dirtBlock = "../graphic/Dirt Block.png";

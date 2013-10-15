@@ -1,4 +1,7 @@
-package main;
+package main.threads;
+
+import main.Core;
+import main.components.frames.Frame;
 
 public class RefreshThread implements Runnable {
 	private Frame frame;

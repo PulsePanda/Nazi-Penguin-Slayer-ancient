@@ -6,18 +6,23 @@
  * 3: stone
  */
 
-package main;
+package main.sprites;
 
 import java.awt.Component;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
+import main.io.FILES;
+import main.io.IO;
+
 public class Tile extends Component {
-	String img;
-	int ID;
-	BufferedImage image;
-	int x, y, w = 25, h = w;
-	IO io = new IO();
+	public String img;
+	public int ID;
+	public BufferedImage image;
+	public int x, y;
+	public int w = 25;
+	public int h = w;
+	public IO io = new IO();
 
 	public Tile(int ID) {
 		this.ID = ID;

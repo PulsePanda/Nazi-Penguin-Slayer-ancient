@@ -1,10 +1,13 @@
-package main;
+package main.io;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Properties;
 
 import javax.swing.JOptionPane;
+
+import main.Core;
+import main.sprites.Player;
 
 public class KeyClass implements KeyListener {
 

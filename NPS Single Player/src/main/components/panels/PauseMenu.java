@@ -1,4 +1,4 @@
-package main;
+package main.components.panels;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -12,6 +12,8 @@ import java.awt.event.MouseMotionAdapter;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import main.io.FILES;
 
 public class PauseMenu extends Menu {
 

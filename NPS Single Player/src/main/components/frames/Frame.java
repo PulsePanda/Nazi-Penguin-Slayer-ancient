@@ -1,13 +1,17 @@
-package main;
+package main.components.frames;
 
 import java.awt.Component;
 
 import javax.swing.JFrame;
 
+import main.Core;
+import main.io.IO;
+
 public class Frame extends JFrame {
 
 	IO io = new IO();
-	int w = 800, h = 600;
+	public int w = 800;
+	public int h = 600;
 
 	public Frame() {
 		init();

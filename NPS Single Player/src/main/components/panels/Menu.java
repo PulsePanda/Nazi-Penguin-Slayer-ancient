@@ -1,4 +1,4 @@
-package main;
+package main.components.panels;
 
 import java.awt.Color;
 import java.awt.Point;
@@ -9,6 +9,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 
 import javax.swing.JPanel;
+
+import main.Core;
+import main.io.IO;
 
 public class Menu extends JPanel {
 	protected int w = 400, h = 300;

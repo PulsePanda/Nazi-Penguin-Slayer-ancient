@@ -1,6 +1,8 @@
-package main;
+package main.threads;
 
 import java.util.Date;
+
+import main.Core;
 
 public class TimeThread implements Runnable {
 

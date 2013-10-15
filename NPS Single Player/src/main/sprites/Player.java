@@ -1,8 +1,15 @@
-package main;
+package main.sprites;
+
+import main.Core;
+import main.items.inventory.Inventory;
 
 public class Player extends Sprite {
+
+	private Inventory inv = new Inventory();
+
 	public Player(String imgDir, int x, int y, int w, int h) {
 		super(imgDir, x, y, w, h);
+
 	}
 
 	public void move() {

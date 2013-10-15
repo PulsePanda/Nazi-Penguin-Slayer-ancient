@@ -1,8 +1,11 @@
-package main;
+package main.sprites;
 
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+
+import main.Core;
+import main.io.IO;
 
 public class Sprite {
 	private static BufferedImage img;

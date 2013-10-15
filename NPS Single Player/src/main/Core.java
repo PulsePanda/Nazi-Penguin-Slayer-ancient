@@ -11,6 +11,14 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
 
+import main.components.frames.Dialogs;
+import main.components.frames.Frame;
+import main.components.panels.PauseMenu;
+import main.io.FILES;
+import main.items.inventory.InventoryMenu;
+import main.sprites.Player;
+import main.sprites.Tile;
+
 public class Core {
 	private static int tilew = 200, tileh = 40, day = 0, barValue = 0,
 			tileGroupXOff = -1000, tileGroupYOff = -125;
