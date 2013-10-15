@@ -11,11 +11,11 @@ import javax.swing.JPanel;
 public class Panel extends JPanel {
 	static IO io = new IO();
 	Core core;
-	private static final BufferedImage backgroundImage = io
-			.getImage(FILES.backgroundImage);
+	private static BufferedImage backgroundImage;
 
 	public Panel() {
 		core = Core.getCore();
+		backgroundImage = io.getImage(FILES.backgroundImage);
 		addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
 				core.getFrame().requestFocus();

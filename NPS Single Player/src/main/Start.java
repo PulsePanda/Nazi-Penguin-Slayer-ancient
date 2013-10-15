@@ -33,6 +33,8 @@ public class Start {
 
 		timeThread.setName("time thread");
 		timeThread.start();
+
+		exitMenu.setVisible(true);
 	}
 
 	private static void initExitMenu() {

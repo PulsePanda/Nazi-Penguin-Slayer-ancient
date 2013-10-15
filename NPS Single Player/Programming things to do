@@ -1,13 +1,8 @@
 list of things to do :D
 
->fix the lag created when a nice background is implemented
-	possible fixes: make file size smaller
-	figure out why only loading the image 1 time makes the player disappear
-	make everything scale, so that i can make the game in a 20x20 window, and then have it all scale
-		up to reduce lag
-	try a buffer strategy? (no idea how...)
+>change how the player class works, making it extend sprite, that way i can have the same thing for enemies
 
->fix jumping thing (otherwise take out jumping, and have the player auto move upward
+>add inventory
 
 >add weapons
 
@@ -15,4 +10,8 @@ list of things to do :D
 
 >read green comment in Player/jump()/for loop
 
+>fix jumping thing (otherwise take out jumping, and have the player auto move upward)
+
 >test to make sure the setting of the most recent update works, in the starter jar under Connection/Update. its labeled with blue comments
+
+>add minimap
