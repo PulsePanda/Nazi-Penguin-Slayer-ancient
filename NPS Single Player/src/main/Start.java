@@ -42,6 +42,7 @@ public class Start {
 		timeThread.start();
 
 		exitMenu.visible(true);
+		exitMenu.visible(false);
 	}
 
 	private static void initExitMenu() {
