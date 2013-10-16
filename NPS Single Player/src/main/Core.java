@@ -16,6 +16,7 @@ import main.components.frames.Frame;
 import main.components.panels.PauseMenu;
 import main.io.FILES;
 import main.items.inventory.InventoryMenu;
+import main.items.inventory.InventoryOverlay;
 import main.sprites.Player;
 import main.sprites.Tile;
 
@@ -29,11 +30,13 @@ public class Core {
 	private static Frame frame;
 	private static PauseMenu exitMenu;
 	private static InventoryMenu invMenu;
+	private static InventoryOverlay invOverlay;
 	private static JProgressBar bar = new JProgressBar();
 	private static boolean running = true, paused = false;
 	private static Player player;
 	private static Properties properties = new Properties();
 	private static FPSCounter fpsCounter = new FPSCounter();
+	public static int inventoryWidth = 300;
 
 	public Core() {
 		try {
@@ -270,5 +273,9 @@ public class Core {
 
 	public static void pause(boolean b) {
 		paused = b;
+	}
+
+	public static void setInvOver(InventoryOverlay invOver) {
+		invOverlay = invOver;
 	}
 }

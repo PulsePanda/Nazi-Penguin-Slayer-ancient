@@ -10,14 +10,18 @@ import main.components.panels.Panel;
 import main.components.panels.PauseMenu;
 import main.io.KeyClass;
 import main.items.inventory.InventoryMenu;
+import main.items.inventory.InventoryOverlay;
 import main.threads.PlayerThread;
 import main.threads.RefreshThread;
 import main.threads.TimeThread;
 
 public class Start {
 	static Frame f;
-	private static PauseMenu pauseMenu = new PauseMenu("Menu");
-	private static InventoryMenu invMenu = new InventoryMenu("Inventory");
+	private static PauseMenu pauseMenu = new PauseMenu("");
+	private static InventoryMenu invMenu = new InventoryMenu("",
+			Core.inventoryWidth + 100, 200);
+	private static InventoryOverlay invOver = new InventoryOverlay(null,
+			Core.inventoryWidth, 50);
 
 	public static void main(String[] args) {
 		Core core = new Core();
@@ -33,6 +37,10 @@ public class Start {
 		initInvMenu();
 		f.add(invMenu);
 		core.setInventoryMenu(invMenu);
+
+		initInvOverlay();
+		f.add(invOver);
+		core.setInvOver(invOver);
 
 		f.add(new Panel());
 		f.setLocationRelativeTo(null);
@@ -54,6 +62,10 @@ public class Start {
 		pauseMenu.visible(false);
 	}
 
+	private static void initInvOverlay() {
+
+	}
+
 	private static void initPauseMenu() {
 		JFrame f = Core.getFrame();
 		int x = (f.getWidth() / 2) - (pauseMenu.getWidth() / 2), y = (f
@@ -62,6 +74,6 @@ public class Start {
 	}
 
 	private static void initInvMenu() {
-		invMenu.setLocation(10, 10);
+		invMenu.setLocation(0, 0);
 	}
 }
