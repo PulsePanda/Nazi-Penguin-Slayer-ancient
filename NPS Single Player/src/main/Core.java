@@ -22,7 +22,7 @@ import main.sprites.Tile;
 
 public class Core {
 	private static int tilew = 200, tileh = 40, day = 0, barValue = 0,
-			tileGroupXOff = 0, tileGroupYOff = -125, barMax = 1200;
+			tileGroupXOff = 0, tileGroupYOff = -125, barMax = 2500;
 	public static int threadDelay = 20;
 	private static Tile[][] tiles = new Tile[tilew][tileh];
 	public static ArrayList<Tile> list = new ArrayList<Tile>();
@@ -177,6 +177,8 @@ public class Core {
 					tiles[x][y].setID(2);
 			}
 		}
+
+		// make the base for allies
 
 		// make the loading bar reach 100%
 		if (barValue < barMax) {
