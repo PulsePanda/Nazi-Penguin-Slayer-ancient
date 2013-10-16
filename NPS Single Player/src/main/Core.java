@@ -179,6 +179,13 @@ public class Core {
 		}
 
 		// make the base for allies
+		for (int i = 0; i < 20; i++) {
+			tiles[i][tileh / 2].setID(3); // set the base line for the base
+			for (int a = (tileh / 2) - 1; a > 0; a--) { // remove everything
+														// above it for the rest
+				tiles[i][a].setID(0);
+			}
+		}
 
 		// make the loading bar reach 100%
 		if (barValue < barMax) {
