@@ -2,7 +2,6 @@ package main.items;
 
 import java.awt.image.BufferedImage;
 
-import main.io.FILES;
 import main.io.IO;
 
 public class Item {
@@ -19,6 +18,7 @@ public class Item {
 	private IO io = new IO();
 
 	public Item(int itemID) {
+		this.imgDir = imgDir;
 		setImageDir();
 		img = io.getImage(imgDir);
 		this.itemID = itemID;
@@ -27,10 +27,8 @@ public class Item {
 	private void setImageDir() {
 		switch (itemID) {
 		case GLOCK:
-			imgDir = FILES.glockImage;
 			break;
 		case SNIPER:
-			imgDir = FILES.sniperImage;
 			break;
 		}
 	}

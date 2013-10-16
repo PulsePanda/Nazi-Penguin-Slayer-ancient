@@ -5,7 +5,7 @@ import main.items.inventory.Inventory;
 
 public class Player extends Sprite {
 
-//	private Inventory inv = new Inventory(this);
+	private Inventory inv = new Inventory(this);
 
 	public Player(String imgDir, int x, int y, int w, int h) {
 		super(imgDir, x, y, w, h);

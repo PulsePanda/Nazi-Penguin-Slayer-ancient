@@ -18,11 +18,11 @@ import main.io.FILES;
 public class PauseMenu extends Menu {
 
 	public PauseMenu(String t) {
-		super(t, true);
+		super(t);
 	}
 
 	public PauseMenu(String t, int w, int h) {
-		super(t, w, h, true);
+		super(t, w, h);
 	}
 
 	public void paint(Graphics g) {
