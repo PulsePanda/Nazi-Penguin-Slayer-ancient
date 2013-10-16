@@ -5,7 +5,7 @@ import main.items.inventory.Inventory;
 
 public class Player extends Sprite {
 
-	private Inventory inv = new Inventory();
+	private Inventory inv = new Inventory(this);
 
 	public Player(String imgDir, int x, int y, int w, int h) {
 		super(imgDir, x, y, w, h);
@@ -21,6 +21,14 @@ public class Player extends Sprite {
 		if (moveX > 0 && !isCollidingLeft())
 			core.setTileGroupXOff(moveX);
 		core.setPlayerYOff(moveY);
+	}
+
+	public Inventory getInventory() {
+		return inv;
+	}
+
+	public void setInventory(Inventory in) {
+		inv = in;
 	}
 
 	public void jump() {
