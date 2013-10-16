@@ -11,9 +11,16 @@ public class FILES {
 	public static final String dirtBlock = "../graphic/Dirt Block.png";
 	public static final String stoneBlock = "../graphic/Stone Block.png";
 	public static final String grassBlock = "../graphic/Grass Block.png";
+
 	public static final String backgroundImage = "../graphic/Game Background.png";
+
 	public static final String playerImage = "../graphic/Player.png";
+
+	public static final String glockImage = "../graphic/Glock.png";
+	public static final String sniperImage = "../graphic/Sniper.png";
+
 	public static final String ingameMenuBackground = "../graphic/Ingame Menu Background.png";
+
 	public static final String properties = "properties.properties";
 
 	// public static final String dirtBlock = "C:\\dirt.png";

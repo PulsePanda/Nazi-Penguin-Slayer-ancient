@@ -19,10 +19,12 @@ public class Panel extends JPanel {
 	static IO io = new IO();
 	Core core;
 	private static BufferedImage backgroundImage;
+	private static BufferedImage invImage;
 
 	public Panel() {
 		core = Core.getCore();
 		backgroundImage = io.getImage(FILES.backgroundImage);
+		invImage = io.getImage("C:\\Users\\Austin\\Desktop\\inv.png");
 		addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
 				core.getFrame().requestFocus();

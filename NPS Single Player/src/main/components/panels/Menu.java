@@ -19,14 +19,17 @@ public class Menu extends JPanel {
 	protected static final IO io = new IO();
 	protected Point point = new Point();
 	protected String title = "";
+	protected boolean exitable = true;
 
-	public Menu(String t) {
+	public Menu(String t, boolean exitable) {
 		title = t;
+		this.exitable = exitable;
 		init();
 	}
 
-	public Menu(String t, int w, int h) {
+	public Menu(String t, int w, int h, boolean exitable) {
 		title = t;
+		this.exitable = exitable;
 		this.w = w;
 		this.h = h;
 		init();
@@ -36,28 +39,30 @@ public class Menu extends JPanel {
 		setSize(w, h);
 		setLayout(null);
 		setBackground(new Color(0, 0, 0, 0));
-		addKeyListener(new KeyListener() {
-			@Override
-			public void keyPressed(KeyEvent e) {
-				if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-					remove();
+		if (exitable) {
+			addKeyListener(new KeyListener() {
+				@Override
+				public void keyPressed(KeyEvent e) {
+					if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+						remove();
+					}
 				}
-			}
 
-			@Override
-			public void keyReleased(KeyEvent arg0) {
-			}
+				@Override
+				public void keyReleased(KeyEvent arg0) {
+				}
 
-			@Override
-			public void keyTyped(KeyEvent arg0) {
-			}
-		});
+				@Override
+				public void keyTyped(KeyEvent arg0) {
+				}
+			});
 
-		addMouseListener(new MouseAdapter() {
-			public void mousePressed(MouseEvent e) {
-				requestFocus();
-			}
-		});
+			addMouseListener(new MouseAdapter() {
+				public void mousePressed(MouseEvent e) {
+					requestFocus();
+				}
+			});
+		}
 
 		this.setFocusable(true);
 
