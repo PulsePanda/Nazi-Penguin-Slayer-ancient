@@ -26,7 +26,11 @@ public class PauseMenu extends Menu {
 	}
 
 	public void paint(Graphics g) {
-		g.drawImage(io.getImage(FILES.ingameMenuBackground), 0, 0, w, h, null);
+		// g.drawImage(io.getImage(FILES.ingameMenuBackground), 0, 0, w, h,
+		// null);
+
+		g.drawImage(io.getImage("../graphic/pauseshade.png"), 0, 0, w, h,
+				null);
 		g.setColor(Color.white);
 
 		/**
