@@ -3,6 +3,7 @@ package main.items.inventory;
 import java.awt.Graphics;
 
 import main.components.panels.Menu;
+import main.io.FILES;
 import main.io.IO;
 
 public class InventoryOverlay extends Menu {
@@ -19,7 +20,6 @@ public class InventoryOverlay extends Menu {
 	}
 
 	public void paint(Graphics g) {
-		g.drawImage(io.getImage("C:\\Users\\Austin\\Desktop\\inv.png"), 0, 0,
-				w, h, null);
+		g.drawImage(io.getImage(FILES.inventoryOverlayImage), 0, 0, w, h, null);
 	}
 }

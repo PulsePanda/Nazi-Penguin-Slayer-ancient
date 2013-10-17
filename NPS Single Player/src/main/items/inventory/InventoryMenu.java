@@ -18,7 +18,7 @@ public class InventoryMenu extends Menu {
 	}
 
 	public void paint(Graphics g) {
-		g.drawImage(io.getImage(FILES.ingameMenuBackground), 0, 0, w, h, null);
+		g.drawImage(io.getImage(FILES.inventoryImage), 0, 0, w, h, null);
 		g.setColor(Color.white);
 
 		/**

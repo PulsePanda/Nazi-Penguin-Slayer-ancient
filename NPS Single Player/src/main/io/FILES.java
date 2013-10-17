@@ -14,6 +14,8 @@ public class FILES {
 
 	public static final String backgroundImage = "../graphic/Game Background.png";
 	public static final String ingameMenuBackground = "../graphic/Ingame Menu Background.png";
+	public static final String inventoryImage = "../graphic/Inventory Menu.png";
+	public static final String inventoryOverlayImage = "../graphic/Inventory Overlay.png";
 
 	public static final String playerImage = "../graphic/Player.png";
 
@@ -37,13 +39,11 @@ public class FILES {
 
 	public static boolean saveProperties(Properties prop) {
 		try {
-			prop.save(new FileOutputStream(new File(properties)),
-					"Properties File for Nazi Penguin Slayer");
+			prop.save(new FileOutputStream(new File(properties)), "Properties File for Nazi Penguin Slayer");
 			return true;
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-			Dialogs.errorDiagExit("Cannot find the properties file at "
-					+ FILES.properties + ".\nPlease reinstall the game.");
+			Dialogs.errorDiagExit("Cannot find the properties file at " + FILES.properties + ".\nPlease reinstall the game.");
 			return false;
 		}
 	}
