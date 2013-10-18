@@ -21,8 +21,7 @@ import main.sprites.Player;
 import main.sprites.Tile;
 
 public class Core {
-	private static int tilew = 200, tileh = 40, day = 0, barValue = 0,
-			tileGroupXOff = 0, tileGroupYOff = -125, barMax = 2500;
+	private static int tilew = 200, tileh = 40, day = 0, barValue = 0, tileGroupXOff = 0, tileGroupYOff = -125, barMax = 2500;
 	public static int threadDelay = 20;
 	private static Tile[][] tiles = new Tile[tilew][tileh];
 	public static ArrayList<Tile> list = new ArrayList<Tile>();
@@ -42,8 +41,7 @@ public class Core {
 		try {
 			properties.load(new FileInputStream(FILES.properties));
 		} catch (Exception e) {
-			Dialogs.errorDiagExit("Cannot find the properties file at "
-					+ FILES.properties + ".\nPlease reinstall the game.");
+			Dialogs.errorDiagExit("Cannot find the properties file at " + FILES.properties + ".\nPlease reinstall the game.");
 			e.printStackTrace();
 		}
 
@@ -125,8 +123,7 @@ public class Core {
 		for (int i = 0; i < numberOfHills; i++) {
 			barValue++;
 			bar.setValue(barValue);
-			int x = rand.nextInt(tilew) + 1, y = (tileh / 2)
-					- rand.nextInt(maxHeight);
+			int x = rand.nextInt(tilew) + 1, y = (tileh / 2) - rand.nextInt(maxHeight);
 			// set the tip of the hill
 			try {
 				tiles[x][y].setID(1);
@@ -178,12 +175,18 @@ public class Core {
 			}
 		}
 
-		// make the base for allies
-		for (int i = 0; i < 20; i++) {
-			tiles[i][tileh / 2].setID(3); // set the base line for the base
-			for (int a = (tileh / 2) - 1; a > 0; a--) { // remove everything
+		/*
+		 * make the base for allies
+		 */
+		for (int i = 0; i < 21; i++) {
+			tiles[i][tileh / 2 - 4].setID(3); // set the base line for the base
+			for (int a = (tileh / 2 - 5); a > 0; a--) { // remove everything
 														// above it for the rest
 				tiles[i][a].setID(0);
+			}
+			for (int y = (tileh / 2 - 3); y < tileh / 2; y++) {
+				tiles[i][y].setID(2); // make everything under the base line
+										// dirt
 			}
 		}
 

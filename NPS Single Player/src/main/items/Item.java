@@ -1,8 +1,6 @@
 package main.items;
 
 import java.awt.image.BufferedImage;
-
-import main.io.FILES;
 import main.io.IO;
 
 public class Item {
@@ -11,36 +9,23 @@ public class Item {
 	 * all the default item id's that are usable
 	 */
 	public static final int GLOCK = 0;
-	public static final int SNIPER = 1;
+	public static final int M1GRAND = 1;
 
-	private String imgDir;
-	private int itemID;
-	private BufferedImage img;
-	private IO io = new IO();
+	protected String imgDir;
+	protected int itemID;
+	protected BufferedImage img;
+	protected IO io = new IO();
 
 	public Item(int itemID) {
-		setImageDir();
-		img = io.getImage(imgDir);
 		this.itemID = itemID;
 	}
 
-	private void setImageDir() {
-		switch (itemID) {
-		case GLOCK:
-			imgDir = FILES.glockImage;
-			break;
-		case SNIPER:
-			imgDir = FILES.sniperImage;
-			break;
-		}
+	protected void setImage() {
+		img = io.getImage(imgDir);
 	}
 
 	public int getItemID() {
 		return itemID;
-	}
-
-	public void setItemID(int i) {
-		itemID = i;
 	}
 
 	public void setImage(BufferedImage img) {
@@ -49,5 +34,25 @@ public class Item {
 
 	public BufferedImage getImage() {
 		return img;
+	}
+
+	public void shoot() {
+
+	}
+
+	public void reload() {
+
+	}
+
+	public void getAmmo() {
+
+	}
+
+	public void addAmmo() {
+
+	}
+
+	public void subAmmo() {
+
 	}
 }

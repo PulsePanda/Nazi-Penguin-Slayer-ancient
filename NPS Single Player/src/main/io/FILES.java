@@ -20,7 +20,7 @@ public class FILES {
 	public static final String playerImage = "../graphic/Player.png";
 
 	public static final String glockImage = "../graphic/Glock.png";
-	public static final String sniperImage = "../graphic/Sniper.png";
+	public static final String m1GrandImage = "../graphic/M1 Grand.png";
 
 	public static final String properties = "properties.properties";
 
@@ -37,6 +37,7 @@ public class FILES {
 
 	public static final String version = "0.0.1";
 
+	@SuppressWarnings("deprecation")
 	public static boolean saveProperties(Properties prop) {
 		try {
 			prop.save(new FileOutputStream(new File(properties)), "Properties File for Nazi Penguin Slayer");

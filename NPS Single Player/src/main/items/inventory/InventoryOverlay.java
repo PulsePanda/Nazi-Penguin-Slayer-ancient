@@ -2,6 +2,10 @@ package main.items.inventory;
 
 import java.awt.Graphics;
 
+import javax.swing.JOptionPane;
+
+import main.Core;
+import main.components.frames.Dialogs;
 import main.components.panels.Menu;
 import main.io.FILES;
 import main.io.IO;
@@ -21,5 +25,7 @@ public class InventoryOverlay extends Menu {
 
 	public void paint(Graphics g) {
 		g.drawImage(io.getImage(FILES.inventoryOverlayImage), 0, 0, w, h, null);
+		Inventory in = Core.getPlayer().getInventory();
+		g.drawImage(in.getItem(0).getImage(), 0, 0, w, h, null);
 	}
 }

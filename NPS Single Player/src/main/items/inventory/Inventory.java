@@ -2,6 +2,7 @@ package main.items.inventory;
 
 import java.util.ArrayList;
 
+import main.items.Glock;
 import main.items.Item;
 import main.sprites.Player;
 
@@ -15,6 +16,7 @@ public class Inventory {
 	private Player p;
 	private static final int maxInvSpace = 16;
 	private Item[] items = new Item[maxInvSpace];
+	private ItemSlot[] itemSlots = new ItemSlot[maxInvSpace];
 
 	public Inventory(Player p) {
 		this.p = p;
@@ -25,8 +27,10 @@ public class Inventory {
 		// have a default glock item in slot 1. make the rest = null
 		for (int i = 0; i < maxInvSpace; i++) {
 			items[i] = null;
+			itemSlots[i] = new ItemSlot(i);
 		}
-		items[0] = new Item(Item.GLOCK);
+
+		items[0] = new Glock();
 	}
 
 	public void addItem(Item i) {
@@ -56,5 +60,9 @@ public class Inventory {
 
 	public int getMaxSpace() {
 		return maxInvSpace;
+	}
+
+	public ItemSlot[] getItemSlots() {
+		return itemSlots;
 	}
 }
