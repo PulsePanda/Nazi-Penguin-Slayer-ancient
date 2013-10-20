@@ -24,8 +24,7 @@ public class InventoryOverlay extends Menu {
 	}
 
 	public void paint(Graphics g) {
-		g.drawImage(io.getImage(FILES.inventoryOverlayImage), 0, 0, w, h, null);
+		g.drawImage(io.getImage(FILES.inventoryImage), 0, 0, w, h, null);
 		Inventory in = Core.getPlayer().getInventory();
-		g.drawImage(in.getItem(0).getImage(), 0, 0, w, h, null);
 	}
 }
