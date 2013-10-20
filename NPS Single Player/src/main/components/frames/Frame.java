@@ -29,7 +29,7 @@ public class Frame extends JFrame {
 	public void init() {
 		setResizable(false);
 		setSize(w, h);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
 		setVisible(true);
 	}
@@ -48,7 +48,6 @@ public class Frame extends JFrame {
 
 	public void refresh() {
 		repaint();
-		setTitle("Nazi Penguin Slayer   Day: " + Core.getDay() + "  FPS: "
-				+ Core.getFPSCounter().getFPS());
+		setTitle("Nazi Penguin Slayer   Day: " + Core.getDay() + "  FPS: " + Core.getFPSCounter().getFPS());
 	}
 }

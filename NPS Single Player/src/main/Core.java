@@ -22,6 +22,7 @@ import main.sprites.Tile;
 
 public class Core {
 	private static int tilew = 200, tileh = 40, day = 0, barValue = 0, tileGroupXOff = 0, tileGroupYOff = -125, barMax = 2500;
+	public static final int frameW = 1000, frameH = 600;
 	public static int threadDelay = 20;
 	private static Tile[][] tiles = new Tile[tilew][tileh];
 	public static ArrayList<Tile> list = new ArrayList<Tile>();

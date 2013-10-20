@@ -17,17 +17,15 @@ import main.threads.TimeThread;
 
 public class Start {
 	static Frame f;
-	private static PauseMenu pauseMenu = new PauseMenu("", 1200, 700);
-	private static InventoryMenu invMenu = new InventoryMenu("",
-			Core.inventoryWidth + 100, 200);
-	private static InventoryOverlay invOver = new InventoryOverlay(null,
-			Core.inventoryWidth, 50);
+	private static PauseMenu pauseMenu = new PauseMenu("", Core.frameW, Core.frameH);
+	private static InventoryMenu invMenu = new InventoryMenu("", Core.inventoryWidth + 100, 200);
+	private static InventoryOverlay invOver = new InventoryOverlay(null, Core.inventoryWidth, 50);
 
 	public static void main(String[] args) {
 		Core core = new Core();
 		core.setCore(core);
 
-		f = new Frame("NPS", null, 1000, 600);
+		f = new Frame("NPS", null, Core.frameW, Core.frameH);
 		core.setFrame(f);
 
 		initPauseMenu();
@@ -68,8 +66,7 @@ public class Start {
 
 	private static void initPauseMenu() {
 		JFrame f = Core.getFrame();
-		int x = (f.getWidth() / 2) - (pauseMenu.getWidth() / 2), y = (f
-				.getHeight() / 2) - (pauseMenu.getHeight() / 2);
+		int x = (f.getWidth() / 2) - (pauseMenu.getWidth() / 2), y = (f.getHeight() / 2) - (pauseMenu.getHeight() / 2);
 		pauseMenu.setLocation(x, y);
 	}
 

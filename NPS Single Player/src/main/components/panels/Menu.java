@@ -37,18 +37,16 @@ public class Menu extends JPanel {
 		setLayout(null);
 		setBackground(new Color(0, 0, 0, 0));
 		addKeyListener(new KeyListener() {
-			@Override
+
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
 					remove();
 				}
 			}
 
-			@Override
 			public void keyReleased(KeyEvent arg0) {
 			}
 
-			@Override
 			public void keyTyped(KeyEvent arg0) {
 			}
 		});
@@ -80,8 +78,7 @@ public class Menu extends JPanel {
 			addMouseMotionListener(new MouseMotionAdapter() {
 				public void mouseDragged(MouseEvent e) {
 					Point p = getLocation();
-					setLocation(p.x + e.getX() - point.x, p.y + e.getY()
-							- point.y);
+					setLocation(p.x + e.getX() - point.x, p.y + e.getY() - point.y);
 				}
 			});
 		}
