@@ -179,7 +179,7 @@ public class Core {
 		/*
 		 * make the base for allies
 		 */
-		for (int i = 0; i < 21; i++) {
+		for (int i = 0; i < 22; i++) {
 			tiles[i][tileh / 2 - 4].setID(3); // set the base line for the base
 			for (int a = (tileh / 2 - 5); a > 0; a--) { // remove everything
 														// above it for the rest
@@ -189,6 +189,32 @@ public class Core {
 				tiles[i][y].setID(2); // make everything under the base line
 										// dirt
 			}
+			tiles[i][22].setID(3);
+		}
+		tiles[0][tileh / 2 - 4].setID(1);
+		tiles[1][tileh / 2 - 4].setID(1);
+
+		tiles[0][22].setID(3);
+		tiles[0][21].setID(3);
+		tiles[0][20].setID(3);
+		tiles[0][19].setID(3);
+		tiles[1][19].setID(3);
+
+		for (int i = 19; i >= 11; i--) {
+			tiles[2][i].setID(3);
+		}
+
+		for (int i = 3; i < 23; i++) {
+			tiles[i][11].setID(3);
+		}
+
+		tiles[21][12].setID(3);
+		tiles[21][13].setID(3);
+		tiles[21][14].setID(2);
+		tiles[21][15].setID(2);
+
+		for (int i = 17; i < 23; i++) {
+			tiles[21][i].setID(3);
 		}
 
 		// make the loading bar reach 100%

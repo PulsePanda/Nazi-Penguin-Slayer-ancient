@@ -28,7 +28,7 @@ import main.Start;
 public class ControlsSelectionFrame extends JFrame {
 	IO io = new IO();
 	int w = 425, h = 225;
-	JButton confirm, cancel, up, down, left, right, jump, duck, attack;
+	JButton confirm, cancel, up, down, left, right, jump, duck, attack, inventory;
 
 	ControlSetFrame csf;
 
@@ -36,8 +36,7 @@ public class ControlsSelectionFrame extends JFrame {
 		setSize(w, h);
 		setUndecorated(true);
 		setResizable(false);
-		setLocation((int) (Start.mf.getX() + (0.25 * Start.mf.getWidth())),
-				(int) (Start.mf.getY() + (0.25 * Start.mf.getHeight())));
+		setLocation((int) (Start.mf.getX() + (0.25 * Start.mf.getWidth())), (int) (Start.mf.getY() + (0.25 * Start.mf.getHeight())));
 		setAlwaysOnTop(true);
 		setLayout(null);
 		setVisible(true);
@@ -92,10 +91,19 @@ public class ControlsSelectionFrame extends JFrame {
 		attack.setBounds(125, 70, 100, 50);
 		add(attack);
 
+		inventory = new JButton("Inventory");
+		inventory.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				csf = new ControlSetFrame("inventory");
+				dispose();
+			}
+		});
+		inventory.setBounds(230, 20, 100, 50);
+		add(inventory);
+
 		cancel = new JButton();
 		cancel.setIcon(new ImageIcon(io.getImage(FILES.controlsCancelButton)));
-		cancel.setRolloverIcon(new ImageIcon(io
-				.getImage(FILES.controlsCancelButtonRollover)));
+		cancel.setRolloverIcon(new ImageIcon(io.getImage(FILES.controlsCancelButtonRollover)));
 		cancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -113,8 +121,7 @@ public class ControlsSelectionFrame extends JFrame {
 	public void setUpComponents() {
 		confirm = new JButton();
 		confirm.setIcon(new ImageIcon(io.getImage(FILES.controlsConfirmButton)));
-		confirm.setRolloverIcon(new ImageIcon(io
-				.getImage(FILES.controlsConfirmButtonRollover)));
+		confirm.setRolloverIcon(new ImageIcon(io.getImage(FILES.controlsConfirmButtonRollover)));
 		confirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -126,8 +133,7 @@ public class ControlsSelectionFrame extends JFrame {
 
 		cancel = new JButton();
 		cancel.setIcon(new ImageIcon(io.getImage(FILES.controlsCancelButton)));
-		cancel.setRolloverIcon(new ImageIcon(io
-				.getImage(FILES.controlsCancelButtonRollover)));
+		cancel.setRolloverIcon(new ImageIcon(io.getImage(FILES.controlsCancelButtonRollover)));
 		cancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Dialogs.c.dispose();
@@ -141,8 +147,7 @@ public class ControlsSelectionFrame extends JFrame {
 	public void paint(Graphics g) {
 		g.setColor(Color.WHITE);
 
-		g.drawImage(io.getImage(FILES.controlWindowBackground), 0, 0, 425, 225,
-				null);
+		g.drawImage(io.getImage(FILES.controlWindowBackground), 0, 0, 425, 225, null);
 
 		up.repaint();
 		down.repaint();
@@ -150,5 +155,6 @@ public class ControlsSelectionFrame extends JFrame {
 		right.repaint();
 		attack.repaint();
 		cancel.repaint();
+		inventory.repaint();
 	}
 }

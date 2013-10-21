@@ -7,14 +7,12 @@ list of things to do :D
 --------------------------------------------------------------------------------------------
 >add bases
 
->read green comment in Player/jump()/for loop
-
 >fix jumping thing (otherwise take out jumping, and have the player auto move upward)
 
 >test to make sure the setting of the most recent update works, in the starter jar under Connection/Update. its labeled with blue comments
 
 >add minimap
 
->add inventory keybind setting in the main program
+>read green comment in Player/jump()/for loop
 
 >fix the problem that the world kinda line-glitches
