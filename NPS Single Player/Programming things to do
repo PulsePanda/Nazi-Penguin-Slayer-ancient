@@ -15,4 +15,8 @@ list of things to do :D
 
 >read green comment in Player/jump()/for loop
 
->fix the problem that the world kinda line-glitches
+>fix the problem that the world kinda line-glitches (i'm thinking buffer strategy. how do i add that though.... -_-)
+
+>change so that the actual image sized influence how the game sizes are
+
+>more intuitive collision

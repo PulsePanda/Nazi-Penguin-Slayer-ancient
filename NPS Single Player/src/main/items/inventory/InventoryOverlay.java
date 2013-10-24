@@ -1,6 +1,7 @@
 package main.items.inventory;
 
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 
 import javax.swing.JOptionPane;
 
@@ -12,19 +13,15 @@ import main.io.IO;
 
 public class InventoryOverlay extends Menu {
 
-	private static IO io = new IO();
-	private int w, h;
-
-	public InventoryOverlay(String t, int w, int h) {
-		super(t, w, h);
-		this.w = w;
-		this.h = h;
+	public InventoryOverlay() {
+		super();
 		this.setFocusable(false);
 		this.setVisible(true);
+		image = io.getImage(FILES.inventoryImage);
 	}
 
 	public void paint(Graphics g) {
-		g.drawImage(io.getImage(FILES.inventoryImage), 0, 0, Core.inventoryWidth + 100, 275, null);
+		g.drawImage(image, 0, 0, w, h, null);
 
 		Inventory in = Core.getPlayer().getInventory();
 	}

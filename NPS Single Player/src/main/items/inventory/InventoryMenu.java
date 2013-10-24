@@ -9,12 +9,9 @@ import main.io.FILES;
 
 public class InventoryMenu extends Menu {
 
-	public InventoryMenu(String t) {
-		super(t);
-	}
-
-	public InventoryMenu(String t, int w, int h) {
-		super(t, w, h);
+	public InventoryMenu() {
+		super();
+		image = io.getImage(FILES.inventoryImage);
 	}
 
 	public void paint(Graphics g) {

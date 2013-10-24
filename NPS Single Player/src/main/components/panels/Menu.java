@@ -7,6 +7,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
@@ -14,14 +15,14 @@ import main.Core;
 import main.io.IO;
 
 public class Menu extends JPanel {
-	protected int w = 400, h = 300;
+	protected int w, h;
 	protected Core core = Core.getCore();
 	protected static final IO io = new IO();
 	protected Point point = new Point();
 	protected String title = "";
+	protected BufferedImage image;
 
-	public Menu(String t) {
-		title = t;
+	public Menu() {
 		init();
 	}
 
@@ -33,6 +34,8 @@ public class Menu extends JPanel {
 	}
 
 	public void init() {
+		// w = image.getWidth();
+		// h = image.getHeight();
 		setSize(w, h);
 		setLayout(null);
 		setBackground(new Color(0, 0, 0, 0));

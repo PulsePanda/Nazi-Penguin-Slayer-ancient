@@ -17,9 +17,9 @@ import main.threads.TimeThread;
 
 public class Start {
 	static Frame f;
-	private static PauseMenu pauseMenu = new PauseMenu("", Core.frameW, Core.frameH);
-	private static InventoryMenu invMenu = new InventoryMenu("", Core.inventoryWidth + 100, 275);
-	private static InventoryOverlay invOver = new InventoryOverlay(null, Core.inventoryWidth, 50);
+	private static PauseMenu pauseMenu = new PauseMenu();
+	private static InventoryMenu invMenu = new InventoryMenu();
+	private static InventoryOverlay invOver = new InventoryOverlay();
 
 	public static void main(String[] args) {
 		Core core = new Core();

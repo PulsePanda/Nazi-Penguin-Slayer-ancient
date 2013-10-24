@@ -16,19 +16,17 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import main.Core;
 import main.io.FILES;
 
 public class PauseMenu extends Menu {
 
 	JButton resume, saveExit, options;
 
-	public PauseMenu(String t) {
-		super(t);
-		setupButtons();
-	}
-
-	public PauseMenu(String t, int w, int h) {
-		super(t, w, h);
+	public PauseMenu() {
+		super();
+		w = Core.frameW;
+		h = Core.frameH;
 		setupButtons();
 	}
 
