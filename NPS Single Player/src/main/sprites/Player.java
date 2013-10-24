@@ -1,5 +1,7 @@
 package main.sprites;
 
+import java.awt.image.BufferedImage;
+
 import main.Core;
 import main.items.inventory.Inventory;
 
@@ -7,8 +9,8 @@ public class Player extends Sprite {
 
 	private Inventory inv = new Inventory(this);
 
-	public Player(String imgDir, int x, int y, int w, int h) {
-		super(imgDir, x, y, w, h);
+	public Player(BufferedImage img, int x, int y, int w, int h) {
+		super(img, x, y, w, h);
 
 	}
 

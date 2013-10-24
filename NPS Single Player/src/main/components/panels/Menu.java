@@ -12,6 +12,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.JPanel;
 
 import main.Core;
+import main.components.frames.Dialogs;
 import main.io.IO;
 
 public class Menu extends JPanel {
@@ -23,19 +24,12 @@ public class Menu extends JPanel {
 	protected BufferedImage image;
 
 	public Menu() {
-		init();
-	}
 
-	public Menu(String t, int w, int h) {
-		title = t;
-		this.w = w;
-		this.h = h;
-		init();
 	}
 
 	public void init() {
-		// w = image.getWidth();
-		// h = image.getHeight();
+		w = image.getWidth();
+		h = image.getHeight();
 		setSize(w, h);
 		setLayout(null);
 		setBackground(new Color(0, 0, 0, 0));

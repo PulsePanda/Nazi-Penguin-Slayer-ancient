@@ -24,7 +24,8 @@ public class PauseMenu extends Menu {
 	JButton resume, saveExit, options;
 
 	public PauseMenu() {
-		super();
+		image = io.getImage(FILES.pauseOverlay);
+		init();
 		w = Core.frameW;
 		h = Core.frameH;
 		setupButtons();
@@ -70,7 +71,7 @@ public class PauseMenu extends Menu {
 	}
 
 	public void paint(Graphics g) {
-		g.drawImage(io.getImage("../graphic/pauseshade.png"), 0, 0, w, h, null);
+		g.drawImage(image, 0, 0, w, h, null);
 
 		// draw buttons
 		resume.repaint();

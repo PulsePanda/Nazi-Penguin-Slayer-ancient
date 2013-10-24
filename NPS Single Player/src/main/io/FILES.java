@@ -15,6 +15,7 @@ public class FILES {
 	public static final String backgroundImage = "../graphic/Game Background.png";
 	public static final String ingameMenuBackground = "../graphic/Ingame Menu Background.png";
 	public static final String inventoryImage = "../graphic/Inventory.png";
+	public static final String pauseOverlay = "../graphic/Pause Overlay.png";
 
 	public static final String playerImage = "../graphic/Player.png";
 
@@ -23,7 +24,7 @@ public class FILES {
 
 	public static final String properties = "properties.properties";
 
-	public static final String version = "0.0.1";
+	public static String version = "0_0_1";
 
 	@SuppressWarnings("deprecation")
 	public static boolean saveProperties(Properties prop) {

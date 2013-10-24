@@ -20,12 +20,15 @@ public class Tile extends Component {
 	public int ID;
 	public BufferedImage image;
 	public int x, y;
-	public int w = 25;
-	public int h = w;
+	public int w;
+	public int h;
 	public IO io = new IO();
 
 	public Tile(int ID) {
 		this.ID = ID;
+		image = io.getImage(FILES.dirtBlock);
+		w = image.getWidth();
+		h = image.getHeight();
 		if (ID != 0) {
 			img = getImageString(ID);
 			image = io.getImage(img);

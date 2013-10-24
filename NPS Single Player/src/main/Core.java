@@ -1,20 +1,19 @@
 package main;
 
+import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Properties;
 import java.util.Random;
 
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
 
 import main.components.frames.Dialogs;
 import main.components.frames.Frame;
 import main.components.panels.PauseMenu;
 import main.io.FILES;
+import main.io.IO;
 import main.items.inventory.InventoryMenu;
 import main.items.inventory.InventoryOverlay;
 import main.sprites.Player;
@@ -26,6 +25,8 @@ public class Core {
 	public static int threadDelay = 20;
 	private static Tile[][] tiles = new Tile[tilew][tileh];
 	public static ArrayList<Tile> list = new ArrayList<Tile>();
+	public static BufferedImage playerImage;
+	private static IO io = new IO();
 	private static Core core;
 	private static Frame frame;
 	private static PauseMenu exitMenu;
@@ -46,6 +47,8 @@ public class Core {
 			e.printStackTrace();
 		}
 
+		FILES.version = properties.getProperty("version");
+
 		bar.setBounds(20, 50, 255, 25);
 		bar.setMaximum(barMax);
 		bar.setMinimum(0);
@@ -54,7 +57,8 @@ public class Core {
 		createTiles();
 		initTiles();
 
-		player = new Player(FILES.playerImage, 493, 20, 20, 20);
+		playerImage = io.getImage(FILES.playerImage);
+		player = new Player(playerImage, 493, 20, playerImage.getWidth(), playerImage.getHeight());
 	}
 
 	public static FPSCounter getFPSCounter() {

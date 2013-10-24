@@ -10,8 +10,8 @@ import main.io.FILES;
 public class InventoryMenu extends Menu {
 
 	public InventoryMenu() {
-		super();
 		image = io.getImage(FILES.inventoryImage);
+		init();
 	}
 
 	public void paint(Graphics g) {

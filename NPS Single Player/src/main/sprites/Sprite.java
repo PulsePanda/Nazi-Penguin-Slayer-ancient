@@ -9,24 +9,21 @@ import main.io.IO;
 
 public class Sprite {
 	private static BufferedImage img;
-	private static String imgDir, facing = "right";
+	private static String facing = "right";
 	private static IO io = new IO();
-	public static int x, y, w, h, baseMoveSpeed = 5,
-			currentMoveSpeed = baseMoveSpeed, moveX = 0, moveY = 0,
-			jumpHeight = 36, fallSpeed = -3;
+	public static int x, y, w, h, baseMoveSpeed = 5, currentMoveSpeed = baseMoveSpeed, moveX = 0, moveY = 0, jumpHeight = 36, fallSpeed = -3;
 	private static boolean visible = true;
 	protected static boolean falling = false;
 	protected static boolean ableToMove = true;
 	protected static boolean jumping = false;
 	protected static Core core;
 
-	public Sprite(String imgDir, int x, int y, int w, int h) {
-		this.imgDir = imgDir;
+	public Sprite(BufferedImage img, int x, int y, int w, int h) {
+		this.img = img;
 		this.x = x;
 		this.y = y;
 		this.w = w;
 		this.h = h;
-		img = io.getImage(this.imgDir);
 		core = Core.getCore();
 	}
 
@@ -51,7 +48,6 @@ public class Sprite {
 	public boolean isFalling() {
 		return falling;
 	}
-
 
 	public void setMoveX(int x) {
 		moveX = x;
