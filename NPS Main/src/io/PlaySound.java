@@ -39,8 +39,7 @@ public class PlaySound {
 
 		audioFormat = audioStream.getFormat();
 
-		DataLine.Info info = new DataLine.Info(SourceDataLine.class,
-				audioFormat);
+		DataLine.Info info = new DataLine.Info(SourceDataLine.class, audioFormat);
 		try {
 			sourceLine = (SourceDataLine) AudioSystem.getLine(info);
 			sourceLine.open(audioFormat);
