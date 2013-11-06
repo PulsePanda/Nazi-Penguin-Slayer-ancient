@@ -31,7 +31,7 @@ public class Core {
 	private static Frame frame;
 	private static PauseMenu exitMenu;
 	private static InventoryMenu invMenu;
-	private static InventoryOverlay invOverlay;
+	public static InventoryOverlay invOverlay;
 	private static JProgressBar bar = new JProgressBar();
 	private static boolean running = true, paused = false;
 	private static Player player;
