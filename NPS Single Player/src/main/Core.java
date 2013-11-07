@@ -11,6 +11,7 @@ import javax.swing.JProgressBar;
 
 import main.components.frames.Dialogs;
 import main.components.frames.Frame;
+import main.components.frames.SplashScreen;
 import main.components.panels.PauseMenu;
 import main.io.FILES;
 import main.io.IO;
@@ -29,6 +30,7 @@ public class Core {
 	private static IO io = new IO();
 	private static Core core;
 	private static Frame frame;
+	private static SplashScreen splashScreen;
 	private static PauseMenu exitMenu;
 	private static InventoryMenu invMenu;
 	public static InventoryOverlay invOverlay;
@@ -97,6 +99,7 @@ public class Core {
 
 	public void initTiles() {
 		Frame loadingFrame = new Frame("Loading World...", null, 300, 200);
+		splashScreen.remove();
 		loadingFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		loadingFrame.setLayout(null);
 
@@ -339,5 +342,9 @@ public class Core {
 
 	public static void setInvOver(InventoryOverlay invOver) {
 		invOverlay = invOver;
+	}
+
+	public static void setSplashScreen(SplashScreen f) {
+		splashScreen = f;
 	}
 }

@@ -1,11 +1,9 @@
 package main;
 
-import java.awt.event.KeyEvent;
-
 import javax.swing.JFrame;
-import javax.swing.JProgressBar;
 
 import main.components.frames.Frame;
+import main.components.frames.SplashScreen;
 import main.components.panels.Panel;
 import main.components.panels.PauseMenu;
 import main.io.KeyClass;
@@ -22,8 +20,10 @@ public class Start {
 	private static InventoryOverlay invOver = new InventoryOverlay();
 
 	public static void main(String[] args) {
+		SplashScreen ss = new SplashScreen();
 		Core core = new Core();
 		core.setCore(core);
+		core.setSplashScreen(ss);
 
 		f = new Frame("NPS", null, Core.frameW, Core.frameH);
 		core.setFrame(f);
