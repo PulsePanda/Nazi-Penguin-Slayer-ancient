@@ -62,7 +62,7 @@ public class Start {
 	}
 
 	private static void initInvOverlay() {
-
+		invOver.setLocation(0,0);
 	}
 
 	private static void initPauseMenu() {

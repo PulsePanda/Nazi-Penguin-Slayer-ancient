@@ -33,18 +33,22 @@ public class Panel extends JPanel {
 
 	public void checkDraw(Tile tile, Graphics g) {
 		Frame frame = core.getFrame();
-		int leftBound = 0 - tile.w, rightBound = frame.w + tile.w, topBound = 0 - tile.h, botBound = frame.h + tile.h;
+		int leftBound = 0 - tile.w, rightBound = frame.w + tile.w, topBound = 0 - tile.h, botBound = frame.h
+				+ tile.h;
 
-		if (tile.getX() < leftBound || tile.getX() > rightBound || tile.getY() < topBound || tile.getY() > botBound) {
+		if (tile.getX() < leftBound || tile.getX() > rightBound
+				|| tile.getY() < topBound || tile.getY() > botBound) {
 			return;
 		}
 
-		g.drawImage(tile.getImage(), tile.getX(), tile.getY(), tile.w, tile.h, null);
+		g.drawImage(tile.getImage(), tile.getX(), tile.getY(), tile.w, tile.h,
+				null);
 	}
 
 	public void paint(Graphics g) {
 		// draw background image first
-		g.drawImage(backgroundImage, 0, 0, Core.getFrame().getWidth(), Core.getFrame().getHeight(), null);
+		g.drawImage(backgroundImage, 0, 0, Core.getFrame().getWidth(), Core
+				.getFrame().getHeight(), null);
 
 		// work with the tiles
 		Tile[][] tiles = Core.getTiles();
@@ -61,6 +65,7 @@ public class Panel extends JPanel {
 
 		// draw player
 		Player player = Core.getPlayer();
-		g.drawImage(player.getImage(), player.getX(), player.getY(), player.getW(), player.getH(), null);
+		g.drawImage(player.getImage(), player.getX(), player.getY(),
+				player.getW(), player.getH(), null);
 	}
 }

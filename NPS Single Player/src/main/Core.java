@@ -102,7 +102,7 @@ public class Core {
 
 	public void initTiles() {
 		splashScreen.remove();
-		
+
 		Frame loadingFrame = new Frame("Loading World...", null, 300, 200);
 		loadingFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		loadingFrame.setLayout(null);
@@ -346,6 +346,10 @@ public class Core {
 
 	public static void setInvOver(InventoryOverlay invOver) {
 		invOverlay = invOver;
+	}
+
+	public static InventoryOverlay getInvOver() {
+		return invOverlay;
 	}
 
 	public static void setSplashScreen(SplashScreen f) {

@@ -14,10 +14,10 @@ import main.io.IO;
 public class InventoryOverlay extends Menu {
 
 	public InventoryOverlay() {
-		this.setFocusable(false);
-		this.setVisible(true);
 		image = io.getImage(FILES.inventoryImage);
 		init();
+		setVisible(true);
+		setFocusable(false);
 	}
 
 	public void paint(Graphics g) {
