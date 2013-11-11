@@ -10,13 +10,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import main.io.FILES;
+
 public class SplashScreen {
 
 	// JFrame f = new JFrame();
 	JFrame frame = new JFrame();
 
 	public SplashScreen() {
-		final JLabel label = new JLabel(new ImageIcon(getImage("C:\\Users\\Austin\\Google Drive\\AVTECH\\NPS\\Files\\graphic\\Splash Screen.png")));
+		final JLabel label = new JLabel(new ImageIcon(getImage(FILES.splashScreen)));
 
 		frame.setAlwaysOnTop(true);
 		frame.setUndecorated(true);

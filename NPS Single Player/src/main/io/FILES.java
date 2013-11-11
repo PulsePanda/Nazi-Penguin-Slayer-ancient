@@ -42,6 +42,8 @@ public class FILES {
 	public static final String m1GrandImage = "C:\\Users\\Austin\\Google Drive\\AVTECH\\NPS\\Files\\graphic\\M1 Grand.png";
 
 	public static final String properties = "C:\\Users\\Austin\\Google Drive\\AVTECH\\NPS\\Files\\bin\\properties.properties";
+	
+	public static final String splashScreen = "C:\\Users\\Austin\\Google Drive\\AVTECH\\NPS\\Files\\graphic\\Splash Screen.png";
 
 	public static String version = "0_0_1";
 
