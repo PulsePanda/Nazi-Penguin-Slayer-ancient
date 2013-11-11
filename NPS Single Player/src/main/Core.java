@@ -21,7 +21,8 @@ import main.sprites.Player;
 import main.sprites.Tile;
 
 public class Core {
-	private static int tilew = 200, tileh = 40, day = 0, barValue = 0, tileGroupXOff = 0, tileGroupYOff = -125, barMax = 2500;
+	private static int tilew = 200, tileh = 40, day = 0, barValue = 0,
+			tileGroupXOff = 0, tileGroupYOff = -125, barMax = 2500;
 	public static final int frameW = 1000, frameH = 600;
 	public static int threadDelay = 20;
 	private static Tile[][] tiles = new Tile[tilew][tileh];
@@ -30,7 +31,7 @@ public class Core {
 	private static IO io = new IO();
 	private static Core core;
 	private static Frame frame;
-	private static SplashScreen splashScreen;
+	public static SplashScreen splashScreen;
 	private static PauseMenu exitMenu;
 	private static InventoryMenu invMenu;
 	public static InventoryOverlay invOverlay;
@@ -45,7 +46,8 @@ public class Core {
 		try {
 			properties.load(new FileInputStream(FILES.properties));
 		} catch (Exception e) {
-			Dialogs.errorDiagExit("Cannot find the properties file at " + FILES.properties + ".\nPlease reinstall the game.");
+			Dialogs.errorDiagExit("Cannot find the properties file at "
+					+ FILES.properties + ".\nPlease reinstall the game.");
 			e.printStackTrace();
 		}
 
@@ -60,7 +62,8 @@ public class Core {
 		initTiles();
 
 		playerImage = io.getImage(FILES.playerImage);
-		player = new Player(playerImage, 493, 20, playerImage.getWidth(), playerImage.getHeight());
+		player = new Player(playerImage, 493, 20, playerImage.getWidth(),
+				playerImage.getHeight());
 	}
 
 	public static FPSCounter getFPSCounter() {
@@ -98,14 +101,14 @@ public class Core {
 	}
 
 	public void initTiles() {
-		Frame loadingFrame = new Frame("Loading World...", null, 300, 200);
 		splashScreen.remove();
+		
+		Frame loadingFrame = new Frame("Loading World...", null, 300, 200);
 		loadingFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		loadingFrame.setLayout(null);
 
 		loadingFrame.add(bar);
 		loadingFrame.setLocationRelativeTo(null);
-
 		/**
 		 * actually set what the tiles will actually be
 		 */
@@ -131,7 +134,8 @@ public class Core {
 		for (int i = 0; i < numberOfHills; i++) {
 			barValue++;
 			bar.setValue(barValue);
-			int x = rand.nextInt(tilew) + 1, y = (tileh / 2) - rand.nextInt(maxHeight);
+			int x = rand.nextInt(tilew) + 1, y = (tileh / 2)
+					- rand.nextInt(maxHeight);
 			// set the tip of the hill
 			try {
 				tiles[x][y].setID(1);

@@ -16,7 +16,7 @@ public class SplashScreen {
 	JFrame frame = new JFrame();
 
 	public SplashScreen() {
-		final JLabel label = new JLabel(new ImageIcon(getImage("../graphic/Splash Screen.png")));
+		final JLabel label = new JLabel(new ImageIcon(getImage("C:\\Users\\Austin\\Google Drive\\AVTECH\\NPS\\Files\\graphic\\Splash Screen.png")));
 
 		frame.setAlwaysOnTop(true);
 		frame.setUndecorated(true);

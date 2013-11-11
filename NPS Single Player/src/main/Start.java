@@ -21,6 +21,7 @@ public class Start {
 
 	public static void main(String[] args) {
 		SplashScreen ss = new SplashScreen();
+		Core.splashScreen = ss;
 		Core core = new Core();
 		core.setCore(core);
 		core.setSplashScreen(ss);
