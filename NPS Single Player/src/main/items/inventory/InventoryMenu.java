@@ -7,14 +7,5 @@ import java.awt.Graphics;
 import main.components.panels.Menu;
 import main.io.FILES;
 
-public class InventoryMenu extends Menu {
-
-	public InventoryMenu() {
-		image = io.getImage(FILES.inventoryImage);
-		init();
-	}
-
-	public void paint(Graphics g) {
-		g.drawImage(image, 0, 0, w, h, null);
-	}
+public class InventoryMenu {
 }
