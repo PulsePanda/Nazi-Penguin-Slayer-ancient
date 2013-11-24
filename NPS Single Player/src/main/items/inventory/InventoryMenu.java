@@ -1,11 +1,24 @@
 package main.items.inventory;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
+import javax.swing.JPanel;
 
-import main.components.panels.Menu;
-import main.io.FILES;
+public class InventoryMenu extends JPanel {
 
-public class InventoryMenu {
+	private int inventoryWidth = 8;
+	private int totalWidth = 0;
+
+	private int inventoryHeight = 5;
+	private int totalHeight = 0;
+
+	private InventoryBlock[][] inventoryBlocks = new InventoryBlock[inventoryWidth][inventoryHeight];
+
+	public InventoryMenu() {
+		for (int w = 0; w < inventoryWidth; w++) {
+			int tempW = 5 + (InventoryBlock.w * w);
+			
+			for (int h = 0; h < inventoryHeight; h++) {
+
+			}
+		}
+	}
 }

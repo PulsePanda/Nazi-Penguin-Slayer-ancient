@@ -16,7 +16,7 @@ import main.threads.TimeThread;
 public class Start {
 	static Frame f;
 	private static PauseMenu pauseMenu = new PauseMenu();
-	private static InventoryMenu invMenu = new InventoryMenu();
+	// private static InventoryMenu invMenu = new InventoryMenu();
 	private static InventoryOverlay invOver = new InventoryOverlay();
 
 	public static void main(String[] args) {
@@ -33,13 +33,13 @@ public class Start {
 		f.add(pauseMenu);
 		core.setExitMenu(pauseMenu);
 
-		initInvMenu();
-		f.add(invMenu);
-		core.setInventoryMenu(invMenu);
-
 		initInvOverlay();
 		f.add(invOver);
 		core.setInvOver(invOver);
+
+		// initInvMenu();
+		// f.add(invMenu);
+		// core.setInventoryMenu(invMenu);
 
 		f.add(new Panel());
 		f.setLocationRelativeTo(null);
@@ -57,21 +57,24 @@ public class Start {
 		timeThread.setName("time thread");
 		timeThread.start();
 
+		f.requestFocus();
+
 		pauseMenu.visible(true);
 		pauseMenu.visible(false);
 	}
 
 	private static void initInvOverlay() {
-		invOver.setLocation(0,0);
+		invOver.setLocation(0, 0);
 	}
 
 	private static void initPauseMenu() {
 		JFrame f = Core.getFrame();
-		int x = (f.getWidth() / 2) - (pauseMenu.getWidth() / 2), y = (f.getHeight() / 2) - (pauseMenu.getHeight() / 2);
+		int x = (f.getWidth() / 2) - (pauseMenu.getWidth() / 2), y = (f
+				.getHeight() / 2) - (pauseMenu.getHeight() / 2);
 		pauseMenu.setLocation(x, y);
 	}
 
-	private static void initInvMenu() {
-		invMenu.setLocation(0, 0);
-	}
+	// private static void initInvMenu() {
+	// invMenu.setLocation(0, 0);
+	// }
 }
