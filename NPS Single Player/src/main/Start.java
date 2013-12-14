@@ -16,8 +16,8 @@ import main.threads.TimeThread;
 public class Start {
 	static Frame f;
 	private static PauseMenu pauseMenu = new PauseMenu();
-	// private static InventoryMenu invMenu = new InventoryMenu();
 	private static InventoryOverlay invOver = new InventoryOverlay();
+	private static InventoryMenu invMenu = new InventoryMenu();
 
 	public static void main(String[] args) {
 		SplashScreen ss = new SplashScreen();
@@ -37,9 +37,9 @@ public class Start {
 		f.add(invOver);
 		core.setInvOver(invOver);
 
-		// initInvMenu();
-		// f.add(invMenu);
-		// core.setInventoryMenu(invMenu);
+		initInvMenu();
+		f.add(invMenu);
+		core.setInventoryMenu(invMenu);
 
 		f.add(new Panel());
 		f.setLocationRelativeTo(null);
@@ -74,7 +74,8 @@ public class Start {
 		pauseMenu.setLocation(x, y);
 	}
 
-	// private static void initInvMenu() {
-	// invMenu.setLocation(0, 0);
-	// }
+	private static void initInvMenu() {
+		int x = invOver.getX(), y = invOver.getY();
+		invMenu.setLocation(x, y);
+	}
 }
