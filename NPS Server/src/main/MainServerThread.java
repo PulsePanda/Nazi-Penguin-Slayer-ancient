@@ -26,7 +26,6 @@ import javax.swing.JTextArea;
 public class MainServerThread extends MainServerClass implements Runnable,
 		Serializable {
 
-	JTextArea jta;
 	Socket socket;
 	ObjectInputStream in;
 	ObjectOutputStream out;
