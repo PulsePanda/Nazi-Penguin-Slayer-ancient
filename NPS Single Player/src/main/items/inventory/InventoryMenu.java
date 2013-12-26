@@ -2,16 +2,23 @@ package main.items.inventory;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.Properties;
 
 import javax.swing.JPanel;
 
-public class InventoryMenu extends JPanel {
+import main.Core;
+
+public class InventoryMenu extends JPanel implements KeyListener {
 
 	private int inventoryWidth = 8;
 	private int totalWidth = 0;
 
 	private int inventoryHeight = 5;
 	private int totalHeight = 0;
+
+	private boolean visible = false;
 
 	private InventoryBlock[][] inventoryBlocks = new InventoryBlock[inventoryWidth][inventoryHeight];
 
@@ -33,7 +40,18 @@ public class InventoryMenu extends JPanel {
 		setBackground(new Color(0, 0, 0, 0));
 
 		setFocusable(true);
-		setVisible(true);
+		setVisible(visible);
+	}
+
+	public void visible() {
+		if (!visible) {
+			visible = true;
+			setVisible(visible);
+			requestFocus();
+		} else {
+			visible = false;
+			setVisible(visible);
+		}
 	}
 
 	public void paint(Graphics g) {
@@ -43,5 +61,25 @@ public class InventoryMenu extends JPanel {
 				g.drawImage(ib.currentImage, ib.x, ib.y, ib.w, ib.h, null);
 			}
 		}
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		int key = e.getKeyCode();
+		Core core = Core.getCore();
+		Properties properties = core.getProperties();
+		if (key == Integer.parseInt(properties.getProperty("inventory"))) {
+			core.getInventoryMenu().visible();
+		} else if (key == KeyEvent.VK_ESCAPE) {
+			visible();
+		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
 	}
 }
