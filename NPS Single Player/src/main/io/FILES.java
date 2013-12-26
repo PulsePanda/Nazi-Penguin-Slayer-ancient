@@ -51,6 +51,8 @@ public class FILES {
 
 	public static final String splashScreen = "C:\\Users\\Austin\\Google Drive\\AVTECH\\NPS\\Files\\graphic\\Splash Screen.png";
 
+	public static final String saveDirectory = "C:\\Users\\Austin\\Google Drive\\AVTECH\\NPS\\Files\\worlds\\save.npsave";
+
 	// public static final String dirtBlock =
 	// "D:\\Google Drive\\AVTECH\\NPS\\Files\\graphic\\Dirt Block.png";
 	// public static final String stoneBlock =

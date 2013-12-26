@@ -1,20 +1,24 @@
 package main;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Properties;
 import java.util.Random;
 
 import javax.swing.JFrame;
 import javax.swing.JProgressBar;
-
 import main.components.frames.Dialogs;
 import main.components.frames.Frame;
 import main.components.frames.SplashScreen;
 import main.components.panels.PauseMenu;
 import main.io.FILES;
 import main.io.IO;
+import main.io.SaveObject;
 import main.items.inventory.InventoryMenu;
 import main.items.inventory.InventoryOverlay;
 import main.sprites.Player;
@@ -354,5 +358,47 @@ public class Core {
 
 	public static void setSplashScreen(SplashScreen f) {
 		splashScreen = f;
+	}
+
+	public static boolean save() {
+		try {
+			SaveObject so = new SaveObject(tiles, list);
+
+			String dir = FILES.saveDirectory;
+			FileOutputStream fos = new FileOutputStream(dir);
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+			File f = new File(dir);
+			if (f.exists())
+				f.delete();
+
+			oos.writeObject(so);
+
+			oos.flush();
+			oos.close();
+		} catch (Exception e) {
+			Dialogs.msgDialog("Could not save your game. Exit process has been stopped.");
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+
+	}
+
+	public static SaveObject load() {
+		SaveObject so = null;
+		try {
+			FileInputStream fis = new FileInputStream(FILES.saveDirectory);
+			ObjectInputStream ois = new ObjectInputStream(fis);
+
+			so = (SaveObject) ois.readObject();
+
+			ois.close();
+		} catch (Exception e) {
+			Dialogs.msgDialog("Could not load save!");
+			e.printStackTrace();
+		}
+
+		return so;
 	}
 }

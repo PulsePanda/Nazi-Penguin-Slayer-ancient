@@ -65,4 +65,13 @@ public class Inventory {
 	public ItemSlot[] getItemSlots() {
 		return itemSlots;
 	}
+
+	public int[] getItems() {
+		int[] itemIDs = new int[items.length];
+		for (int i = 0; i < items.length; i++) {
+			itemIDs[i] = items[i].getItemID();
+		}
+
+		return itemIDs;
+	}
 }
