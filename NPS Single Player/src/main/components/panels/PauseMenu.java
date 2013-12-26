@@ -21,8 +21,7 @@ import main.io.FILES;
 
 public class PauseMenu extends Menu {
 
-	private JButton resume, saveExit, options;
-	private Core core = Core.getCore();
+	JButton resume, saveExit, options;
 
 	public PauseMenu() {
 		image = io.getImage(FILES.pauseOverlay);
@@ -40,24 +39,21 @@ public class PauseMenu extends Menu {
 		// set up buttons
 		int buttonW = 250, buttonH = 50;
 
-		resume.setBounds((w / 2) - (buttonW / 2), (h / 2) - (buttonH * 3),
-				buttonW, buttonH);
+		resume.setBounds((w / 2) - (buttonW / 2), (h / 2) - (buttonH * 3), buttonW, buttonH);
 		resume.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				remove();
 			}
 		});
 
-		saveExit.setBounds((w / 2) - (buttonW / 2), (h / 2) - (buttonH / 4),
-				buttonW, buttonH);
+		saveExit.setBounds((w / 2) - (buttonW / 2), (h / 2) - (buttonH / 4), buttonW, buttonH);
 		saveExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				saveAndExit();
 			}
 		});
 
-		options.setBounds((w / 2) - (buttonW / 2), (h / 2) - (buttonH + 30),
-				buttonW, buttonH);
+		options.setBounds((w / 2) - (buttonW / 2), (h / 2) - (buttonH + 30), buttonW, buttonH);
 		options.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -71,10 +67,7 @@ public class PauseMenu extends Menu {
 	}
 
 	public void saveAndExit() {
-		if (Core.save())
-			System.exit(0);
-		else
-			return;
+		System.exit(0);
 	}
 
 	public void paint(Graphics g) {

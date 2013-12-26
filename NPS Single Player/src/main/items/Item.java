@@ -1,11 +1,9 @@
 package main.items;
 
 import java.awt.image.BufferedImage;
-import java.io.Serializable;
-
 import main.io.IO;
 
-public class Item implements Serializable {
+public class Item {
 
 	/**
 	 * all the default item id's that are usable

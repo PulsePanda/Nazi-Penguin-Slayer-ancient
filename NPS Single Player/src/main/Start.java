@@ -7,7 +7,6 @@ import main.components.frames.SplashScreen;
 import main.components.panels.Panel;
 import main.components.panels.PauseMenu;
 import main.io.KeyClass;
-import main.io.SaveObject;
 import main.items.inventory.InventoryMenu;
 import main.items.inventory.InventoryOverlay;
 import main.threads.PlayerThread;
@@ -21,12 +20,6 @@ public class Start {
 	private static InventoryMenu invMenu = new InventoryMenu();
 
 	public static void main(String[] args) {
-		// testing
-		SaveObject so = Core.load();
-		so.toString();
-
-		System.exit(0);
-
 		SplashScreen ss = new SplashScreen();
 		Core.splashScreen = ss;
 		Core core = new Core();
