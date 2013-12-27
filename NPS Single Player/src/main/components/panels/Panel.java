@@ -51,12 +51,12 @@ public class Panel extends JPanel {
 				.getFrame().getHeight(), null);
 
 		// work with the tiles
-		Tile[][] tiles = Core.getWorld().getTiles();
-		for (int i = 0; i < Core.getWorld().getTileArrayWidth(); i++) {
-			for (int a = 0; a < Core.getWorld().getTileArrayHeight(); a++) {
+		Tile[][] tiles = Core.getTiles();
+		for (int i = 0; i < Core.getTileArrayWidth(); i++) {
+			for (int a = 0; a < Core.getTileArrayHeight(); a++) {
 				Tile tile = tiles[i][a];
-				int x = i * tile.w + Core.getWorld().getXOff();
-				int y = a * tile.h + Core.getWorld().getYOff();
+				int x = i * tile.w + Core.getXOff();
+				int y = a * tile.h + Core.getYOff();
 				tile.setX(x);
 				tile.setY(y);
 				checkDraw(tile, g);
