@@ -11,7 +11,9 @@ public class Sprite {
 	private static BufferedImage img;
 	private static String facing = "right";
 	private static IO io = new IO();
-	public static int x, y, w, h, baseMoveSpeed = 5, currentMoveSpeed = baseMoveSpeed, moveX = 0, moveY = 0, jumpHeight = 36, fallSpeed = -3;
+	public static int x, y, w, h, baseMoveSpeed = 5,
+			currentMoveSpeed = baseMoveSpeed, moveX = 0, moveY = 0,
+			jumpHeight = 36, fallSpeed = -3;
 	private static boolean visible = true;
 	protected static boolean falling = false;
 	protected static boolean ableToMove = true;
@@ -58,7 +60,7 @@ public class Sprite {
 	}
 
 	public boolean isCollidingBottom() {
-		ArrayList<Tile> tiles = Core.getList();
+		ArrayList<Tile> tiles = Core.getWorld().getList();
 		for (int i = 0; i < tiles.size(); i++) {
 			Tile tile = (Tile) tiles.get(i);
 			if (getBottomBounds().intersects(tile.getBounds()))
@@ -68,7 +70,7 @@ public class Sprite {
 	}
 
 	public boolean isCollidingRight() {
-		ArrayList<Tile> tiles = Core.getList();
+		ArrayList<Tile> tiles = Core.getWorld().getList();
 		for (int i = 0; i < tiles.size(); i++) {
 			Tile tile = (Tile) tiles.get(i);
 			if (getRightBounds().intersects(tile.getBounds()))
@@ -78,7 +80,7 @@ public class Sprite {
 	}
 
 	public boolean isCollidingLeft() {
-		ArrayList<Tile> tiles = Core.getList();
+		ArrayList<Tile> tiles = Core.getWorld().getList();
 		for (int i = 0; i < tiles.size(); i++) {
 			Tile tile = (Tile) tiles.get(i);
 			if (getLeftBounds().intersects(tile.getBounds()))
@@ -88,7 +90,7 @@ public class Sprite {
 	}
 
 	public boolean isCollidingTop() {
-		ArrayList<Tile> tiles = Core.getList();
+		ArrayList<Tile> tiles = Core.getWorld().getList();
 		for (int i = 0; i < tiles.size(); i++) {
 			Tile tile = (Tile) tiles.get(i);
 			if (getTopBounds().intersects(tile.getBounds()))

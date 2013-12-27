@@ -14,7 +14,7 @@ public class TimeThread implements Runnable {
 
 	public void run() {
 		Date date = new Date();
-		int day = core.getDay(), initialMins = date.getMinutes(), currentMins = initialMins, minsPassed = 0;
+		int day = core.getWorld().getDay(), initialMins = date.getMinutes(), currentMins = initialMins, minsPassed = 0;
 
 		while (core.isRunning()) {
 			while (core.isPaused())
@@ -37,7 +37,7 @@ public class TimeThread implements Runnable {
 			// check to change the day in the `core` class
 			if (minsPassed == 3) {
 				minsPassed = 0;
-				core.addDay();
+				core.getWorld().addDay();
 			}
 		}
 	}
