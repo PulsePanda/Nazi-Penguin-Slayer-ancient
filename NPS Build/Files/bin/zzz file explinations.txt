@@ -1,0 +1,9 @@
+nps shortcut opens the NPS Starter
+
+NPS Starter shows the splash screen, then checks for an online server, and if there is one, will then proceed to update. when done, NPS Starter opens NPS Main
+
+NPS Main then opens another splash screen, checking the status of the server one more time. if the server is offline, the login screen will open without the ability to log in, and it the server is online, you will be able to login and create an account. when you login, it takes you to the main menu, where you can select all the options. the rest is pretty simple
+
+
+login temp is a file that is used to transit between the 2 classes for login. the user and pass is stored in there, and then is immediatly deleted for security
+
